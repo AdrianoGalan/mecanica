@@ -91,7 +91,7 @@
                   <Font name="Tw Cen MT Bold" size="23.0" />
                </font>
             </Label>
-            <TextField fx:id="tfPlaca" layoutX="210.0" layoutY="483.0" prefHeight="31.0" prefWidth="104.0" promptText="Placa" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 12px;" text="ABC-1234" />
+            <TextField fx:id="tfPlaca" layoutX="210.0" layoutY="483.0" prefHeight="31.0" prefWidth="104.0" promptText="Placa" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 12px;" />
             <TextField fx:id="tfModelo" layoutX="238.0" layoutY="526.0" prefHeight="31.0" prefWidth="133.0" promptText="Modelo" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 12px;" />
             <TextField fx:id="tfFabricante" layoutX="533.0" layoutY="559.0" prefHeight="25.0" prefWidth="201.0" promptText="Marca/Fabricante" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 12px;" />
             <TextField fx:id="tfMotor" layoutX="570.0" layoutY="483.0" prefHeight="31.0" prefWidth="119.0" promptText="Motor" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 12px;" />
