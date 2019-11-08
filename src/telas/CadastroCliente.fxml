@@ -1,34 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="433.0" prefWidth="493.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleTelas.CadastroClienteController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleTelas.CadastroClienteController">
    <children>
-      <Pane layoutX="-7.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #E5E5E5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane layoutX="-7.0" prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: #E5E5E5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextField fx:id="tfNome" layoutX="14.0" layoutY="35.0" prefHeight="25.0" prefWidth="451.0" promptText="NOME:" />
-            <TextField fx:id="tfCpf" layoutX="14.0" layoutY="72.0" prefHeight="25.0" prefWidth="155.0" promptText="CPF:" />
-            <TextField fx:id="tfTelefone1" layoutX="215.0" layoutY="72.0" prefHeight="25.0" prefWidth="155.0" promptText="TELEFONE" />
-            <TextField fx:id="tfTelefone2" layoutX="215.0" layoutY="108.0" prefHeight="25.0" prefWidth="155.0" promptText="TELEFONE:" />
-            <TextField fx:id="tfRua" layoutX="14.0" layoutY="138.0" prefHeight="25.0" prefWidth="356.0" promptText="RUA:" />
-            <TextField fx:id="tfNumero" layoutX="14.0" layoutY="175.0" prefHeight="25.0" prefWidth="84.0" promptText="NUMERO" />
-            <TextField fx:id="tfBairro" layoutX="215.0" layoutY="175.0" prefHeight="25.0" prefWidth="155.0" promptText="BAIRRO" />
-            <TextField fx:id="tfCidade" layoutX="215.0" layoutY="207.0" prefHeight="25.0" prefWidth="155.0" promptText="CIDADE" />
-            <TextField fx:id="tfCep" layoutX="14.0" layoutY="207.0" prefHeight="25.0" prefWidth="84.0" promptText="CEP:" />
-            <Button fx:id="btCadastra" layoutX="293.0" layoutY="367.0" mnemonicParsing="false" onAction="#acaoBtCadastra" prefHeight="41.0" prefWidth="104.0" text="Cadastrar" />
-            <TextField fx:id="tfPlaca" layoutX="14.0" layoutY="253.0" prefHeight="25.0" prefWidth="201.0" promptText="Placa" />
-            <TextField fx:id="tfModelo" layoutX="14.0" layoutY="290.0" prefHeight="25.0" prefWidth="201.0" promptText="Modelo" />
-            <TextField fx:id="tfFabricante" layoutX="240.0" layoutY="253.0" prefHeight="25.0" prefWidth="201.0" promptText="fabricante" />
-            <TextField fx:id="tfMotor" layoutX="240.0" layoutY="290.0" prefHeight="25.0" prefWidth="201.0" promptText="Motor" />
-            <TextField fx:id="tfAno" layoutX="14.0" layoutY="324.0" prefHeight="25.0" prefWidth="201.0" promptText="ano" />
-            <TextField fx:id="tfKm" layoutX="240.0" layoutY="324.0" prefHeight="25.0" prefWidth="201.0" promptText="km" />
-            <Label fx:id="lbErro" layoutX="42.0" layoutY="379.0" prefHeight="17.0" prefWidth="201.0" />
+            <Label layoutX="237.0" layoutY="23.0" prefHeight="56.0" prefWidth="344.0" text="Cadastro de Cliente" textFill="#3a6379">
+               <font>
+                  <Font name="Tw Cen MT Bold" size="39.0" />
+               </font>
+            </Label>
+            <Label layoutX="175.0" layoutY="96.0" text="DADOS PESSOAIS" textFill="#3a6379">
+               <font>
+                  <Font name="Tw Cen MT Bold" size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="175.0" layoutY="140.0" text="Nome:" textFill="#3a6379">
+               <font>
+                  <Font name="Tw Cen MT" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="175.0" layoutY="184.0" text="CPF:" textFill="#3a6379">
+               <font>
+                  <Font name="Tw Cen MT" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="438.0" layoutY="222.0" text="Tel. Fixo" textFill="#3a6379">
+               <font>
+                  <Font name="Tw Cen MT" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="413.0" layoutY="184.0" text="Tel. Celular" textFill="#3a6379">
+               <font>
+                  <Font name="Tw Cen MT" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfNome" layoutX="231.0" layoutY="135.0" prefHeight="31.0" prefWidth="439.0" promptText="Digite seu nome" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-width: 3px; -fx-border-radius: 12px; -fx-border-color: white;" />
+            <TextField fx:id="tfCpf" layoutX="231.0" layoutY="179.0" prefHeight="25.0" prefWidth="155.0" promptText="Digite seu CPF" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-width: 3px; -fx-border-radius: 12px; -fx-border-color: white;" />
+            <TextField fx:id="tfTelefone2" layoutX="511.0" layoutY="217.0" prefHeight="25.0" prefWidth="155.0" promptText="Telefone Fixo" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-width: 3px; -fx-border-radius: 12px; -fx-border-color: white;" />
+            <TextField fx:id="tfTelefone1" layoutX="511.0" layoutY="179.0" prefHeight="25.0" prefWidth="155.0" promptText="Telefone Celular" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-width: 3px; -fx-border-radius: 12px; -fx-border-color: white;" />
+            <Label layoutX="172.0" layoutY="258.0" text="ENDEREÇO" textFill="#3a6379">
+               <font>
+                  <Font name="Tw Cen MT Bold" size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="176.0" layoutY="302.0" text="Rua" textFill="#3a6379">
+               <font>
+                  <Font name="Tw Cen MT" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="461.0" layoutY="344.0" text="Estado" textFill="#3a6379">
+               <font>
+                  <Font name="Tw Cen MT" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="175.0" layoutY="344.0" text="CEP" textFill="#3a6379">
+               <font>
+                  <Font name="Tw Cen MT" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="570.0" layoutY="302.0" text="N°" textFill="#3a6379">
+               <font>
+                  <Font name="Tw Cen MT" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="175.0" layoutY="382.0" text="Cidade" textFill="#3a6379">
+               <font>
+                  <Font name="Tw Cen MT" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="446.0" layoutY="382.0" text="Bairro" textFill="#3a6379">
+               <font>
+                  <Font name="Tw Cen MT" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfRua" layoutX="221.0" layoutY="298.0" prefHeight="31.0" prefWidth="329.0" promptText="Rua" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-width: 3px; -fx-border-radius: 12px; -fx-border-color: white;" />
+            <TextField fx:id="tfNumero" layoutX="603.0" layoutY="298.0" prefHeight="31.0" prefWidth="77.0" promptText="Número" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-width: 3px; -fx-border-radius: 12px; -fx-border-color: white;" />
+            <TextField fx:id="tfBairro" layoutX="515.0" layoutY="378.0" prefHeight="31.0" prefWidth="167.0" promptText="Bairro" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-width: 3px; -fx-border-radius: 12px; -fx-border-color: white;" />
+            <TextField fx:id="tfCidade" layoutX="248.0" layoutY="378.0" prefHeight="31.0" prefWidth="174.0" promptText="Cidade" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-width: 3px; -fx-border-radius: 12px; -fx-border-color: white;" />
+            <TextField fx:id="tfCep" layoutX="218.0" layoutY="340.0" prefHeight="31.0" prefWidth="119.0" promptText="CEP:" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-width: 3px; -fx-border-radius: 12px; -fx-border-color: white;" />
+            <TextField fx:id="tfEstado" layoutX="526.0" layoutY="340.0" prefHeight="25.0" prefWidth="155.0" promptText="Estado" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-width: 3px; -fx-border-radius: 12px; -fx-border-color: white;" text="São Paulo" />
+            <Label layoutX="159.0" layoutY="442.0" text="VEÍCULO" textFill="#3a6379">
+               <font>
+                  <Font name="Tw Cen MT Bold" size="23.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfPlaca" layoutX="210.0" layoutY="483.0" prefHeight="31.0" prefWidth="104.0" promptText="Placa" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 12px;" text="ABC-1234" />
+            <TextField fx:id="tfModelo" layoutX="238.0" layoutY="526.0" prefHeight="31.0" prefWidth="133.0" promptText="Modelo" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 12px;" />
+            <TextField fx:id="tfFabricante" layoutX="533.0" layoutY="559.0" prefHeight="25.0" prefWidth="201.0" promptText="Marca/Fabricante" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 12px;" />
+            <TextField fx:id="tfMotor" layoutX="570.0" layoutY="483.0" prefHeight="31.0" prefWidth="119.0" promptText="Motor" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 12px;" />
+            <TextField fx:id="tfAno" layoutX="461.0" layoutY="526.0" prefHeight="31.0" prefWidth="107.0" promptText="Ano" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 12px;" />
+            <TextField fx:id="tfKm" layoutX="376.0" layoutY="483.0" prefHeight="31.0" prefWidth="104.0" promptText="Quilometragem" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 12px;" />
+            <Button fx:id="btCadastra" layoutX="435.0" layoutY="610.0" mnemonicParsing="false" onAction="#acaoBtCadastra" prefHeight="41.0" prefWidth="104.0" text="Cadastrar" />
+            <Label fx:id="lbErro" layoutX="148.0" layoutY="610.0" prefHeight="17.0" prefWidth="201.0" />
+            <Label layoutX="159.0" layoutY="487.0" text="Placa" textFill="#3a6379">
+               <font>
+                  <Font name="Tw Cen MT" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="160.0" layoutY="530.0" text="Modelo" textFill="#3a6379">
+               <font>
+                  <Font name="Tw Cen MT" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="338.0" layoutY="487.0" text="Km:" textFill="#3a6379">
+               <font>
+                  <Font name="Tw Cen MT" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="507.0" layoutY="487.0" text="Motor:" textFill="#3a6379">
+               <font>
+                  <Font name="Tw Cen MT" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="422.0" layoutY="528.0" text="Ano" textFill="#3a6379">
+               <font>
+                  <Font name="Tw Cen MT" size="20.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>
 </AnchorPane>
-

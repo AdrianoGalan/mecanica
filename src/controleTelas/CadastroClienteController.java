@@ -69,8 +69,9 @@ public class CadastroClienteController implements Initializable {
     final String ARQUIVOENDERECO = "txt/enderecos.txt";
     final String ARQUIVOCARRO = "txt/carros.txt";
     final String ARQUIVOTELEFONE = "txt/telefones.txt";
-    
-    
+    @FXML
+    private TextField tfEstado;
+
     /**
      * Initializes the controller class.
      */
