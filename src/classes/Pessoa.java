@@ -10,14 +10,24 @@ package classes;
  * @author Adriano
  */
 public class Pessoa {
-    
+
+    private int id;
     private String nome;
     private String cpf;
-    private Telefone telefone;
-    private Endereco endereco;
-    private Carro carro;
+    private int telefone;
+    private int telefone2;
+    private int endereco;
+    private int carro;
 
     public Pessoa() {
+    }
+
+    public Pessoa(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getNome() {
@@ -36,30 +46,45 @@ public class Pessoa {
         this.cpf = cpf;
     }
 
-    public Telefone getTelefone() {
+    public int getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(Telefone telefone) {
+    public void setTelefone(int telefone) {
         this.telefone = telefone;
     }
 
-    public Endereco getEndereco() {
+    public int getTelefone2() {
+        return telefone2;
+    }
+
+    public void setTelefone2(int telefone2) {
+        this.telefone2 = telefone2;
+    }
+
+    public int getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(Endereco endereco) {
+    public void setEndereco(int endereco) {
         this.endereco = endereco;
     }
 
-    public Carro getCarro() {
+    public int getCarro() {
         return carro;
     }
 
-    public void setCarro(Carro carro) {
+    public void setCarro(int carro) {
         this.carro = carro;
     }
-    
-    
-    
+
+    public String salvar() {
+
+        return id + ";" + nome + ";" + cpf + ";" + telefone + ";" + telefone2 + ";" + endereco + ";" + carro;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 }

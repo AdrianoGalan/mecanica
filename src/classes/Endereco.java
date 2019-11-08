@@ -11,6 +11,7 @@ package classes;
  */
 public class Endereco {
     
+    private int id;
     private String cep;
     private String rua;
     private String bairro;
@@ -20,6 +21,15 @@ public class Endereco {
 
     public Endereco() {
     }
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
 
     public String getCep() {
         return cep;
@@ -68,6 +78,8 @@ public class Endereco {
     public void setNumero(String numero) {
         this.numero = numero;
     }
+
+    
     
     
     

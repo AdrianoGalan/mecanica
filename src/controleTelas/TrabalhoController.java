@@ -40,6 +40,10 @@ public class TrabalhoController implements Initializable {
     private MenuItem btConsultaOrcamento;
     @FXML
     private MenuItem btConsultaOS;
+    @FXML
+    private MenuItem btConsultaOrcamento1;
+    @FXML
+    private MenuItem btConsultaOS1;
 
     /**
      * Initializes the controller class.

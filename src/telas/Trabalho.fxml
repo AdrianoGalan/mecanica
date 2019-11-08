@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
@@ -11,29 +14,88 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleTelas.TrabalhoController">
    <children>
-      <Pane layoutX="6.0" layoutY="36.0" maxHeight="664.0" minHeight="200.0" prefHeight="664.0" prefWidth="200.0" style="-fx-background-color: #3a6379;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane maxHeight="664.0" minHeight="200.0" prefHeight="664.0" prefWidth="200.0" style="-fx-background-color: #3a6379;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+            <Label layoutX="29.0" layoutY="38.0" text="12:30" textFill="WHITE">
+               <font>
+                  <Font name="Tw Cen MT" size="52.0" />
+               </font>
+            </Label>
+            <Label layoutX="33.0" layoutY="95.0" text="07 Nov. de 2019" textFill="WHITE">
+               <font>
+                  <Font name="Tw Cen MT" size="17.0" />
+               </font>
+            </Label>
+            <Button fx:id="btNovoOrcamento" layoutX="12.0" layoutY="157.0" mnemonicParsing="false" onAction="#acaoBtNovoOrcamento" prefHeight="41.0" prefWidth="176.0" style="-fx-background-color: #ffffff;" text="+ NOVO ORÇAMENTO" textFill="#0cb7eb" textOverrun="CLIP">
+               <font>
+                  <Font name="Tw Cen MT" size="15.0" />
+               </font></Button>
+            <Line endX="100.0" fill="WHITE" layoutX="100.0" layoutY="252.0" opacity="0.07" startX="-100.0" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="0.5" visible="false" />
+            <MenuButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="3.0" layoutY="253.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" popupSide="RIGHT" prefHeight="48.0" prefWidth="197.0" style="-fx-background-color: #3a6379; -fx-border-left-color: white; -fx-border-left-style: solid; -fx-border-left-width: 5px;" stylesheets="@../css/EstiloTelaTrabalho.css" text="Cadastrar" textFill="WHITE" textOverrun="CLIP">
+              <items>
+                <MenuItem fx:id="bTCadasCliente" mnemonicParsing="false" onAction="#acaoBtCadasCliente" text="Cliente" />
+                <MenuItem fx:id="btCadasOrcamento" mnemonicParsing="false" onAction="#acaoBtCadasOrcamento" text="ORÇAMENTO" />
+              </items>
+               <font>
+                  <Font name="Tw Cen MT" size="19.0" />
+               </font>
+            </MenuButton>
+            <Line endX="100.0" layoutX="100.0" layoutY="302.0" opacity="0.07" startX="-100.0" stroke="WHITE" visible="false" />
+            <Line endX="100.0" layoutX="100.0" layoutY="331.0" opacity="0.07" startX="-100.0" stroke="WHITE" visible="false" />
+            <MenuButton alignment="CENTER" contentDisplay="BOTTOM" layoutX="3.0" layoutY="307.0" mnemonicParsing="false" popupSide="RIGHT" prefHeight="48.0" prefWidth="197.0" style="-fx-background-color: #3a6379;" stylesheets="@../css/EstiloTelaTrabalho.css" text="Consultas" textFill="WHITE">
+               <items>
+                  <MenuItem fx:id="bTConsultaCliente" mnemonicParsing="false" onAction="#acaoBtConsultaCliente" text="Cliente" />
+                  <MenuItem fx:id="btConsultaOrcamento" mnemonicParsing="false" onAction="#acaoBtConsultaOrcamento" text="Orçamentos" />
+                  <MenuItem fx:id="btConsultaOS" mnemonicParsing="false" onAction="#acaoBtConsultaOS" text="Ordem de Serviço" />
+               </items>
+               <font>
+                  <Font name="Tw Cen MT" size="19.0" />
+               </font>
+            </MenuButton>
+            <Line endX="100.0" layoutX="100.0" layoutY="383.0" opacity="0.07" startX="-100.0" stroke="WHITE" visible="false" />
+            <MenuButton alignment="CENTER" contentDisplay="BOTTOM" layoutY="360.0" mnemonicParsing="false" popupSide="RIGHT" prefHeight="48.0" prefWidth="200.0" style="-fx-background-color: #3a6379;" stylesheets="@../css/EstiloTelaTrabalho.css" text="Financeiro" textFill="WHITE">
+               <font>
+                  <Font name="Tw Cen MT" size="19.0" />
+               </font>
+               <items>
+                  <MenuItem fx:id="btConsultaOrcamento1" mnemonicParsing="false" onAction="#acaoBtConsultaOrcamento" text="Fluxo de Caixa" />
+                  <MenuItem fx:id="btConsultaOS1" mnemonicParsing="false" onAction="#acaoBtConsultaOS" text="DRE" />
+               </items>
+            </MenuButton>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#345768" height="31.0" layoutX="-4.0" layoutY="669.0" stroke="BLACK" strokeLineJoin="ROUND" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" width="204.0" />
+            <Button layoutY="670.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="61.0" style="-fx-background-color: #2d4c5a;" textFill="#2d4c5a" />
+            <ImageView fitHeight="29.0" fitWidth="24.0" layoutX="18.0" layoutY="673.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagens/settings.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="139.0" layoutY="669.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="61.0" style="-fx-background-color: #bf3d20;" textFill="#bf3d20" />
+            <ImageView fitHeight="20.0" fitWidth="25.0" layoutX="160.0" layoutY="675.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagens/exit.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <AnchorPane fx:id="PanePrincipal" layoutX="200.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="74.0" fitWidth="104.0" layoutX="679.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imagens/Logo%20oficina%20PNG.png" />
                </image>
             </ImageView>
-            <Button fx:id="btNovoOrcamento" layoutX="1.0" layoutY="204.0" mnemonicParsing="false" onAction="#acaoBtNovoOrcamento" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" text="NOVO ORÇAMENTO" />
-            <MenuButton alignment="CENTER" layoutY="280.0" mnemonicParsing="false" popupSide="LEFT" prefHeight="70.0" prefWidth="200.0" text="CADASTRAR">
-              <items>
-                <MenuItem fx:id="bTCadasCliente" mnemonicParsing="false" onAction="#acaoBtCadasCliente" text="CLIENTE" />
-                <MenuItem fx:id="btCadasOrcamento" mnemonicParsing="false" onAction="#acaoBtCadasOrcamento" text="ORÇAMENTO" />
-              </items>
-            </MenuButton>
-            <MenuButton alignment="CENTER" layoutY="358.0" mnemonicParsing="false" popupSide="LEFT" prefHeight="70.0" prefWidth="200.0" text="CONSULTA">
-               <items>
-                  <MenuItem fx:id="bTConsultaCliente" mnemonicParsing="false" onAction="#acaoBtConsultaCliente" text="CLIENTE" />
-                  <MenuItem fx:id="btConsultaOrcamento" mnemonicParsing="false" onAction="#acaoBtConsultaOrcamento" text="ORÇAMENTO" />
-                  <MenuItem fx:id="btConsultaOS" mnemonicParsing="false" onAction="#acaoBtConsultaOS" text="ORDEM SERVIÇO" />
-               </items>
-            </MenuButton>
-         </children>
-      </Pane>
-      <AnchorPane fx:id="PanePrincipal" layoutX="200.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Label layoutX="236.0" layoutY="30.0" text="Bem vindo Adriano" textFill="#325768">
+               <font>
+                  <Font name="Tw Cen MT" size="38.0" />
+               </font>
+            </Label>
+            <TableView depthTest="DISABLE" editable="true" layoutX="87.0" layoutY="230.0" prefHeight="234.0" prefWidth="600.0">
+              <columns>
+                <TableColumn minWidth="50.0" prefWidth="100.0" text="Placa" />
+                <TableColumn prefWidth="400.0" text="Serviços" />
+                  <TableColumn prefWidth="100.0" style="-fx-background-color: blue;" text="Aberto há" />
+              </columns>
+            </TableView>
+         </children></AnchorPane>
    </children>
 </AnchorPane>

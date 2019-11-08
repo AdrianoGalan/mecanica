@@ -10,11 +10,20 @@ package classes;
  * @author Adriano
  */
 public class Telefone {
-    
+
+    private int id;
     private int ddd;
     private int numero;
 
     public Telefone() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getDdd() {
@@ -32,6 +41,5 @@ public class Telefone {
     public void setNumero(int numero) {
         this.numero = numero;
     }
-   
-    
+
 }

@@ -11,14 +11,24 @@ package classes;
  */
 public class Carro {
 
+    private int id;
     private String placa;
     private String modelo;
     private String fabricante;
     private String motor;
     private int ano;
     private int km;
+    private boolean Ativo;
 
     public Carro() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getPlaca() {
@@ -68,7 +78,13 @@ public class Carro {
     public void setKm(int km) {
         this.km = km;
     }
-    
-    
+
+    public boolean isAtivo() {
+        return Ativo;
+    }
+
+    public void setAtivo(boolean Ativo) {
+        this.Ativo = Ativo;
+    }
 
 }
