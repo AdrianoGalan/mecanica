@@ -80,6 +80,9 @@ public class CadastroClienteController implements Initializable {
         // TODO
         Util.mascaraCEP(tfCep);
         Util.mascaraCPF(tfCpf);
+        Util.mascaraPlaca(tfPlaca);
+        Util.mascaraTel(tfTelefone1);
+        Util.mascaraTel(tfTelefone2);
         
     }
 

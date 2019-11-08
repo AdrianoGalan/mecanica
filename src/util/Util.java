@@ -59,6 +59,7 @@ public class Util {
         String val = "";
 
         textField.setOnKeyTyped((KeyEvent event) -> {
+
             if ("0123456789".contains(event.getCharacter()) == false) {
                 event.consume();
             }
@@ -71,7 +72,7 @@ public class Util {
                 } else if (textField.getText().length() == 8) {
                     textField.setText(textField.getText().substring(0, 7));
                     textField.positionCaret(textField.getText().length());
-                }else if(textField.getText().length() == 12){
+                } else if (textField.getText().length() == 12) {
                     textField.setText(textField.getText().substring(0, 11));
                     textField.positionCaret(textField.getText().length());
                 }
@@ -101,4 +102,90 @@ public class Util {
 //            }
 //        });
     }
+
+    public static void mascaraPlaca(TextField textField) {
+
+        String val = "";
+
+        textField.setOnKeyTyped((KeyEvent event) -> {
+
+            if (event.getCharacter().trim().length() == 0) { // apagando
+
+                if (textField.getText().length() == 4) {
+                    textField.setText(textField.getText().substring(0, 3));
+                    textField.positionCaret(textField.getText().length());
+                }
+
+            } else { // escrevendo
+
+                if (textField.getText().length() == 8) {
+                    event.consume();
+                }
+
+                if (textField.getText().length() == 3) {
+                    textField.setText(textField.getText() + "-");
+                    textField.positionCaret(textField.getText().length());
+                }
+
+            }
+        });
+
+//        textField.setOnKeyReleased((KeyEvent evt) -> {
+//
+//            if (!textField.getText().matches("\\d-*")) {
+//                textField.setText(textField.getText().replaceAll("[^\\d-]", ""));
+//                textField.positionCaret(textField.getText().length());
+//            }
+//        });
+    }
+
+    public static void mascaraTel(TextField textField) {
+
+        String val = "";
+
+        textField.setOnKeyTyped((KeyEvent event) -> {
+
+            if ("0123456789".contains(event.getCharacter()) == false) {
+                event.consume();
+            }
+
+            if (event.getCharacter().trim().length() == 0) { // apagando
+
+                if (textField.getText().length() == 0) {
+                    textField.setText(textField.getText().substring(0, 1));
+                    textField.positionCaret(textField.getText().length());
+                } else if (textField.getText().length() == 4) {
+                    textField.setText(textField.getText().substring(0, 3));
+                    textField.positionCaret(textField.getText().length());
+                }
+
+            } else { // escrevendo
+
+                if (textField.getText().length() == 14) {
+                    event.consume();
+                }
+
+                if (textField.getText().length() == 0) {
+                    textField.setText(textField.getText() + "(");
+                    textField.positionCaret(textField.getText().length());
+                } else if (textField.getText().length() == 3) {
+                    textField.setText(textField.getText() + ") ");
+                    textField.positionCaret(textField.getText().length());
+                } else if (textField.getText().length() == 9) {
+                    textField.setText(textField.getText() + "-");
+                    textField.positionCaret(textField.getText().length());
+                }
+
+            }
+        });
+
+//        textField.setOnKeyReleased((KeyEvent evt) -> {
+//
+//            if (!textField.getText().matches("\\d-*")) {
+//                textField.setText(textField.getText().replaceAll("[^\\d-]", ""));
+//                textField.positionCaret(textField.getText().length());
+//            }
+//        });
+    }
+
 }
