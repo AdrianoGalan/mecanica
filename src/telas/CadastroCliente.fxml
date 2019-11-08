@@ -83,9 +83,9 @@
             <TextField fx:id="tfRua" layoutX="221.0" layoutY="298.0" prefHeight="31.0" prefWidth="329.0" promptText="Rua" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-width: 3px; -fx-border-radius: 12px; -fx-border-color: white;" />
             <TextField fx:id="tfNumero" layoutX="603.0" layoutY="298.0" prefHeight="31.0" prefWidth="77.0" promptText="Número" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-width: 3px; -fx-border-radius: 12px; -fx-border-color: white;" />
             <TextField fx:id="tfBairro" layoutX="515.0" layoutY="378.0" prefHeight="31.0" prefWidth="167.0" promptText="Bairro" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-width: 3px; -fx-border-radius: 12px; -fx-border-color: white;" />
-            <TextField fx:id="tfCidade" layoutX="248.0" layoutY="378.0" prefHeight="31.0" prefWidth="174.0" promptText="Cidade" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-width: 3px; -fx-border-radius: 12px; -fx-border-color: white;" />
+            <TextField fx:id="tfCidade" layoutX="248.0" layoutY="378.0" prefHeight="31.0" prefWidth="174.0" promptText="Cidade" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-width: 3px; -fx-border-radius: 12px; -fx-border-color: white;" text="São Paulo" />
             <TextField fx:id="tfCep" layoutX="218.0" layoutY="340.0" prefHeight="31.0" prefWidth="119.0" promptText="CEP:" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-width: 3px; -fx-border-radius: 12px; -fx-border-color: white;" />
-            <TextField fx:id="tfEstado" layoutX="526.0" layoutY="340.0" prefHeight="25.0" prefWidth="155.0" promptText="Estado" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-width: 3px; -fx-border-radius: 12px; -fx-border-color: white;" text="São Paulo" />
+            <TextField fx:id="tfEstado" layoutX="526.0" layoutY="340.0" prefHeight="25.0" prefWidth="155.0" promptText="Estado" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-width: 3px; -fx-border-radius: 12px; -fx-border-color: white;" text="SP" />
             <Label layoutX="159.0" layoutY="442.0" text="VEÍCULO" textFill="#3a6379">
                <font>
                   <Font name="Tw Cen MT Bold" size="23.0" />
