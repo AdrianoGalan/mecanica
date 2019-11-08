@@ -89,6 +89,13 @@ public class Endereco {
         this.idPessoa = idPessoa;
     }
 
+ 
+    public String salvar() {
+        return id + ";" + idPessoa + ";" + cep + ";" + rua + ";" + bairro + ";" + cidade + ";" + estado + ";" + numero;
+    }
+    
+    
+
     
     
     

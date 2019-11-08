@@ -5,6 +5,7 @@
  */
 package LerGravar;
 
+import classes.Endereco;
 import classes.Pessoa;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -18,8 +19,31 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ReadWrite {
-
+    
     public void writePessoa(String nomeArquivo, List<Pessoa> objetoGravar) {
+
+        BufferedWriter writer;
+        
+        try {
+            writer = new BufferedWriter(new FileWriter(nomeArquivo));
+            
+            //Collections.sort(objetoGravar);
+
+            for (int i = 0; i < objetoGravar.size(); i++) {
+
+                writer.write(objetoGravar.get(i).salvar());
+                writer.newLine();
+
+            }
+
+            writer.close();
+
+        } catch (IOException ex) {
+            Logger.getLogger(ReadWrite.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    public void writeEndereco(String nomeArquivo, List<Endereco> objetoGravar) {
 
         BufferedWriter writer;
         
