@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controleTelas.CadastroClienteController">
+   <children>
+      <Pane layoutX="-7.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #E5E5E5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TextField layoutX="14.0" layoutY="35.0" prefHeight="25.0" prefWidth="356.0" promptText="NOME:" />
+            <TextField layoutX="14.0" layoutY="72.0" prefHeight="25.0" prefWidth="155.0" promptText="CPF:" />
+            <TextField layoutX="215.0" layoutY="72.0" prefHeight="25.0" prefWidth="155.0" promptText="TELEFONE" />
+            <TextField layoutX="215.0" layoutY="108.0" prefHeight="25.0" prefWidth="155.0" promptText="TELEFONE:" />
+            <TextField layoutX="14.0" layoutY="138.0" prefHeight="25.0" prefWidth="356.0" promptText="RUA:" />
+            <TextField layoutX="14.0" layoutY="175.0" prefHeight="25.0" prefWidth="84.0" promptText="NUMERO" />
+            <TextField layoutX="215.0" layoutY="175.0" prefHeight="25.0" prefWidth="155.0" promptText="BAIRRO" />
+            <TextField layoutX="215.0" layoutY="207.0" prefHeight="25.0" prefWidth="155.0" promptText="CIDADE" />
+            <TextField layoutX="14.0" layoutY="207.0" prefHeight="25.0" prefWidth="84.0" promptText="CEP:" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

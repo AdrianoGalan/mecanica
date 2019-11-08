@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleTelas.TrabalhoController">
+   <children>
+      <Pane layoutX="6.0" layoutY="36.0" maxHeight="664.0" minHeight="200.0" prefHeight="664.0" prefWidth="200.0" style="-fx-background-color: #3a6379;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagens/Logo%20oficina%20PNG.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btNovoOrcamento" layoutX="1.0" layoutY="204.0" mnemonicParsing="false" onAction="#acaoBtNovoOrcamento" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" text="NOVO ORÇAMENTO" />
+            <MenuButton alignment="CENTER" layoutY="280.0" mnemonicParsing="false" popupSide="LEFT" prefHeight="70.0" prefWidth="200.0" text="CADASTRAR">
+              <items>
+                <MenuItem fx:id="bTCadasCliente" mnemonicParsing="false" onAction="#acaoBtCadasCliente" text="CLIENTE" />
+                <MenuItem fx:id="btCadasOrcamento" mnemonicParsing="false" onAction="#acaoBtCadasOrcamento" text="ORÇAMENTO" />
+              </items>
+            </MenuButton>
+            <MenuButton alignment="CENTER" layoutY="358.0" mnemonicParsing="false" popupSide="LEFT" prefHeight="70.0" prefWidth="200.0" text="CONSULTA">
+               <items>
+                  <MenuItem fx:id="bTConsultaCliente" mnemonicParsing="false" onAction="#acaoBtConsultaCliente" text="CLIENTE" />
+                  <MenuItem fx:id="btConsultaOrcamento" mnemonicParsing="false" onAction="#acaoBtConsultaOrcamento" text="ORÇAMENTO" />
+                  <MenuItem fx:id="btConsultaOS" mnemonicParsing="false" onAction="#acaoBtConsultaOS" text="ORDEM SERVIÇO" />
+               </items>
+            </MenuButton>
+         </children>
+      </Pane>
+      <AnchorPane fx:id="PanePrincipal" layoutX="200.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+   </children>
+</AnchorPane>

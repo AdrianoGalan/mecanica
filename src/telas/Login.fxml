@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #E5E5E5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleTelas.LoginController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3a6379" height="400.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="288.0" />
+      <Ellipse fill="#3a6379" layoutX="265.0" layoutY="212.0" radiusX="78.0" radiusY="68.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <ImageView fitHeight="149.0" fitWidth="218.0" layoutX="402.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagens/Logo%20oficina%20PNG.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="texUsuario" layoutX="377.0" layoutY="181.0" prefHeight="39.0" prefWidth="288.0" promptText="Usuario" style="-fx-background-color: white; -fx-backgound-radius: 5px; -fx-border-color: #cccccc;">
+         <font>
+            <Font name="Futura Md BT Medium" size="18.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="texSenha" layoutX="377.0" layoutY="241.0" onKeyPressed="#clickEnter" prefHeight="39.0" prefWidth="288.0" promptText="Senha" style="-fx-background-color: white; -fx-backgound-radius: 5px; -fx-border-color: #cccccc;" />
+      <Button fx:id="bTEntrar" layoutX="462.0" layoutY="327.0" mnemonicParsing="false" onAction="#clickBotaoEntrar" onKeyPressed="#clickEnter" prefHeight="39.0" prefWidth="139.0" style="-fx-background-color: #3a6379;" text="Entrar" textFill="WHITE">
+         <font>
+            <Font name="Futura Bk BT Book" size="17.0" />
+         </font>
+      </Button>
+      <Label fx:id="erroLogin" alignment="CENTER" layoutX="379.0" layoutY="288.0" prefHeight="28.0" prefWidth="288.0" textAlignment="CENTER" textFill="#f55a5a">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="71.0" layoutY="169.0" prefHeight="59.0" prefWidth="180.0" text="Login" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Futura Md BT Medium" size="57.0" />
+         </font>
+      </Label>
+      <Label layoutX="71.0" layoutY="260.0" prefHeight="53.0" prefWidth="147.0" text="Bem vindo" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Futura Bk BT Book" size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="71.0" layoutY="291.0" prefHeight="53.0" prefWidth="147.0" text="ao sistema" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Futura Bk BT Book" size="28.0" />
+         </font>
+      </Label>
+      <Label fx:id="fechar" layoutX="677.0" layoutY="2.0" onMouseClicked="#clickFechar" text="x">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
