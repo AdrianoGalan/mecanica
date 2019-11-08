@@ -12,6 +12,15 @@ package classes;
 public class Telefone {
 
     private int id;
+    private int idPessoa;
+
+    public int getIdPessoa() {
+        return idPessoa;
+    }
+
+    public void setIdPessoa(int idPessoa) {
+        this.idPessoa = idPessoa;
+    }
     private int ddd;
     private int numero;
 

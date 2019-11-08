@@ -12,6 +12,7 @@ package classes;
 public class Endereco {
     
     private int id;
+    private int idPessoa;
     private String cep;
     private String rua;
     private String bairro;
@@ -25,6 +26,7 @@ public class Endereco {
     public int getId() {
         return id;
     }
+    
 
     public void setId(int id) {
         this.id = id;
@@ -77,6 +79,14 @@ public class Endereco {
 
     public void setNumero(String numero) {
         this.numero = numero;
+    }
+
+    public int getIdPessoa() {
+        return idPessoa;
+    }
+
+    public void setIdPessoa(int idPessoa) {
+        this.idPessoa = idPessoa;
     }
 
     

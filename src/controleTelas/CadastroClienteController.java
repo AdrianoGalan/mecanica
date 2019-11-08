@@ -5,7 +5,7 @@
  */
 package controleTelas;
 
-import LerGravar.RWPessoa;
+import LerGravar.ReadWrite;
 import classes.Carro;
 import classes.Endereco;
 import classes.Pessoa;
@@ -61,7 +61,7 @@ public class CadastroClienteController implements Initializable {
     private TextField tfKm;
     @FXML
     private Label lbErro;
-    final String ARQUIVO = "txt/pessoas.txt";
+    final String ARQUIVOPESSOA = "txt/pessoas.txt";
 
     /**
      * Initializes the controller class.
@@ -73,137 +73,146 @@ public class CadastroClienteController implements Initializable {
 
     @FXML
     private void acaoBtCadastra(ActionEvent event) {
+              criaPessoa();
 
     }
 
     private void criaPessoa() {
-        
-        RWPessoa rw = new RWPessoa();
-        
-        
-        
-        ArrayList<Pessoa> pessoas = rw.read(ARQUIVO);
+
+        ReadWrite rw = new ReadWrite();
+
+        ArrayList<Pessoa> pessoas = rw.readPessoa(ARQUIVOPESSOA);
 
         int id;
-        
-        if(pessoas == null){
+
+        if (pessoas == null) {
+            pessoas = new ArrayList();
             id = 1;
-            
-        }else{
-            id = pessoas.size();
+
+        } else {
+            id = pessoas.size()+1;
         }
-        Pessoa pessoa = new Pessoa(id);
-
         
+        Pessoa pessoa = new Pessoa(id);
         Endereco endereco = new Endereco();
-
         Telefone telefone = new Telefone();
         Telefone telefone1 = new Telefone();
-
         Carro carro = new Carro();
+//        
+         if (!tfTelefone2.getText().equals("")) {
+            telefone1.setNumero(Integer.parseInt(tfTelefone2.getText()));
+            telefone1.setId(pessoa.getId());
+            
+        }
+
+        if (validaCampos()) {
+            pessoa.setNome(tfNome.getText());
+            pessoa.setCpf(tfCpf.getText());
+            telefone.setNumero(Integer.parseInt(tfTelefone1.getText()));
+            telefone.setId(pessoa.getId());
+            endereco.setRua(tfRua.getText());
+            endereco.setNumero(tfNumero.getText());
+            endereco.setCep(tfCep.getText());
+            endereco.setBairro(tfBairro.getText());
+            endereco.setCidade(tfCidade.getText());
+            endereco.setId(pessoa.getId());
+            carro.setPlaca(tfPlaca.getText());
+            carro.setAno(Integer.parseInt(tfAno.getText()));
+            carro.setModelo(tfModelo.getText());
+            carro.setFabricante(tfFabricante.getText());
+            carro.setMotor(tfMotor.getText());
+            carro.setKm(Integer.parseInt(tfKm.getText()));
+            carro.setAtivo(true);
+            carro.setId(pessoa.getId());
+        }
+        pessoas.add(pessoa);
+        rw.writePessoa(ARQUIVOPESSOA,pessoas);
+
+       
+
+    }
+
+    private boolean validaCampos() {
 
         if (!tfNome.getText().equals("")) {
-            pessoa.setNome(tfNome.getText());
             lbErro.setText("");
+            if (!tfCpf.getText().equals("")) {
+                lbErro.setText("");
+                if (!tfTelefone1.getText().equals("")) {
+                    lbErro.setText("");
+                    if (!tfRua.getText().equals("")) {
+                        lbErro.setText("");
+                        if (!tfNumero.getText().equals("")) {
+                            lbErro.setText("");
+                            if (!tfCep.getText().equals("")) {
+                                lbErro.setText("");
+                                if (!tfBairro.getText().equals("")) {
+                                    lbErro.setText("");
+                                    if (!tfCidade.getText().equals("")) {
+                                        lbErro.setText("");
+                                        if (!tfPlaca.getText().equals("")) {
+                                            lbErro.setText("");
+                                            if (!tfAno.getText().equals("")) {
+                                                lbErro.setText("");
+                                                if (!tfModelo.getText().equals("")) {
+                                                    lbErro.setText("");
+                                                    if (!tfFabricante.getText().equals("")) {
+                                                        lbErro.setText("");
+                                                        if (!tfMotor.getText().equals("")) {
+                                                            lbErro.setText("");
+                                                            if (!tfKm.getText().equals("")) {
+                                                                lbErro.setText("");
+                                                                return true;
+                                                                //validou
+                                                            } else {
+                                                                lbErro.setText("DIGITE O KM");
+                                                            }
+                                                        } else {
+                                                            lbErro.setText("DIGITE UM MOTOR");
+                                                        }
+                                                    } else {
+                                                        lbErro.setText("DIGITE UM FABRICANTE");
+                                                    }
+                                                } else {
+                                                    lbErro.setText("DIGITE O MODELO");
+                                                }
+                                            } else {
+                                                lbErro.setText("DIGITE UM NUMERO");
+                                            }
+                                        } else {
+                                            lbErro.setText("DIGITE UM NUMERO");
+                                        }
+
+                                    } else {
+                                        lbErro.setText("DIGITE UMA CIDADE");
+                                    }
+                                } else {
+                                    lbErro.setText("DIGITE UM NUMERO");
+                                }
+                            } else {
+                                lbErro.setText("DIGITE UM CEP");
+                            }
+
+                        } else {
+                            lbErro.setText("DIGITE UM NUMERO");
+                        }
+
+                    } else {
+                        lbErro.setText("DIGITE UMA RUA");
+                    }
+
+                } else {
+                    lbErro.setText("DIGITE UM TELEFONE");
+                }
+
+            } else {
+                lbErro.setText("DIGITE O CPF");
+            }
+
         } else {
             lbErro.setText("DIGITE UM NOME");
         }
-
-        if (!tfCpf.getText().equals("")) {
-            pessoa.setCpf(tfNome.getText());
-            lbErro.setText("");
-        } else {
-            lbErro.setText("DIGITE O CPF");
-        }
-
-        if (!tfTelefone1.getText().equals("")) {
-            telefone.setNumero(Integer.parseInt(tfTelefone1.getText()));
-            lbErro.setText("");
-        } else {
-            lbErro.setText("DIGITE UM TELEFONE");
-        }
-
-        if (!tfTelefone2.getText().equals("")) {
-            telefone1.setNumero(Integer.parseInt(tfTelefone2.getText()));
-            lbErro.setText("");
-        }
-
-        if (!tfRua.getText().equals("")) {
-            endereco.setRua(tfRua.getText());
-            lbErro.setText("");
-        } else {
-            lbErro.setText("DIGITE UMA RUA");
-        }
-
-        if (!tfNumero.getText().equals("")) {
-            endereco.setNumero(tfNumero.getText());
-            lbErro.setText("");
-        } else {
-            lbErro.setText("DIGITE UM NUMERO");
-        }
-
-        if (!tfCep.getText().equals("")) {
-            endereco.setCep(tfCep.getText());
-            lbErro.setText("");
-        } else {
-            lbErro.setText("DIGITE UM CEP");
-        }
-
-        if (!tfBairro.getText().equals("")) {
-            endereco.setBairro(tfBairro.getText());
-            lbErro.setText("");
-        } else {
-            lbErro.setText("DIGITE UM NUMERO");
-        }
-
-        if (!tfCidade.getText().equals("")) {
-            endereco.setCidade(tfCidade.getText());
-            lbErro.setText("");
-        } else {
-            lbErro.setText("DIGITE UMA CIDADE");
-        }
-
-        if (!tfPlaca.getText().equals("")) {
-            carro.setPlaca(tfPlaca.getText());
-            lbErro.setText("");
-        } else {
-            lbErro.setText("DIGITE UM NUMERO");
-        }
-
-        if (!tfAno.getText().equals("")) {
-            carro.setAno(Integer.parseInt(tfAno.getText()));
-            lbErro.setText("");
-        } else {
-            lbErro.setText("DIGITE UM NUMERO");
-        }
-
-        if (!tfModelo.getText().equals("")) {
-            carro.setModelo(tfModelo.getText());
-            lbErro.setText("");
-        } else {
-            lbErro.setText("DIGITE O MODELO");
-        }
-
-        if (!tfFabricante.getText().equals("")) {
-            carro.setFabricante(tfFabricante.getText());
-            lbErro.setText("");
-        } else {
-            lbErro.setText("DIGITE UM FABRICANTE");
-        }
-
-        if (!tfMotor.getText().equals("")) {
-            carro.setMotor(tfMotor.getText());
-            lbErro.setText("");
-        } else {
-            lbErro.setText("DIGITE UM MOTOR");
-        }
-
-        if (!tfKm.getText().equals("")) {
-            carro.setKm(Integer.parseInt(tfKm.getText()));
-            lbErro.setText("");
-        } else {
-            lbErro.setText("DIGITE O KM");
-        }
+        return false;
     }
 
 }

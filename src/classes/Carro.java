@@ -12,6 +12,7 @@ package classes;
 public class Carro {
 
     private int id;
+    private int idPessoa;
     private String placa;
     private String modelo;
     private String fabricante;
@@ -85,6 +86,14 @@ public class Carro {
 
     public void setAtivo(boolean Ativo) {
         this.Ativo = Ativo;
+    }
+
+    public int getIdPessoa() {
+        return idPessoa;
+    }
+
+    public void setIdPessoa(int idPessoa) {
+        this.idPessoa = idPessoa;
     }
 
 }

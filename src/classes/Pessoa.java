@@ -14,10 +14,10 @@ public class Pessoa {
     private int id;
     private String nome;
     private String cpf;
-    private int telefone;
-    private int telefone2;
-    private int endereco;
-    private int carro;
+//    private int telefone;
+//    private int telefone2;
+//    private int endereco;
+//    private int carro;
 
     public Pessoa() {
     }
@@ -46,41 +46,41 @@ public class Pessoa {
         this.cpf = cpf;
     }
 
-    public int getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(int telefone) {
-        this.telefone = telefone;
-    }
-
-    public int getTelefone2() {
-        return telefone2;
-    }
-
-    public void setTelefone2(int telefone2) {
-        this.telefone2 = telefone2;
-    }
-
-    public int getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(int endereco) {
-        this.endereco = endereco;
-    }
-
-    public int getCarro() {
-        return carro;
-    }
-
-    public void setCarro(int carro) {
-        this.carro = carro;
-    }
+//    public int getTelefone() {
+//        return telefone;
+//    }
+//
+//    public void setTelefone(int telefone) {
+//        this.telefone = telefone;
+//    }
+//
+//    public int getTelefone2() {
+//        return telefone2;
+//    }
+//
+//    public void setTelefone2(int telefone2) {
+//        this.telefone2 = telefone2;
+//    }
+//
+//    public int getEndereco() {
+//        return endereco;
+//    }
+//
+//    public void setEndereco(int endereco) {
+//        this.endereco = endereco;
+//    }
+//
+//    public int getCarro() {
+//        return carro;
+//    }
+//
+//    public void setCarro(int carro) {
+//        this.carro = carro;
+//    }
 
     public String salvar() {
 
-        return id + ";" + nome + ";" + cpf + ";" + telefone + ";" + telefone2 + ";" + endereco + ";" + carro;
+        return id + ";" + nome + ";" + cpf + ";";
     }
 
     public void setId(int id) {

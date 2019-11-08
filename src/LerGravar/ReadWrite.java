@@ -5,6 +5,7 @@
  */
 package LerGravar;
 
+import classes.Pessoa;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -12,27 +13,24 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ReadWrite {
 
-    public ReadWrite() {
-    }
-
-    public void write(String fileName, List<Object> objetoGravar) {
+    public void writePessoa(String nomeArquivo, List<Pessoa> objetoGravar) {
 
         BufferedWriter writer;
+        
         try {
-            writer = new BufferedWriter(new FileWriter(fileName));
+            writer = new BufferedWriter(new FileWriter(nomeArquivo));
             
             //Collections.sort(objetoGravar);
 
             for (int i = 0; i < objetoGravar.size(); i++) {
 
-                //writer.write(objetoGravar.get(i).saidaSalvar());
+                writer.write(objetoGravar.get(i).salvar());
                 writer.newLine();
 
             }
@@ -44,8 +42,8 @@ public class ReadWrite {
         }
 
     }
-
-    public ArrayList<Object> read(String fileName) {
+    
+    public ArrayList<Pessoa> readPessoa(String fileName) {
 
         int cont = 0;
 
@@ -62,17 +60,19 @@ public class ReadWrite {
             } catch (Exception e) {
                 ler = null;
             }
-            ArrayList<Object> estatisticas = new ArrayList<>();
+            ArrayList<Pessoa> pessoa = new ArrayList<>();
 
             while (ler != null) {
 
-                estatisticas.add(new Object());
+                pessoa.add(new Pessoa());
 
-//                estatisticas.get(cont).setCodCidade(Integer.parseInt(ler[0]));
-//                estatisticas.get(cont).setNomeCidade(ler[1]);
-//                estatisticas.get(cont).setQtdAcidente(Integer.parseInt(ler[2]));
-//                estatisticas.get(cont).setTipoVeiculo(Integer.parseInt(ler[3]));
-
+                pessoa.get(cont).setId(Integer.parseInt(ler[0]));
+                pessoa.get(cont).setNome(ler[1]);
+                pessoa.get(cont).setCpf(ler[2]);
+//                pessoa.get(cont).setTelefone(Integer.parseInt(ler[3]));
+//                pessoa.get(cont).setTelefone2(Integer.parseInt(ler[4]));
+//                pessoa.get(cont).setEndereco(Integer.parseInt(ler[5]));
+//                pessoa.get(cont).setCarro(Integer.parseInt(ler[6]));
                 cont++;
                 try {
                     //le proxima linha do arquivo
@@ -83,10 +83,9 @@ public class ReadWrite {
 
             }
 
-            return estatisticas;
+            return pessoa;
 
         } catch (FileNotFoundException ex) {
-//            InOut.out("Não existe estatisticas gravadas no banco");
             return null;
 
         }
