@@ -19,6 +19,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
+import util.Util;
 
 /**
  * FXML Controller class
@@ -76,6 +78,9 @@ public class CadastroClienteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        Util.mascaraCEP(tfCep);
+        Util.mascaraCPF(tfCpf);
+        
     }
 
     @FXML
