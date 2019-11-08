@@ -91,7 +91,7 @@ public class Endereco {
 
  
     public String salvar() {
-        return id + ";" + idPessoa + ";" + cep + ";" + rua + ";" + bairro + ";" + cidade + ";" + estado + ";" + numero;
+        return id + ";" + cep + ";" + rua + ";" + bairro + ";" + cidade + ";" + estado + ";" + numero;
     }
     
     

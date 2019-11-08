@@ -20,6 +20,7 @@ import java.util.logging.Logger;
 
 public class ReadWrite {
     
+    //escreve Pessoa arquivo txt
     public void writePessoa(String nomeArquivo, List<Pessoa> objetoGravar) {
 
         BufferedWriter writer;
@@ -43,30 +44,8 @@ public class ReadWrite {
         }
 
     }
-    public void writeEndereco(String nomeArquivo, List<Endereco> objetoGravar) {
-
-        BufferedWriter writer;
         
-        try {
-            writer = new BufferedWriter(new FileWriter(nomeArquivo));
-            
-            //Collections.sort(objetoGravar);
-
-            for (int i = 0; i < objetoGravar.size(); i++) {
-
-                writer.write(objetoGravar.get(i).salvar());
-                writer.newLine();
-
-            }
-
-            writer.close();
-
-        } catch (IOException ex) {
-            Logger.getLogger(ReadWrite.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-    
+    // ler pessoa arquivo txt
     public ArrayList<Pessoa> readPessoa(String fileName) {
 
         int cont = 0;
@@ -108,6 +87,82 @@ public class ReadWrite {
             }
 
             return pessoa;
+
+        } catch (FileNotFoundException ex) {
+            return null;
+
+        }
+
+    }
+    
+    // escreve endereco arquivo txt
+    public void writeEndereco(String nomeArquivo, List<Endereco> objetoGravar) {
+
+        BufferedWriter writer;
+        
+        try {
+            writer = new BufferedWriter(new FileWriter(nomeArquivo));
+            
+            //Collections.sort(objetoGravar);
+
+            for (int i = 0; i < objetoGravar.size(); i++) {
+
+                writer.write(objetoGravar.get(i).salvar());
+                writer.newLine();
+
+            }
+
+            writer.close();
+
+        } catch (IOException ex) {
+            Logger.getLogger(ReadWrite.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+      // ler Endereco arquivo txt
+    public ArrayList<Endereco> readEndereco(String fileName) {
+
+        int cont = 0;
+
+        try {
+            //le arquivo
+            BufferedReader read = new BufferedReader(new FileReader(fileName));
+            String[] ler;
+
+            //le primeira linha arquivo
+            try {
+
+                ler = read.readLine().split(";");
+
+            } catch (Exception e) {
+                ler = null;
+            }
+            ArrayList<Endereco> enderecos = new ArrayList<>();
+
+            while (ler != null) {
+
+                enderecos.add(new Endereco());
+
+                enderecos.get(cont).setId(Integer.parseInt(ler[0]));
+                enderecos.get(cont).setCep(ler[1]);
+                enderecos.get(cont).setRua(ler[2]);
+                enderecos.get(cont).setBairro(ler[3]);
+                enderecos.get(cont).setCidade(ler[4]);
+                enderecos.get(cont).setEstado(ler[5]);
+                enderecos.get(cont).setNumero(ler[6]);
+  
+                cont++;
+                try {
+                    //le proxima linha do arquivo
+                    ler = read.readLine().split(";");
+                } catch (Exception e) {
+                    ler = null;
+                }
+
+            }
+
+            return enderecos;
 
         } catch (FileNotFoundException ex) {
             return null;
