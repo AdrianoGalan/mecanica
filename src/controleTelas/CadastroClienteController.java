@@ -61,6 +61,7 @@ public class CadastroClienteController implements Initializable {
     private TextField tfKm;
     @FXML
     private Label lbErro;
+    final String ARQUIVO = "txt/pessoas.txt";
 
     /**
      * Initializes the controller class.
@@ -81,14 +82,15 @@ public class CadastroClienteController implements Initializable {
         
         
         
-        ArrayList<Pessoa> pessoas = rw.read("txt/pessoas.txt");
+        ArrayList<Pessoa> pessoas = rw.read(ARQUIVO);
 
         int id;
         
         if(pessoas == null){
             id = 1;
+            
         }else{
-            id = pessoas.size()-1;
+            id = pessoas.size();
         }
         Pessoa pessoa = new Pessoa(id);
 
