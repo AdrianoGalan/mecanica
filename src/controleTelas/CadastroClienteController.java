@@ -62,6 +62,9 @@ public class CadastroClienteController implements Initializable {
     @FXML
     private Label lbErro;
     final String ARQUIVOPESSOA = "txt/pessoas.txt";
+    final String ARQUIVOENDERECO = "txt/enderecos.txt";
+    final String ARQUIVOCARRO = "txt/carros.txt";
+    final String ARQUIVOTELEFONE = "txt/telefones.txt";
 
     /**
      * Initializes the controller class.
@@ -73,8 +76,9 @@ public class CadastroClienteController implements Initializable {
 
     @FXML
     private void acaoBtCadastra(ActionEvent event) {
-              criaPessoa();
-
+        if (validaCampos()) {
+            criaPessoa();
+        }
     }
 
     private void criaPessoa() {
@@ -82,53 +86,59 @@ public class CadastroClienteController implements Initializable {
         ReadWrite rw = new ReadWrite();
 
         ArrayList<Pessoa> pessoas = rw.readPessoa(ARQUIVOPESSOA);
+        ArrayList<Endereco> enderecos = rw.readEndereco(ARQUIVOENDERECO);
+        ArrayList<Telefone> telefones = rw.readTelefone(ARQUIVOTELEFONE);
+        ArrayList<Carro> carros = rw.readCarro(ARQUIVOCARRO);
 
-        int id;
+        int id = pessoas.size() + 1;
 
-        if (pessoas == null) {
-            pessoas = new ArrayList();
-            id = 1;
-
-        } else {
-            id = pessoas.size()+1;
-        }
-        
         Pessoa pessoa = new Pessoa(id);
         Endereco endereco = new Endereco();
         Telefone telefone = new Telefone();
         Telefone telefone1 = new Telefone();
         Carro carro = new Carro();
 //        
-         if (!tfTelefone2.getText().equals("")) {
-            telefone1.setNumero(Integer.parseInt(tfTelefone2.getText()));
+        if (!tfTelefone2.getText().equals("")) {
+            telefone1.setNumero(tfTelefone2.getText());
+            telefone1.setDdd("11");
             telefone1.setId(pessoa.getId());
-            
+
         }
 
-        if (validaCampos()) {
-            pessoa.setNome(tfNome.getText());
-            pessoa.setCpf(tfCpf.getText());
-            telefone.setNumero(Integer.parseInt(tfTelefone1.getText()));
-            telefone.setId(pessoa.getId());
-            endereco.setRua(tfRua.getText());
-            endereco.setNumero(tfNumero.getText());
-            endereco.setCep(tfCep.getText());
-            endereco.setBairro(tfBairro.getText());
-            endereco.setCidade(tfCidade.getText());
-            endereco.setId(pessoa.getId());
-            carro.setPlaca(tfPlaca.getText());
-            carro.setAno(Integer.parseInt(tfAno.getText()));
-            carro.setModelo(tfModelo.getText());
-            carro.setFabricante(tfFabricante.getText());
-            carro.setMotor(tfMotor.getText());
-            carro.setKm(Integer.parseInt(tfKm.getText()));
-            carro.setAtivo(true);
-            carro.setId(pessoa.getId());
-        }
+        pessoa.setNome(tfNome.getText());
+        pessoa.setCpf(tfCpf.getText());
+
+        telefone.setNumero(tfTelefone1.getText());
+        telefone.setDdd("11");
+        telefone.setId(pessoa.getId());
+
+        endereco.setRua(tfRua.getText());
+        endereco.setNumero(tfNumero.getText());
+        endereco.setCep(tfCep.getText());
+        endereco.setBairro(tfBairro.getText());
+        endereco.setCidade(tfCidade.getText());
+        endereco.setId(pessoa.getId());
+
+        carro.setPlaca(tfPlaca.getText());
+        carro.setAno(tfAno.getText());
+        carro.setModelo(tfModelo.getText());
+        carro.setFabricante(tfFabricante.getText());
+        carro.setMotor(tfMotor.getText());
+        carro.setKm(Integer.parseInt(tfKm.getText()));
+        carro.setAtivo(true);
+        carro.setId(pessoa.getId());
+
+        //adiciona objeto no vetor
         pessoas.add(pessoa);
-        rw.writePessoa(ARQUIVOPESSOA,pessoas);
+        enderecos.add(endereco);
+        telefones.add(telefone);
+        carros.add(carro);
 
-       
+        //salva vetor no arquivo txt
+        rw.writePessoa(ARQUIVOPESSOA, pessoas);
+        rw.writeEndereco(ARQUIVOENDERECO, enderecos);
+        rw.writeTelefone(ARQUIVOTELEFONE, telefones);
+        rw.writeCarro(ARQUIVOCARRO, carros);
 
     }
 

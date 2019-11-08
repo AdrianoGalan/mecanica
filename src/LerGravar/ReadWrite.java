@@ -5,8 +5,10 @@
  */
 package LerGravar;
 
+import classes.Carro;
 import classes.Endereco;
 import classes.Pessoa;
+import classes.Telefone;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -163,6 +165,155 @@ public class ReadWrite {
             }
 
             return enderecos;
+
+        } catch (FileNotFoundException ex) {
+            return null;
+
+        }
+
+    }
+    
+     //escreve telefone arquivo txt
+    public void writeTelefone(String nomeArquivo, List<Telefone> objetoGravar) {
+
+        BufferedWriter writer;
+        
+        try {
+            writer = new BufferedWriter(new FileWriter(nomeArquivo));
+            
+            //Collections.sort(objetoGravar);
+
+            for (int i = 0; i < objetoGravar.size(); i++) {
+
+                writer.write(objetoGravar.get(i).salvar());
+                writer.newLine();
+
+            }
+
+            writer.close();
+
+        } catch (IOException ex) {
+            Logger.getLogger(ReadWrite.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+     // ler Telefone arquivo txt
+    public ArrayList<Telefone> readTelefone(String fileName) {
+
+        int cont = 0;
+
+        try {
+            //le arquivo
+            BufferedReader read = new BufferedReader(new FileReader(fileName));
+            String[] ler;
+
+            //le primeira linha arquivo
+            try {
+
+                ler = read.readLine().split(";");
+
+            } catch (Exception e) {
+                ler = null;
+            }
+            ArrayList<Telefone> telefones = new ArrayList<>();
+
+            while (ler != null) {
+
+                telefones.add(new Telefone());
+
+                telefones.get(cont).setId(Integer.parseInt(ler[0]));
+                telefones.get(cont).setDdd(ler[1]);
+                telefones.get(cont).setNumero(ler[2]);
+           
+                cont++;
+                try {
+                    //le proxima linha do arquivo
+                    ler = read.readLine().split(";");
+                } catch (Exception e) {
+                    ler = null;
+                }
+
+            }
+
+            return telefones;
+
+        } catch (FileNotFoundException ex) {
+            return null;
+
+        }
+
+    }
+     //escreve carro arquivo txt
+    public void writeCarro(String nomeArquivo, List<Carro> objetoGravar) {
+
+        BufferedWriter writer;
+        
+        try {
+            writer = new BufferedWriter(new FileWriter(nomeArquivo));
+            
+            //Collections.sort(objetoGravar);
+
+            for (int i = 0; i < objetoGravar.size(); i++) {
+
+                writer.write(objetoGravar.get(i).salvar());
+                writer.newLine();
+
+            }
+
+            writer.close();
+
+        } catch (IOException ex) {
+            Logger.getLogger(ReadWrite.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+     // ler Carro arquivo txt
+    public ArrayList<Carro> readCarro(String fileName) {
+
+        int cont = 0;
+
+        try {
+            //le arquivo
+            BufferedReader read = new BufferedReader(new FileReader(fileName));
+            String[] ler;
+
+            //le primeira linha arquivo
+            try {
+
+                ler = read.readLine().split(";");
+
+            } catch (Exception e) {
+                ler = null;
+            }
+            ArrayList<Carro> carros = new ArrayList<>();
+
+            while (ler != null) {
+
+                carros.add(new Carro());
+
+                carros.get(cont).setId(Integer.parseInt(ler[0]));
+                carros.get(cont).setPlaca(ler[1]);
+                carros.get(cont).setModelo(ler[2]);
+                carros.get(cont).setFabricante(ler[3]);
+                carros.get(cont).setMotor(ler[4]);
+                carros.get(cont).setAno(ler[5]);
+                carros.get(cont).setKm(Integer.parseInt(ler[6]));
+                carros.get(cont).setAtivo(Boolean.valueOf(ler[7]));
+              
+           
+                cont++;
+                try {
+                    //le proxima linha do arquivo
+                    ler = read.readLine().split(";");
+                } catch (Exception e) {
+                    ler = null;
+                }
+
+            }
+
+            return carros;
 
         } catch (FileNotFoundException ex) {
             return null;

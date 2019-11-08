@@ -12,12 +12,11 @@ package classes;
 public class Carro {
 
     private int id;
-    private int idPessoa;
     private String placa;
     private String modelo;
     private String fabricante;
     private String motor;
-    private int ano;
+    private String ano;
     private int km;
     private boolean Ativo;
 
@@ -64,14 +63,6 @@ public class Carro {
         this.motor = motor;
     }
 
-    public int getAno() {
-        return ano;
-    }
-
-    public void setAno(int ano) {
-        this.ano = ano;
-    }
-
     public int getKm() {
         return km;
     }
@@ -88,12 +79,17 @@ public class Carro {
         this.Ativo = Ativo;
     }
 
-    public int getIdPessoa() {
-        return idPessoa;
+    public String getAno() {
+        return ano;
     }
 
-    public void setIdPessoa(int idPessoa) {
-        this.idPessoa = idPessoa;
+    public void setAno(String ano) {
+        this.ano = ano;
+    }
+
+    public String salvar() {
+
+        return id + ";" + placa + ";" + modelo + ";" + fabricante + ";" + motor + ";" + ano + ";" + km + ";" + Ativo;
     }
 
 }

@@ -1,0 +1,2 @@
+1;FLC-2354;passat;vw;2,8;2018;10000;true
+2;DLC-2354;fit;honda;1,5;2015;40000;true

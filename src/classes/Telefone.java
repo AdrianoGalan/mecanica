@@ -12,17 +12,8 @@ package classes;
 public class Telefone {
 
     private int id;
-    private int idPessoa;
-
-    public int getIdPessoa() {
-        return idPessoa;
-    }
-
-    public void setIdPessoa(int idPessoa) {
-        this.idPessoa = idPessoa;
-    }
-    private int ddd;
-    private int numero;
+    private String ddd;
+    private String numero;
 
     public Telefone() {
     }
@@ -35,20 +26,26 @@ public class Telefone {
         this.id = id;
     }
 
-    public int getDdd() {
+    public String getDdd() {
         return ddd;
     }
 
-    public void setDdd(int ddd) {
+    public void setDdd(String ddd) {
         this.ddd = ddd;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
+
+  
+    public String salvar() {
+        return  id + ";" + ddd + ";" + numero;
+    }
+
 
 }
