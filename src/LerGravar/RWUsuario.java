@@ -40,8 +40,10 @@ public class RWUsuario {
 
                 usuarios.add(new Usuario());
 
-                usuarios.get(cont).setUsuario(ler[0]);
-                usuarios.get(cont).setSenha(ler[1]);
+                usuarios.get(cont).setId(ler[0]);
+                usuarios.get(cont).setNome(ler[1]);
+                usuarios.get(cont).setUsuario(ler[2]);
+                usuarios.get(cont).setSenha(ler[3]);
 
                 cont++;
                 try {
@@ -56,8 +58,6 @@ public class RWUsuario {
             return usuarios;
 
         } catch (FileNotFoundException ex) {
-//            InOut.out("Não existe estatisticas gravadas no banco");
-            System.out.println("passou aki");
             return null;
 
         }

@@ -27,6 +27,8 @@ import javafx.scene.control.TextField;
  */
 public class CadastroClienteController implements Initializable {
 
+    
+    
     @FXML
     private TextField tfNome;
     @FXML
@@ -78,9 +80,9 @@ public class CadastroClienteController implements Initializable {
 
     @FXML
     private void acaoBtCadastra(ActionEvent event) {
-        if (validaCampos()) {
-            criaPessoa();
-        }
+       if (validaCampos()) {
+            criaPessoa();    
+       }
     }
 
     private void criaPessoa() {
@@ -141,7 +143,7 @@ public class CadastroClienteController implements Initializable {
         rw.writeEndereco(ARQUIVOENDERECO, enderecos);
         rw.writeTelefone(ARQUIVOTELEFONE, telefones);
         rw.writeCarro(ARQUIVOCARRO, carros);
-
+        limparCampos();
     }
 
     private boolean validaCampos() {
@@ -225,6 +227,28 @@ public class CadastroClienteController implements Initializable {
             lbErro.setText("DIGITE UM NOME");
         }
         return false;
+    }
+    
+    private void limparCampos(){
+        
+
+            tfNome.setText("");
+            tfCpf.setText("");
+            tfTelefone1.setText("");
+            tfTelefone2.setText("");
+            tfRua.setText("");
+            tfNumero.setText("");
+            tfBairro.setText("");
+            tfCep.setText("");
+            tfCidade.setText("");
+            tfPlaca.setText("");
+            tfModelo.setText("");
+            tfFabricante.setText("");
+            tfMotor.setText("");
+            tfAno.setText("");
+            tfKm.setText("");
+            
+        
     }
 
 }
