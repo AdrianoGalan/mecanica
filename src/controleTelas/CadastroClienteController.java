@@ -230,7 +230,7 @@ public class CadastroClienteController implements Initializable {
                 }
 
             } else {
-                if(tfCpf.getText() == ""){
+                if(tfCpf.getText().equals("")){
                     lbErro.setText("DIGITE O CPF");
                 }else{
                     lbCpfInvalido.setVisible(true);
