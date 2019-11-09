@@ -71,6 +71,8 @@ public class CadastroClienteController implements Initializable {
     final String ARQUIVOTELEFONE = "txt/telefones.txt";
     @FXML
     private TextField tfEstado;
+    @FXML
+    private Label lbCpfInvalido;
 
     /**
      * Initializes the controller class.
@@ -81,8 +83,8 @@ public class CadastroClienteController implements Initializable {
         Util.mascaraCEP(tfCep);
         Util.mascaraCPF(tfCpf);
         Util.mascaraPlaca(tfPlaca);
-        Util.mascaraTel(tfTelefone1);
-        Util.mascaraTel(tfTelefone2);
+        Util.mascaraTelCelular(tfTelefone1);
+        Util.mascaraTelFixo(tfTelefone2);
         
     }
 

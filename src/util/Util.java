@@ -139,7 +139,7 @@ public class Util {
 //        });
     }
 
-    public static void mascaraTel(TextField textField) {
+    public static void mascaraTelFixo(TextField textField) {
 
         String val = "";
 
@@ -151,11 +151,14 @@ public class Util {
 
             if (event.getCharacter().trim().length() == 0) { // apagando
 
-                if (textField.getText().length() == 0) {
-                    textField.setText(textField.getText().substring(0, 1));
+                if (textField.getText().length() == 1) {
+                    textField.setText(textField.getText().substring(0, 0));
                     textField.positionCaret(textField.getText().length());
                 } else if (textField.getText().length() == 4) {
                     textField.setText(textField.getText().substring(0, 3));
+                    textField.positionCaret(textField.getText().length());
+                }else if (textField.getText().length() == 10) {
+                    textField.setText(textField.getText().substring(0, 9));
                     textField.positionCaret(textField.getText().length());
                 }
 
@@ -179,13 +182,51 @@ public class Util {
             }
         });
 
-//        textField.setOnKeyReleased((KeyEvent evt) -> {
-//
-//            if (!textField.getText().matches("\\d-*")) {
-//                textField.setText(textField.getText().replaceAll("[^\\d-]", ""));
-//                textField.positionCaret(textField.getText().length());
-//            }
-//        });
+    }
+
+    public static void mascaraTelCelular(TextField textField) {
+
+        String val = "";
+
+        textField.setOnKeyTyped((KeyEvent event) -> {
+
+            if ("0123456789".contains(event.getCharacter()) == false) {
+                event.consume();
+            }
+
+            if (event.getCharacter().trim().length() == 0) { // apagando
+
+                if (textField.getText().length() == 1) {
+                    textField.setText(textField.getText().substring(0, 0));
+                    textField.positionCaret(textField.getText().length());
+                } else if (textField.getText().length() == 5) {
+                    textField.setText(textField.getText().substring(0, 3));
+                    textField.positionCaret(textField.getText().length());
+                }else if (textField.getText().length() == 11) {
+                    textField.setText(textField.getText().substring(0, 10));
+                    textField.positionCaret(textField.getText().length());
+                }
+
+            } else { // escrevendo
+
+                if (textField.getText().length() == 15) {
+                    event.consume();
+                }
+
+                if (textField.getText().length() == 0) {
+                    textField.setText(textField.getText() + "(");
+                    textField.positionCaret(textField.getText().length());
+                } else if (textField.getText().length() == 3) {
+                    textField.setText(textField.getText() + ") 9");
+                    textField.positionCaret(textField.getText().length());
+                } else if (textField.getText().length() == 10) {
+                    textField.setText(textField.getText() + "-");
+                    textField.positionCaret(textField.getText().length());
+                }
+
+            }
+        });
+
     }
 
 }
