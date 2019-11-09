@@ -29,8 +29,6 @@ import util.Util;
  */
 public class CadastroClienteController implements Initializable {
 
-    
-    
     @FXML
     private TextField tfNome;
     @FXML
@@ -85,14 +83,15 @@ public class CadastroClienteController implements Initializable {
         Util.mascaraPlaca(tfPlaca);
         Util.mascaraTelCelular(tfTelefone1);
         Util.mascaraTelFixo(tfTelefone2);
-        
+
     }
 
     @FXML
     private void acaoBtCadastra(ActionEvent event) {
-       if (validaCampos()) {
-            criaPessoa();    
-       }
+
+        if (validaCampos()) {
+            criaPessoa();
+        }
     }
 
     private void criaPessoa() {
@@ -160,8 +159,9 @@ public class CadastroClienteController implements Initializable {
 
         if (!tfNome.getText().equals("")) {
             lbErro.setText("");
-            if (!tfCpf.getText().equals("")) {
+            if (!tfCpf.getText().equals("") && Util.verificaCPF(tfCpf.getText())) {
                 lbErro.setText("");
+                lbCpfInvalido.setVisible(false);
                 if (!tfTelefone1.getText().equals("")) {
                     lbErro.setText("");
                     if (!tfRua.getText().equals("")) {
@@ -230,7 +230,11 @@ public class CadastroClienteController implements Initializable {
                 }
 
             } else {
-                lbErro.setText("DIGITE O CPF");
+                if(tfCpf.getText() == ""){
+                    lbErro.setText("DIGITE O CPF");
+                }else{
+                    lbCpfInvalido.setVisible(true);
+                } 
             }
 
         } else {
@@ -238,27 +242,25 @@ public class CadastroClienteController implements Initializable {
         }
         return false;
     }
-    
-    private void limparCampos(){
-        
 
-            tfNome.setText("");
-            tfCpf.setText("");
-            tfTelefone1.setText("");
-            tfTelefone2.setText("");
-            tfRua.setText("");
-            tfNumero.setText("");
-            tfBairro.setText("");
-            tfCep.setText("");
-            tfCidade.setText("");
-            tfPlaca.setText("");
-            tfModelo.setText("");
-            tfFabricante.setText("");
-            tfMotor.setText("");
-            tfAno.setText("");
-            tfKm.setText("");
-            
-        
+    private void limparCampos() {
+
+        tfNome.setText("");
+        tfCpf.setText("");
+        tfTelefone1.setText("");
+        tfTelefone2.setText("");
+        tfRua.setText("");
+        tfNumero.setText("");
+        tfBairro.setText("");
+        tfCep.setText("");
+        tfCidade.setText("");
+        tfPlaca.setText("");
+        tfModelo.setText("");
+        tfFabricante.setText("");
+        tfMotor.setText("");
+        tfAno.setText("");
+        tfKm.setText("");
+
     }
 
 }

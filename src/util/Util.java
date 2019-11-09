@@ -157,7 +157,7 @@ public class Util {
                 } else if (textField.getText().length() == 4) {
                     textField.setText(textField.getText().substring(0, 3));
                     textField.positionCaret(textField.getText().length());
-                }else if (textField.getText().length() == 10) {
+                } else if (textField.getText().length() == 10) {
                     textField.setText(textField.getText().substring(0, 9));
                     textField.positionCaret(textField.getText().length());
                 }
@@ -202,7 +202,7 @@ public class Util {
                 } else if (textField.getText().length() == 5) {
                     textField.setText(textField.getText().substring(0, 3));
                     textField.positionCaret(textField.getText().length());
-                }else if (textField.getText().length() == 11) {
+                } else if (textField.getText().length() == 11) {
                     textField.setText(textField.getText().substring(0, 10));
                     textField.positionCaret(textField.getText().length());
                 }
@@ -227,6 +227,52 @@ public class Util {
             }
         });
 
+    }
+
+    public static boolean verificaCPF(String CPF) {
+
+        CPF = CPF.replace("-", "");
+        CPF = CPF.replace(".", "");
+
+//         considera-se erro CPF's formados por uma sequencia de numeros iguais
+        if (CPF.equals("00000000000")
+                || CPF.equals("11111111111")
+                || CPF.equals("22222222222") || CPF.equals("33333333333")
+                || CPF.equals("44444444444") || CPF.equals("55555555555")
+                || CPF.equals("66666666666") || CPF.equals("77777777777")
+                || CPF.equals("88888888888") || CPF.equals("99999999999")
+                || (CPF.length() != 11)) {
+            return false;
+        }
+
+        try {
+            // Primeiro digito verificador
+            int x = 10, nv1, nv2, total = 0;
+            for (int i = 0; i < 9; i++) {
+                total += ((int) (CPF.charAt(i) - 48) * x);
+                x--;
+            }
+            nv1 = 11 - (total % 11);
+            if (nv1 == 10 || nv1 == 11) {
+                nv1 = 0;
+            }
+            // Segundo digito verificador
+            x = 11;
+            total = 0;
+            for (int i = 0; i < 10; i++) {
+                total += ((int) (CPF.charAt(i) - 48) * x);
+                x--;
+            }
+            nv2 = 11 - (total % 11);
+            if (nv2 == 10 || nv2 == 11) {
+                nv2 = 0;
+            }
+            
+            return (int) (CPF.charAt(9) - 48) == nv1 && (int) (CPF.charAt(10) - 48) == nv2;
+        } catch (Exception erro) {
+            System.out.println(erro.toString());
+            return false;
+        }
     }
 
 }
