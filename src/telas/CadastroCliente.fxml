@@ -97,7 +97,7 @@
             </Label>
             <TextField fx:id="tfPlaca" layoutX="164.0" layoutY="484.0" prefHeight="31.0" prefWidth="104.0" promptText="Placa" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 12px;" />
             <TextField fx:id="tfModelo" layoutX="192.0" layoutY="527.0" prefHeight="31.0" prefWidth="133.0" promptText="Modelo" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 12px;" />
-            <TextField fx:id="tfFabricante" layoutX="348.0" layoutY="527.0" prefHeight="31.0" prefWidth="155.0" promptText="Marca/Fabricante" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 12px;" />
+            <TextField fx:id="tfFabricante" layoutX="396.0" layoutY="527.0" prefHeight="31.0" prefWidth="107.0" promptText="Marca/Fabricante" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 12px;" />
             <TextField fx:id="tfMotor" layoutX="524.0" layoutY="484.0" prefHeight="31.0" prefWidth="119.0" promptText="Motor" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 12px;" />
             <TextField fx:id="tfAno" layoutX="565.0" layoutY="527.0" prefHeight="31.0" prefWidth="77.0" promptText="Ano" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 12px;" />
             <TextField fx:id="tfKm" layoutX="330.0" layoutY="484.0" prefHeight="31.0" prefWidth="104.0" promptText="Quilometragem" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 12px;" />
@@ -135,6 +135,11 @@
             <Label fx:id="lbOk" alignment="CENTER" layoutX="113.0" layoutY="611.0" prefHeight="25.0" prefWidth="241.0" textAlignment="CENTER" textFill="RED">
                <font>
                   <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="341.0" layoutY="531.0" text="Marca" textFill="#3a6379">
+               <font>
+                  <Font name="Tw Cen MT" size="20.0" />
                </font>
             </Label>
          </children>
