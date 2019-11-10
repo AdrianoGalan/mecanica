@@ -16,12 +16,12 @@
    <children>
       <Pane maxHeight="664.0" minHeight="200.0" prefHeight="664.0" prefWidth="200.0" style="-fx-background-color: #3a6379;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="29.0" layoutY="38.0" text="12:30" textFill="WHITE">
+            <Label fx:id="lbHora" layoutX="29.0" layoutY="38.0" text="12:30" textFill="WHITE">
                <font>
                   <Font name="Tw Cen MT" size="52.0" />
                </font>
             </Label>
-            <Label layoutX="33.0" layoutY="95.0" text="07 Nov. de 2019" textFill="WHITE">
+            <Label fx:id="lbData" layoutX="33.0" layoutY="95.0" text="07 Nov. de 2019" textFill="WHITE">
                <font>
                   <Font name="Tw Cen MT" size="17.0" />
                </font>

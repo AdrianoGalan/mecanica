@@ -7,17 +7,22 @@ package controleTelas;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -44,13 +49,22 @@ public class TrabalhoController implements Initializable {
     private MenuItem btConsultaOrcamento1;
     @FXML
     private MenuItem btConsultaOS1;
+    @FXML
+    private Label lbHora;
+    @FXML
+    private Label lbData;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
+        KeyFrame frame = new KeyFrame(Duration.millis(1000), e -> atualizaHoras());
+        Timeline timeline = new Timeline(frame);
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+
     }
 
     @FXML
@@ -100,6 +114,16 @@ public class TrabalhoController implements Initializable {
         } catch (IOException ex) {
             //  Logger.getLogger(FXMLTelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+    }
+
+    private void atualizaHoras() {
+
+        LocalDateTime dt = LocalDateTime.now();
+        String dataAtual = dt.getDayOfMonth() + "/" + dt.getMonth() + "/" + dt.getYear();
+        String horaAtual = dt.getHour() + ":" + dt.getMinute();
+        lbData.setText(dataAtual);
+        lbHora.setText(horaAtual);
 
     }
 
