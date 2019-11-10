@@ -20,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javax.swing.JOptionPane;
 import util.Util;
 
 /**
@@ -71,6 +72,8 @@ public class CadastroClienteController implements Initializable {
     private TextField tfEstado;
     @FXML
     private Label lbCpfInvalido;
+    @FXML
+    private Label lbOk;
 
     /**
      * Initializes the controller class.
@@ -88,71 +91,75 @@ public class CadastroClienteController implements Initializable {
 
     @FXML
     private void acaoBtCadastra(ActionEvent event) {
-
+        lbOk.setText("");
         if (validaCampos()) {
             criaPessoa();
         }
     }
 
     private void criaPessoa() {
+        try {
+            ReadWrite rw = new ReadWrite();
 
-        ReadWrite rw = new ReadWrite();
+            ArrayList<Pessoa> pessoas = rw.readPessoa(ARQUIVOPESSOA);
+            ArrayList<Endereco> enderecos = rw.readEndereco(ARQUIVOENDERECO);
+            ArrayList<Telefone> telefones = rw.readTelefone(ARQUIVOTELEFONE);
+            ArrayList<Carro> carros = rw.readCarro(ARQUIVOCARRO);
 
-        ArrayList<Pessoa> pessoas = rw.readPessoa(ARQUIVOPESSOA);
-        ArrayList<Endereco> enderecos = rw.readEndereco(ARQUIVOENDERECO);
-        ArrayList<Telefone> telefones = rw.readTelefone(ARQUIVOTELEFONE);
-        ArrayList<Carro> carros = rw.readCarro(ARQUIVOCARRO);
+            int id = pessoas.size() + 1;
 
-        int id = pessoas.size() + 1;
-
-        Pessoa pessoa = new Pessoa(id);
-        Endereco endereco = new Endereco();
-        Telefone telefone = new Telefone();
-        Telefone telefone1 = new Telefone();
-        Carro carro = new Carro();
+            Pessoa pessoa = new Pessoa(id);
+            Endereco endereco = new Endereco();
+            Telefone telefone = new Telefone();
+            Telefone telefone1 = new Telefone();
+            Carro carro = new Carro();
 //        
-        if (!tfTelefone2.getText().equals("")) {
-            telefone1.setNumero(tfTelefone2.getText());
-            telefone1.setDdd("11");
-            telefone1.setId(pessoa.getId());
+            if (!tfTelefone2.getText().equals("")) {
+                telefone1.setNumero(tfTelefone2.getText());
+                telefone1.setDdd("11");
+                telefone1.setId(pessoa.getId());
 
+            }
+
+            pessoa.setNome(tfNome.getText());
+            pessoa.setCpf(tfCpf.getText());
+
+            telefone.setNumero(tfTelefone1.getText());
+            telefone.setDdd("11");
+            telefone.setId(pessoa.getId());
+
+            endereco.setRua(tfRua.getText());
+            endereco.setNumero(tfNumero.getText());
+            endereco.setCep(tfCep.getText());
+            endereco.setBairro(tfBairro.getText());
+            endereco.setCidade(tfCidade.getText());
+            endereco.setId(pessoa.getId());
+
+            carro.setPlaca(tfPlaca.getText());
+            carro.setAno(tfAno.getText());
+            carro.setModelo(tfModelo.getText());
+            carro.setFabricante(tfFabricante.getText());
+            carro.setMotor(tfMotor.getText());
+            carro.setKm(Integer.parseInt(tfKm.getText()));
+            carro.setAtivo(true);
+            carro.setId(pessoa.getId());
+
+            //adiciona objeto no vetor
+            pessoas.add(pessoa);
+            enderecos.add(endereco);
+            telefones.add(telefone);
+            carros.add(carro);
+
+            //salva vetor no arquivo txt
+            rw.writePessoa(ARQUIVOPESSOA, pessoas);
+            rw.writeEndereco(ARQUIVOENDERECO, enderecos);
+            rw.writeTelefone(ARQUIVOTELEFONE, telefones);
+            rw.writeCarro(ARQUIVOCARRO, carros);
+            limparCampos();
+            lbOk.setText("Cliente cadastrado com sucesso!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
-
-        pessoa.setNome(tfNome.getText());
-        pessoa.setCpf(tfCpf.getText());
-
-        telefone.setNumero(tfTelefone1.getText());
-        telefone.setDdd("11");
-        telefone.setId(pessoa.getId());
-
-        endereco.setRua(tfRua.getText());
-        endereco.setNumero(tfNumero.getText());
-        endereco.setCep(tfCep.getText());
-        endereco.setBairro(tfBairro.getText());
-        endereco.setCidade(tfCidade.getText());
-        endereco.setId(pessoa.getId());
-
-        carro.setPlaca(tfPlaca.getText());
-        carro.setAno(tfAno.getText());
-        carro.setModelo(tfModelo.getText());
-        carro.setFabricante(tfFabricante.getText());
-        carro.setMotor(tfMotor.getText());
-        carro.setKm(Integer.parseInt(tfKm.getText()));
-        carro.setAtivo(true);
-        carro.setId(pessoa.getId());
-
-        //adiciona objeto no vetor
-        pessoas.add(pessoa);
-        enderecos.add(endereco);
-        telefones.add(telefone);
-        carros.add(carro);
-
-        //salva vetor no arquivo txt
-        rw.writePessoa(ARQUIVOPESSOA, pessoas);
-        rw.writeEndereco(ARQUIVOENDERECO, enderecos);
-        rw.writeTelefone(ARQUIVOTELEFONE, telefones);
-        rw.writeCarro(ARQUIVOCARRO, carros);
-        limparCampos();
     }
 
     private boolean validaCampos() {
@@ -230,11 +237,11 @@ public class CadastroClienteController implements Initializable {
                 }
 
             } else {
-                if(tfCpf.getText().equals("")){
+                if (tfCpf.getText().equals("")) {
                     lbErro.setText("DIGITE O CPF");
-                }else{
+                } else {
                     lbCpfInvalido.setVisible(true);
-                } 
+                }
             }
 
         } else {

@@ -98,7 +98,7 @@
             <TextField fx:id="tfAno" layoutX="565.0" layoutY="527.0" prefHeight="31.0" prefWidth="77.0" promptText="Ano" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 12px;" />
             <TextField fx:id="tfKm" layoutX="330.0" layoutY="484.0" prefHeight="31.0" prefWidth="104.0" promptText="Quilometragem" style="-fx-background-color: white; -fx-text-fill: #2d4c5a; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 12px;" />
             <Button fx:id="btCadastra" layoutX="330.0" layoutY="627.0" mnemonicParsing="false" onAction="#acaoBtCadastra" prefHeight="41.0" prefWidth="104.0" text="Cadastrar" />
-            <Label fx:id="lbErro" layoutX="148.0" layoutY="610.0" prefHeight="17.0" prefWidth="201.0" />
+            <Label fx:id="lbErro" layoutX="122.0" layoutY="594.0" prefHeight="17.0" prefWidth="201.0" />
             <Label layoutX="113.0" layoutY="488.0" text="Placa" textFill="#3a6379">
                <font>
                   <Font name="Tw Cen MT" size="20.0" />
@@ -125,6 +125,11 @@
                </font>
             </Label>
             <Label fx:id="lbCpfInvalido" layoutX="188.0" layoutY="215.0" text="CPF inválido!" textFill="#ee0000" visible="false" />
+            <Label fx:id="lbOk" layoutX="457.0" layoutY="635.0" prefHeight="25.0" prefWidth="241.0" textFill="#5bf800">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>

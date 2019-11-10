@@ -3,3 +3,4 @@
 3;08230780;Rua da Fatec;Seila;SP;null;222
 4;0825156;NUMSEI;lala;aiai;null;202
 5;51896;IJOISAJFOISAJF;ASUJHFSA;ASIFJSAF;null;222
+6;01651-651;sfsdfsd;fsdfsf;São Paulo;null;2020
