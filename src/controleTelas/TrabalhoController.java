@@ -120,8 +120,13 @@ public class TrabalhoController implements Initializable {
     private void atualizaHoras() {
 
         LocalDateTime dt = LocalDateTime.now();
-        String dataAtual = dt.getDayOfMonth() + "/" + dt.getMonth() + "/" + dt.getYear();
-        String horaAtual = dt.getHour() + ":" + dt.getMinute();
+        String mes = "" + dt.getMonth();
+        String mes1 = "" + dt.getMonth();
+        mes1 = mes.substring(0,1);
+        mes = mes.substring(1,3);
+        mes = mes1 + mes.toLowerCase();
+        String dataAtual = dt.getDayOfMonth() + " " + mes + ". de " + dt.getYear();
+        String horaAtual = (dt.getHour()-1) + ":" + dt.getMinute();
         lbData.setText(dataAtual);
         lbHora.setText(horaAtual);
 
