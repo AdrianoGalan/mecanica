@@ -87,6 +87,8 @@ public class TrabalhoController implements Initializable {
 
     @FXML
     private void acaoBtConsultaCliente(ActionEvent event) {
+        
+        carregaTela("/telas/ConsultaCliente.fxml");
     }
 
     @FXML
