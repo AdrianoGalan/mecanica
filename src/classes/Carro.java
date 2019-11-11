@@ -36,7 +36,7 @@ public class Carro {
     }
 
     public void setPlaca(String placa) {
-        this.placa = placa;
+        this.placa = placa.toUpperCase();
     }
 
     public String getModelo() {
@@ -44,7 +44,7 @@ public class Carro {
     }
 
     public void setModelo(String modelo) {
-        this.modelo = modelo;
+        this.modelo = modelo.toUpperCase();
     }
 
     public String getFabricante() {
@@ -52,7 +52,7 @@ public class Carro {
     }
 
     public void setFabricante(String fabricante) {
-        this.fabricante = fabricante;
+        this.fabricante = fabricante.toUpperCase();
     }
 
     public String getMotor() {
@@ -60,7 +60,7 @@ public class Carro {
     }
 
     public void setMotor(String motor) {
-        this.motor = motor;
+        this.motor = motor.toUpperCase();
     }
 
     public int getKm() {
@@ -84,7 +84,7 @@ public class Carro {
     }
 
     public void setAno(String ano) {
-        this.ano = ano;
+        this.ano = ano.toUpperCase();
     }
 
     public String salvar() {
@@ -92,4 +92,10 @@ public class Carro {
         return id + ";" + placa + ";" + modelo + ";" + fabricante + ";" + motor + ";" + ano + ";" + km + ";" + Ativo;
     }
 
+    @Override
+    public String toString() {
+        return  "placa: " + placa + ", modelo: " + modelo + ", fabricante: " + fabricante + ", motor: " + motor + ", ano: " + ano ;
+    }
+
+    
 }

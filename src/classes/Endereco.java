@@ -46,7 +46,7 @@ public class Endereco {
     }
 
     public void setRua(String rua) {
-        this.rua = rua;
+        this.rua = rua.toUpperCase();
     }
 
     public String getBairro() {
@@ -54,7 +54,7 @@ public class Endereco {
     }
 
     public void setBairro(String bairro) {
-        this.bairro = bairro;
+        this.bairro = bairro.toUpperCase();
     }
 
     public String getCidade() {
@@ -62,7 +62,7 @@ public class Endereco {
     }
 
     public void setCidade(String cidade) {
-        this.cidade = cidade;
+        this.cidade = cidade.toUpperCase();
     }
 
     public String getEstado() {
@@ -70,7 +70,7 @@ public class Endereco {
     }
 
     public void setEstado(String estado) {
-        this.estado = estado;
+        this.estado = estado.toUpperCase();
     }
 
     public String getNumero() {

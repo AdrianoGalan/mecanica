@@ -123,7 +123,7 @@ public class CadastroCarroController implements Initializable {
 
         for (int i = 0; i < pessoas.size(); i++) {
 
-            if (pessoas.get(i).getNome().contains(tfBuscaCliente.getText())) {
+            if (pessoas.get(i).getNome().contains(tfBuscaCliente.getText().toUpperCase())) {
 
                 filtro.add(pessoas.get(i));
 

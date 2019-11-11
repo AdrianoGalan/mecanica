@@ -6,6 +6,7 @@
 package controleTelas;
 
 import LerGravar.ReadWrite;
+import classes.Carro;
 import classes.Pessoa;
 import java.net.URL;
 import java.util.ArrayList;
@@ -31,10 +32,20 @@ public class ConsultaClienteController implements Initializable {
     private ListView<Pessoa> lvClientes;
     @FXML
     private TextField tfBuscaCliente;
-    
-    private  ArrayList<Pessoa> pessoas;
+
+    private ArrayList<Pessoa> pessoas;
     @FXML
     private Button btAtualizar;
+    @FXML
+    private Button btDesativarCarro;
+    @FXML
+    private Button btBucar;
+    @FXML
+    private ListView<Carro> lvCarros;
+    @FXML
+    private TextField tfCpf;
+
+    private ReadWrite rw;
 
     /**
      * Initializes the controller class.
@@ -45,40 +56,40 @@ public class ConsultaClienteController implements Initializable {
 
         lvClientes.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
-        ReadWrite rw = new ReadWrite();
+        rw = new ReadWrite();
 
         pessoas = rw.readPessoa();
 
-        povoarListView(pessoas);
+        povoarListViewPessoa(pessoas);
 
     }
 
     @FXML
     private void acaoDigitar(KeyEvent event) {
-        
+
         ArrayList<Pessoa> filtro = new ArrayList();
-        
+
         for (int i = 0; i < pessoas.size(); i++) {
-            
-            if(pessoas.get(i).getNome().contains(tfBuscaCliente.getText())){
-                
+
+            if (pessoas.get(i).getNome().contains(tfBuscaCliente.getText().toUpperCase())) {
+
                 filtro.add(pessoas.get(i));
-                
+
             }
-            
+
         }
-        
-        povoarListView(filtro);
-    }
-    
-    @FXML
-    private void acaoBtAtualizar(ActionEvent event) {
-        
-        Pessoa p = lvClientes.getSelectionModel().getSelectedItem();
-        
+
+        povoarListViewPessoa(filtro);
     }
 
-    private void povoarListView(List<Pessoa> pessoa) {
+    @FXML
+    private void acaoBtAtualizar(ActionEvent event) {
+
+        Pessoa p = lvClientes.getSelectionModel().getSelectedItem();
+
+    }
+
+    private void povoarListViewPessoa(List<Pessoa> pessoa) {
 
         lvClientes.getItems().clear();
 
@@ -93,9 +104,44 @@ public class ConsultaClienteController implements Initializable {
         }
 
     }
+    private void povoarListViewcarro(List<Carro> carros) {
 
+        lvCarros.getItems().clear();
 
+        for (Carro c : carros) {
 
-  
+            if (c != null) {
+
+                lvCarros.getItems().add(c);
+
+            }
+
+        }
+
+    }
+
+    @FXML
+    private void acaoBtDesativarCarro(ActionEvent event) {
+    }
+
+    @FXML
+    private void acaoBtBuscar(ActionEvent event) {
+
+        Pessoa p = lvClientes.getSelectionModel().getSelectedItem();
+        ArrayList<Carro> carros = rw.readCarro();
+        ArrayList<Carro> filtro = new ArrayList();
+
+        if (p != null) {
+            tfCpf.setText(p.getCpf());
+            for (int i = 0; i < carros.size(); i++) {
+                if (carros.get(i).getId() == p.getId()) {
+                    filtro.add(carros.get(i));
+                }
+            }
+            
+            povoarListViewcarro(filtro);
+
+        }
+    }
 
 }
