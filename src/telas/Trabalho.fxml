@@ -34,7 +34,8 @@
             <MenuButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="3.0" layoutY="253.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" popupSide="RIGHT" prefHeight="48.0" prefWidth="197.0" style="-fx-background-color: #3a6379; -fx-border-left-color: white; -fx-border-left-style: solid; -fx-border-left-width: 5px;" stylesheets="@../css/EstiloTelaTrabalho.css" text="Cadastrar" textFill="WHITE" textOverrun="CLIP">
               <items>
                 <MenuItem fx:id="bTCadasCliente" mnemonicParsing="false" onAction="#acaoBtCadasCliente" text="Cliente" />
-                <MenuItem fx:id="btCadasOrcamento" mnemonicParsing="false" onAction="#acaoBtCadasOrcamento" text="ORÇAMENTO" />
+                <MenuItem fx:id="btCadasOrcamento" mnemonicParsing="false" onAction="#acaoBtCadasOrcamento" text="Orçamento" />
+                  <MenuItem fx:id="btCadasCarro" mnemonicParsing="false" onAction="#acaoBtCadasCarro" text="Carro" />
               </items>
                <font>
                   <Font name="Tw Cen MT" size="19.0" />

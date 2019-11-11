@@ -21,17 +21,21 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ReadWrite {
-    
+
+    final String ARQUIVOPESSOA = "txt/pessoas.txt";
+    final String ARQUIVOENDERECO = "txt/enderecos.txt";
+    final String ARQUIVOCARRO = "txt/carros.txt";
+    final String ARQUIVOTELEFONE = "txt/telefones.txt";
+
     //escreve Pessoa arquivo txt
-    public void writePessoa(String nomeArquivo, List<Pessoa> objetoGravar) {
+    public void writePessoa(List<Pessoa> objetoGravar) {
 
         BufferedWriter writer;
-        
-        try {
-            writer = new BufferedWriter(new FileWriter(nomeArquivo));
-            
-            //Collections.sort(objetoGravar);
 
+        try {
+            writer = new BufferedWriter(new FileWriter(ARQUIVOPESSOA));
+
+            //Collections.sort(objetoGravar);
             for (int i = 0; i < objetoGravar.size(); i++) {
 
                 writer.write(objetoGravar.get(i).salvar());
@@ -46,15 +50,15 @@ public class ReadWrite {
         }
 
     }
-        
+
     // ler pessoa arquivo txt
-    public ArrayList<Pessoa> readPessoa(String fileName) {
+    public ArrayList<Pessoa> readPessoa() {
 
         int cont = 0;
 
         try {
             //le arquivo
-            BufferedReader read = new BufferedReader(new FileReader(fileName));
+            BufferedReader read = new BufferedReader(new FileReader(ARQUIVOPESSOA));
             String[] ler;
 
             //le primeira linha arquivo
@@ -96,17 +100,16 @@ public class ReadWrite {
         }
 
     }
-    
+
     // escreve endereco arquivo txt
-    public void writeEndereco(String nomeArquivo, List<Endereco> objetoGravar) {
+    public void writeEndereco(List<Endereco> objetoGravar) {
 
         BufferedWriter writer;
-        
-        try {
-            writer = new BufferedWriter(new FileWriter(nomeArquivo));
-            
-            //Collections.sort(objetoGravar);
 
+        try {
+            writer = new BufferedWriter(new FileWriter(ARQUIVOENDERECO));
+
+            //Collections.sort(objetoGravar);
             for (int i = 0; i < objetoGravar.size(); i++) {
 
                 writer.write(objetoGravar.get(i).salvar());
@@ -121,15 +124,15 @@ public class ReadWrite {
         }
 
     }
-    
-      // ler Endereco arquivo txt
-    public ArrayList<Endereco> readEndereco(String fileName) {
+
+    // ler Endereco arquivo txt
+    public ArrayList<Endereco> readEndereco() {
 
         int cont = 0;
 
         try {
             //le arquivo
-            BufferedReader read = new BufferedReader(new FileReader(fileName));
+            BufferedReader read = new BufferedReader(new FileReader(ARQUIVOENDERECO));
             String[] ler;
 
             //le primeira linha arquivo
@@ -153,7 +156,7 @@ public class ReadWrite {
                 enderecos.get(cont).setCidade(ler[4]);
                 enderecos.get(cont).setEstado(ler[5]);
                 enderecos.get(cont).setNumero(ler[6]);
-  
+
                 cont++;
                 try {
                     //le proxima linha do arquivo
@@ -172,17 +175,16 @@ public class ReadWrite {
         }
 
     }
-    
-     //escreve telefone arquivo txt
-    public void writeTelefone(String nomeArquivo, List<Telefone> objetoGravar) {
+
+    //escreve telefone arquivo txt
+    public void writeTelefone(List<Telefone> objetoGravar) {
 
         BufferedWriter writer;
-        
-        try {
-            writer = new BufferedWriter(new FileWriter(nomeArquivo));
-            
-            //Collections.sort(objetoGravar);
 
+        try {
+            writer = new BufferedWriter(new FileWriter(ARQUIVOTELEFONE));
+
+            //Collections.sort(objetoGravar);
             for (int i = 0; i < objetoGravar.size(); i++) {
 
                 writer.write(objetoGravar.get(i).salvar());
@@ -197,15 +199,15 @@ public class ReadWrite {
         }
 
     }
-    
-     // ler Telefone arquivo txt
-    public ArrayList<Telefone> readTelefone(String fileName) {
+
+    // ler Telefone arquivo txt
+    public ArrayList<Telefone> readTelefone() {
 
         int cont = 0;
 
         try {
             //le arquivo
-            BufferedReader read = new BufferedReader(new FileReader(fileName));
+            BufferedReader read = new BufferedReader(new FileReader(ARQUIVOTELEFONE));
             String[] ler;
 
             //le primeira linha arquivo
@@ -225,7 +227,7 @@ public class ReadWrite {
                 telefones.get(cont).setId(Integer.parseInt(ler[0]));
                 telefones.get(cont).setDdd(ler[1]);
                 telefones.get(cont).setNumero(ler[2]);
-           
+
                 cont++;
                 try {
                     //le proxima linha do arquivo
@@ -244,16 +246,16 @@ public class ReadWrite {
         }
 
     }
-     //escreve carro arquivo txt
-    public void writeCarro(String nomeArquivo, List<Carro> objetoGravar) {
+    //escreve carro arquivo txt
+
+    public boolean writeCarro(List<Carro> objetoGravar) {
 
         BufferedWriter writer;
-        
-        try {
-            writer = new BufferedWriter(new FileWriter(nomeArquivo));
-            
-            //Collections.sort(objetoGravar);
 
+        try {
+            writer = new BufferedWriter(new FileWriter(ARQUIVOCARRO));
+
+            //Collections.sort(objetoGravar);
             for (int i = 0; i < objetoGravar.size(); i++) {
 
                 writer.write(objetoGravar.get(i).salvar());
@@ -262,21 +264,23 @@ public class ReadWrite {
             }
 
             writer.close();
+            return true;
 
         } catch (IOException ex) {
             Logger.getLogger(ReadWrite.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
 
     }
-    
-     // ler Carro arquivo txt
-    public ArrayList<Carro> readCarro(String fileName) {
+
+    // ler Carro arquivo txt
+    public ArrayList<Carro> readCarro() {
 
         int cont = 0;
 
         try {
             //le arquivo
-            BufferedReader read = new BufferedReader(new FileReader(fileName));
+            BufferedReader read = new BufferedReader(new FileReader(ARQUIVOCARRO));
             String[] ler;
 
             //le primeira linha arquivo
@@ -301,8 +305,7 @@ public class ReadWrite {
                 carros.get(cont).setAno(ler[5]);
                 carros.get(cont).setKm(Integer.parseInt(ler[6]));
                 carros.get(cont).setAtivo(Boolean.valueOf(ler[7]));
-              
-           
+
                 cont++;
                 try {
                     //le proxima linha do arquivo
@@ -322,5 +325,4 @@ public class ReadWrite {
 
     }
 
-   
 }

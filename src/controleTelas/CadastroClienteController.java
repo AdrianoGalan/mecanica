@@ -64,10 +64,6 @@ public class CadastroClienteController implements Initializable {
     private TextField tfKm;
     @FXML
     private Label lbErro;
-    final String ARQUIVOPESSOA = "txt/pessoas.txt";
-    final String ARQUIVOENDERECO = "txt/enderecos.txt";
-    final String ARQUIVOCARRO = "txt/carros.txt";
-    final String ARQUIVOTELEFONE = "txt/telefones.txt";
     @FXML
     private TextField tfEstado;
     @FXML
@@ -101,10 +97,10 @@ public class CadastroClienteController implements Initializable {
         try {
             ReadWrite rw = new ReadWrite();
 
-            ArrayList<Pessoa> pessoas = rw.readPessoa(ARQUIVOPESSOA);
-            ArrayList<Endereco> enderecos = rw.readEndereco(ARQUIVOENDERECO);
-            ArrayList<Telefone> telefones = rw.readTelefone(ARQUIVOTELEFONE);
-            ArrayList<Carro> carros = rw.readCarro(ARQUIVOCARRO);
+            ArrayList<Pessoa> pessoas = rw.readPessoa();
+            ArrayList<Endereco> enderecos = rw.readEndereco();
+            ArrayList<Telefone> telefones = rw.readTelefone();
+            ArrayList<Carro> carros = rw.readCarro();
 
             int id = pessoas.size() + 1;
 
@@ -151,10 +147,10 @@ public class CadastroClienteController implements Initializable {
             carros.add(carro);
 
             //salva vetor no arquivo txt
-            rw.writePessoa(ARQUIVOPESSOA, pessoas);
-            rw.writeEndereco(ARQUIVOENDERECO, enderecos);
-            rw.writeTelefone(ARQUIVOTELEFONE, telefones);
-            rw.writeCarro(ARQUIVOCARRO, carros);
+            rw.writePessoa(pessoas);
+            rw.writeEndereco(enderecos);
+            rw.writeTelefone(telefones);
+            rw.writeCarro(carros);
             limparCampos();
             lbOk.setText("Cliente cadastrado com sucesso!");
         } catch (Exception e) {

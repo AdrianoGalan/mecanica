@@ -4,3 +4,8 @@
 4;16543532;LALALA;NS;NDF;DHDHD;35000;true
 5;516851;AFSAF;ASFSAF;ASFSA;SAFSA;65151;true
 6;665-1651;asfasfsa;adsasd;asd;2000;1651;true
+1;fdr-8451;civic;honda;1,7;2003;30000;true
+5;sss-5555;moledo;marca;1,9;2019;30000;true
+1;fdr-8451;civic;honda;1,7;2003;30000;true
+1;fdr-8451;civic;honda;1,7;2003;30000;true
+3;fff-f666;66666;66666;6666;6666;6666666;true
