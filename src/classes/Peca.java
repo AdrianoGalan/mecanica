@@ -9,13 +9,21 @@ package classes;
  *
  * @author Adriano
  */
-class Peca {
+public class Peca {
 
     private int idOrcamento;
     private String nome;
     private double preco;
 
     public Peca() {
+    }
+
+    public int getIdOrcamento() {
+        return idOrcamento;
+    }
+
+    public void setIdOrcamento(int idOrcamento) {
+        this.idOrcamento = idOrcamento;
     }
 
     public String getNome() {
@@ -34,12 +42,11 @@ class Peca {
         this.preco = preco;
     }
 
-    public int getIdOrcamento() {
-        return idOrcamento;
-    }
 
-    public void setIdOrcamento(int idOrcamento) {
-        this.idOrcamento = idOrcamento;
+    public String salvar() {
+        return idOrcamento + ";" + nome + ";" + preco;
     }
+    
+    
 
 }

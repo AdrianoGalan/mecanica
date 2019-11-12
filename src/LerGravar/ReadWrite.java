@@ -10,6 +10,8 @@ import classes.Endereco;
 import classes.Orcamento;
 import classes.Pessoa;
 import classes.Telefone;
+import classes.Peca;
+import classes.Servico;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -28,6 +30,8 @@ public class ReadWrite {
     final String ARQUIVOCARRO = "txt/carros.txt";
     final String ARQUIVOTELEFONE = "txt/telefones.txt";
     final String ARQUIVOOCAMENTO = "txt/orcamentos.txt";
+    final String ARQUIVOPECAS = "txt/pecas.txt";
+    final String ARQUIVOSERVICOS = "txt/servicos.txt";
 
     //escreve Pessoa arquivo txt
     public void writePessoa(List<Pessoa> objetoGravar) {
@@ -373,7 +377,7 @@ public class ReadWrite {
             while (ler != null) {
 
                 orcamentos.add(new Orcamento());
-// +  ";" + valorTotalMaoObra + ";" + dataAtual + ";" + horaAtual + ";" + status;
+
                 orcamentos.get(cont).setId(Integer.parseInt(ler[0]));
                 orcamentos.get(cont).setIdCarro(Integer.parseInt(ler[1]));
                 orcamentos.get(cont).setDescricaoProblema(ler[2]);
@@ -394,6 +398,152 @@ public class ReadWrite {
             }
 
             return orcamentos;
+
+        } catch (FileNotFoundException ex) {
+            return null;
+
+        }
+
+    }
+    //escreve Peças arquivo txt
+
+    public boolean writePecas(List<Peca> objetoGravar) {
+
+        BufferedWriter writer;
+
+        try {
+            writer = new BufferedWriter(new FileWriter(ARQUIVOPECAS));
+
+            //Collections.sort(objetoGravar);
+            for (int i = 0; i < objetoGravar.size(); i++) {
+
+                writer.write(objetoGravar.get(i).salvar());
+                writer.newLine();
+
+            }
+
+            writer.close();
+            return true;
+
+        } catch (IOException ex) {
+            Logger.getLogger(ReadWrite.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+
+    }
+
+    // ler Orçamento arquivo txt
+    public ArrayList<Peca> readPecas() {
+
+        int cont = 0;
+
+        try {
+            //le arquivo
+            BufferedReader read = new BufferedReader(new FileReader(ARQUIVOPECAS));
+            String[] ler;
+
+            //le primeira linha arquivo
+            try {
+
+                ler = read.readLine().split(";");
+
+            } catch (Exception e) {
+                ler = null;
+            }
+            ArrayList<Peca> pecas = new ArrayList<>();
+
+            while (ler != null) {
+
+                pecas.add(new Peca());
+
+                pecas.get(cont).setIdOrcamento(Integer.parseInt(ler[0]));
+                pecas.get(cont).setNome(ler[1]);
+                pecas.get(cont).setPreco(Double.parseDouble(ler[2]));
+               
+                cont++;
+                try {
+                    //le proxima linha do arquivo
+                    ler = read.readLine().split(";");
+                } catch (Exception e) {
+                    ler = null;
+                }
+
+            }
+
+            return pecas;
+
+        } catch (FileNotFoundException ex) {
+            return null;
+
+        }
+
+    }
+    //escreve Serviços arquivo txt
+
+    public boolean writeServicos(List<Servico> objetoGravar) {
+
+        BufferedWriter writer;
+
+        try {
+            writer = new BufferedWriter(new FileWriter(ARQUIVOSERVICOS));
+
+            //Collections.sort(objetoGravar);
+            for (int i = 0; i < objetoGravar.size(); i++) {
+
+                writer.write(objetoGravar.get(i).salvar());
+                writer.newLine();
+
+            }
+
+            writer.close();
+            return true;
+
+        } catch (IOException ex) {
+            Logger.getLogger(ReadWrite.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+
+    }
+
+    // ler Orçamento arquivo txt
+    public ArrayList<Servico> readServicos() {
+
+        int cont = 0;
+
+        try {
+            //le arquivo
+            BufferedReader read = new BufferedReader(new FileReader(ARQUIVOSERVICOS));
+            String[] ler;
+
+            //le primeira linha arquivo
+            try {
+
+                ler = read.readLine().split(";");
+
+            } catch (Exception e) {
+                ler = null;
+            }
+            ArrayList<Servico> servicos = new ArrayList<>();
+
+            while (ler != null) {
+
+                servicos.add(new Servico());
+
+                servicos.get(cont).setIdOrcamento(Integer.parseInt(ler[0]));
+                servicos.get(cont).setDescricao(ler[1]);
+                servicos.get(cont).setPreco(Double.parseDouble(ler[2]));
+               
+                cont++;
+                try {
+                    //le proxima linha do arquivo
+                    ler = read.readLine().split(";");
+                } catch (Exception e) {
+                    ler = null;
+                }
+
+            }
+
+            return servicos;
 
         } catch (FileNotFoundException ex) {
             return null;

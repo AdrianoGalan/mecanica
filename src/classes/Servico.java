@@ -18,6 +18,14 @@ public class Servico {
     public Servico() {
     }
 
+    public int getIdOrcamento() {
+        return idOrcamento;
+    }
+
+    public void setIdOrcamento(int idOrcamento) {
+        this.idOrcamento = idOrcamento;
+    }
+
     public String getDescricao() {
         return descricao;
     }
@@ -34,12 +42,8 @@ public class Servico {
         this.preco = preco;
     }
 
-    public int getIdOrcamento() {
-        return idOrcamento;
-    }
-
-    public void setIdOrcamento(int idOrcamento) {
-        this.idOrcamento = idOrcamento;
+    public String salvar() {
+        return idOrcamento + ";" + descricao + ";" + preco;
     }
 
 }
