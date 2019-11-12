@@ -18,7 +18,7 @@ public class Carro {
     private String motor;
     private String ano;
     private int km;
-    private boolean Ativo;
+    private boolean status;
 
     public Carro() {
     }
@@ -71,12 +71,12 @@ public class Carro {
         this.km = km;
     }
 
-    public boolean isAtivo() {
-        return Ativo;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setAtivo(boolean Ativo) {
-        this.Ativo = Ativo;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public String getAno() {
@@ -89,13 +89,20 @@ public class Carro {
 
     public String salvar() {
 
-        return id + ";" + placa + ";" + modelo + ";" + fabricante + ";" + motor + ";" + ano + ";" + km + ";" + Ativo;
+        return id + ";" + placa + ";" + modelo + ";" + fabricante + ";" + motor + ";" + ano + ";" + km + ";" + status;
     }
 
     @Override
     public String toString() {
-        return  "placa: " + placa + ", modelo: " + modelo + ", fabricante: " + fabricante + ", motor: " + motor + ", ano: " + ano ;
+
+        if (status) {
+
+            return "placa: " + placa + ", modelo: " + modelo + ", fabricante: " + fabricante + ", motor: " + motor + ", ano: " + ano;
+
+        } else {
+            return "placa: " + placa + ", modelo: " + modelo + ", fabricante: " + fabricante + ", motor: " + motor + ", ano: " + ano + " CARRO INATIVO";
+        }
+
     }
 
-    
 }

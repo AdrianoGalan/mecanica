@@ -136,7 +136,7 @@ public class TrabalhoController implements Initializable {
         mes = mes.substring(1,3);
         mes = mes1 + mes.toLowerCase();
         String dataAtual = dt.getDayOfMonth() + " " + mes + ". de " + dt.getYear();
-        String horaAtual = (dt.getHour()-1) + ":" + dt.getMinute();
+        String horaAtual = (dt.getHour()) + ":" + dt.getMinute();
         lbData.setText(dataAtual);
         lbHora.setText(horaAtual);
 

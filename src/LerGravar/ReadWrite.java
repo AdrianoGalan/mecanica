@@ -304,7 +304,7 @@ public class ReadWrite {
                 carros.get(cont).setMotor(ler[4]);
                 carros.get(cont).setAno(ler[5]);
                 carros.get(cont).setKm(Integer.parseInt(ler[6]));
-                carros.get(cont).setAtivo(Boolean.valueOf(ler[7]));
+                carros.get(cont).setStatus(Boolean.valueOf(ler[7]));
 
                 cont++;
                 try {

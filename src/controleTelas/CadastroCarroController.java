@@ -90,7 +90,7 @@ public class CadastroCarroController implements Initializable {
                 carro.setFabricante(tfFabricante.getText());
                 carro.setMotor(tfMotor.getText());
                 carro.setKm(Integer.parseInt(tfKm.getText()));
-                carro.setAtivo(true);
+                carro.setStatus(true);
                 carro.setId(pessoa.getId());
                 
                 carros.add(carro);

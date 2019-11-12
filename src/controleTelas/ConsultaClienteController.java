@@ -20,6 +20,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -104,6 +105,7 @@ public class ConsultaClienteController implements Initializable {
         }
 
     }
+
     private void povoarListViewcarro(List<Carro> carros) {
 
         lvCarros.getItems().clear();
@@ -122,10 +124,50 @@ public class ConsultaClienteController implements Initializable {
 
     @FXML
     private void acaoBtDesativarCarro(ActionEvent event) {
+        Pessoa p = lvClientes.getSelectionModel().getSelectedItem();
+        Carro c = lvCarros.getSelectionModel().getSelectedItem();
+        ArrayList<Carro> carros = rw.readCarro();
+        int id = -1;
+        if (p != null) {
+
+            if (c != null) {
+
+                for (int i = 0; i < carros.size(); i++) {
+                    if (carros.get(i).getPlaca().equals(c.getPlaca())) {
+                        id = i;
+                    }
+                }
+
+                if (c.isStatus()) {
+
+                    c.setStatus(false);
+
+                    carros.set(id, c);
+                } else {
+                    c.setStatus(true);
+                    carros.set(id, c);
+                }
+
+                rw.writeCarro(carros);
+                filtraCarros();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione um carro");
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um cliente");
+        }
+
     }
 
     @FXML
     private void acaoBtBuscar(ActionEvent event) {
+
+        filtraCarros();
+    }
+
+    public void filtraCarros() {
 
         Pessoa p = lvClientes.getSelectionModel().getSelectedItem();
         ArrayList<Carro> carros = rw.readCarro();
@@ -139,10 +181,13 @@ public class ConsultaClienteController implements Initializable {
                     filtro.add(carros.get(i));
                 }
             }
-            
+
             povoarListViewcarro(filtro);
 
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um cliente");
         }
+
     }
 
 }
