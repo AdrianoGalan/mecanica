@@ -79,6 +79,8 @@ public class CadastroCarroController implements Initializable {
         Pessoa pessoa = lvClientes.getSelectionModel().getSelectedItem();
         ReadWrite rw = new ReadWrite();
         ArrayList<Carro> carros = rw.readCarro();
+        
+        int id = carros.size()+1;
 
         if (pessoa != null) {
             if (validarCampos()) {
@@ -91,7 +93,8 @@ public class CadastroCarroController implements Initializable {
                 carro.setMotor(tfMotor.getText());
                 carro.setKm(Integer.parseInt(tfKm.getText()));
                 carro.setStatus(true);
-                carro.setId(pessoa.getId());
+                carro.setIdPessoa(pessoa.getId());
+                carro.setId(id);
                 
                 carros.add(carro);
                 

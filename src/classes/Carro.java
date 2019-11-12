@@ -12,6 +12,7 @@ package classes;
 public class Carro {
 
     private int id;
+    private int idPessoa;
     private String placa;
     private String modelo;
     private String fabricante;
@@ -29,6 +30,14 @@ public class Carro {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getIdPessoa() {
+        return idPessoa;
+    }
+
+    public void setIdPessoa(int idPessoa) {
+        this.idPessoa = idPessoa;
     }
 
     public String getPlaca() {
@@ -89,7 +98,7 @@ public class Carro {
 
     public String salvar() {
 
-        return id + ";" + placa + ";" + modelo + ";" + fabricante + ";" + motor + ";" + ano + ";" + km + ";" + status;
+        return id + ";" + idPessoa + ";" + placa + ";" + modelo + ";" + fabricante + ";" + motor + ";" + ano + ";" + km + ";" + status;
     }
 
     @Override

@@ -103,6 +103,7 @@ public class CadastroClienteController implements Initializable {
             ArrayList<Carro> carros = rw.readCarro();
 
             int id = pessoas.size() + 1;
+            int idCarro = carros.size() + 1;
 
             Pessoa pessoa = new Pessoa(id);
             Endereco endereco = new Endereco();
@@ -131,6 +132,7 @@ public class CadastroClienteController implements Initializable {
             endereco.setCidade(tfCidade.getText());
             endereco.setId(pessoa.getId());
 
+            carro.setId(idCarro);
             carro.setPlaca(tfPlaca.getText());
             carro.setAno(tfAno.getText());
             carro.setModelo(tfModelo.getText());
@@ -138,7 +140,7 @@ public class CadastroClienteController implements Initializable {
             carro.setMotor(tfMotor.getText());
             carro.setKm(Integer.parseInt(tfKm.getText()));
             carro.setStatus(true);
-            carro.setId(pessoa.getId());
+            carro.setIdPessoa(pessoa.getId());
 
             //adiciona objeto no vetor
             pessoas.add(pessoa);

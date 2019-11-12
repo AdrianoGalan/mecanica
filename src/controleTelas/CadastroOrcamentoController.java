@@ -5,9 +5,22 @@
  */
 package controleTelas;
 
+import LerGravar.ReadWrite;
+import classes.Carro;
+import classes.Orcamento;
+import classes.Pessoa;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -16,12 +29,113 @@ import javafx.fxml.Initializable;
  */
 public class CadastroOrcamentoController implements Initializable {
 
+    @FXML
+    private TextField tfPlacaCarro;
+    @FXML
+    private Button btConsultaPlaca;
+    @FXML
+    private Label lbNome;
+    @FXML
+    private Label lbCarro;
+    @FXML
+    private TextArea taDescricaoProblema;
+    @FXML
+    private ListView<?> lwServicos;
+    @FXML
+    private ListView<?> lwPecas;
+    @FXML
+    private TextField tfServico;
+    @FXML
+    private TextField tfPrecoServico;
+    @FXML
+    private Button btAddServico;
+    @FXML
+    private TextField tfPrecoPeca;
+    @FXML
+    private TextField tfPeca;
+    @FXML
+    private Button btAddPeca;
+    @FXML
+    private Button btRemoveServico;
+    @FXML
+    private Button btRemovePeca;
+
+    private ReadWrite rw = new ReadWrite();
+    
+    private Orcamento orcamento = new Orcamento();
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+        
+        
+
+    }
+
+    @FXML
+    private void acaoBtConsultaPlaca(ActionEvent event) {
+
+        Carro carro;
+        Pessoa pessoa;
+
+        if (!tfPlacaCarro.getText().isEmpty()) {
+            carro = consultaPorPlaca(tfPlacaCarro.getText());
+            pessoa = consultaPorId(carro.getIdPessoa());
+            lbNome.setText(pessoa.getNome());
+            lbCarro.setText(carro.getModelo());
+        } else {
+            JOptionPane.showMessageDialog(null, "Digite a placa do carro");
+        }
+    }
+
+    @FXML
+    private void acaoBtAddServico(ActionEvent event) {
+    }
+
+    @FXML
+    private void acaoBtAddPeca(ActionEvent event) {
+    }
+
+    @FXML
+    private void acaoBtRemoveServico(ActionEvent event) {
+    }
+
+    @FXML
+    private void acaoBtRemovePeca(ActionEvent event) {
+    }
+
+    private Carro consultaPorPlaca(String placa) {
+
+        ArrayList<Carro> carros = rw.readCarro();
+
+        for (int i = 0; i < carros.size(); i++) {
+
+            if (carros.get(i).getPlaca().equalsIgnoreCase(placa)) {
+                return carros.get(i);
+            }
+
+        }
+
+        return null;
+
+    }
+
+    private Pessoa consultaPorId(int id) {
+
+        ArrayList<Pessoa> pessoa = rw.readPessoa();
+
+        for (int i = 0; i < pessoa.size(); i++) {
+
+            if (pessoa.get(i).getId() == id) {
+                return pessoa.get(i);
+            }
+
+        }
+
+        return null;
+
+    }
+
 }

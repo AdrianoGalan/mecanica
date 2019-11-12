@@ -177,7 +177,7 @@ public class ConsultaClienteController implements Initializable {
             tfCpf.setText(p.getCpf());
             tfBuscaCliente.setText(p.getNome());
             for (int i = 0; i < carros.size(); i++) {
-                if (carros.get(i).getId() == p.getId()) {
+                if (carros.get(i).getIdPessoa()== p.getId()) {
                     filtro.add(carros.get(i));
                 }
             }

@@ -7,6 +7,7 @@ package LerGravar;
 
 import classes.Carro;
 import classes.Endereco;
+import classes.Orcamento;
 import classes.Pessoa;
 import classes.Telefone;
 import java.io.BufferedReader;
@@ -26,6 +27,7 @@ public class ReadWrite {
     final String ARQUIVOENDERECO = "txt/enderecos.txt";
     final String ARQUIVOCARRO = "txt/carros.txt";
     final String ARQUIVOTELEFONE = "txt/telefones.txt";
+    final String ARQUIVOOCAMENTO = "txt/orcamentos.txt";
 
     //escreve Pessoa arquivo txt
     public void writePessoa(List<Pessoa> objetoGravar) {
@@ -78,10 +80,6 @@ public class ReadWrite {
                 pessoa.get(cont).setId(Integer.parseInt(ler[0]));
                 pessoa.get(cont).setNome(ler[1]);
                 pessoa.get(cont).setCpf(ler[2]);
-//                pessoa.get(cont).setTelefone(Integer.parseInt(ler[3]));
-//                pessoa.get(cont).setTelefone2(Integer.parseInt(ler[4]));
-//                pessoa.get(cont).setEndereco(Integer.parseInt(ler[5]));
-//                pessoa.get(cont).setCarro(Integer.parseInt(ler[6]));
                 cont++;
                 try {
                     //le proxima linha do arquivo
@@ -298,13 +296,14 @@ public class ReadWrite {
                 carros.add(new Carro());
 
                 carros.get(cont).setId(Integer.parseInt(ler[0]));
-                carros.get(cont).setPlaca(ler[1]);
-                carros.get(cont).setModelo(ler[2]);
-                carros.get(cont).setFabricante(ler[3]);
-                carros.get(cont).setMotor(ler[4]);
-                carros.get(cont).setAno(ler[5]);
-                carros.get(cont).setKm(Integer.parseInt(ler[6]));
-                carros.get(cont).setStatus(Boolean.valueOf(ler[7]));
+                carros.get(cont).setIdPessoa(Integer.parseInt(ler[1]));
+                carros.get(cont).setPlaca(ler[2]);
+                carros.get(cont).setModelo(ler[3]);
+                carros.get(cont).setFabricante(ler[4]);
+                carros.get(cont).setMotor(ler[5]);
+                carros.get(cont).setAno(ler[6]);
+                carros.get(cont).setKm(Integer.parseInt(ler[7]));
+                carros.get(cont).setStatus(Boolean.valueOf(ler[8]));
 
                 cont++;
                 try {
@@ -317,6 +316,84 @@ public class ReadWrite {
             }
 
             return carros;
+
+        } catch (FileNotFoundException ex) {
+            return null;
+
+        }
+
+    }
+    //escreve Orçamento arquivo txt
+
+    public boolean writeOrcamento(List<Orcamento> objetoGravar) {
+
+        BufferedWriter writer;
+
+        try {
+            writer = new BufferedWriter(new FileWriter(ARQUIVOOCAMENTO));
+
+            //Collections.sort(objetoGravar);
+            for (int i = 0; i < objetoGravar.size(); i++) {
+
+                writer.write(objetoGravar.get(i).salvar());
+                writer.newLine();
+
+            }
+
+            writer.close();
+            return true;
+
+        } catch (IOException ex) {
+            Logger.getLogger(ReadWrite.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+
+    }
+
+    // ler Orçamento arquivo txt
+    public ArrayList<Orcamento> readOrcamento() {
+
+        int cont = 0;
+
+        try {
+            //le arquivo
+            BufferedReader read = new BufferedReader(new FileReader(ARQUIVOCARRO));
+            String[] ler;
+
+            //le primeira linha arquivo
+            try {
+
+                ler = read.readLine().split(";");
+
+            } catch (Exception e) {
+                ler = null;
+            }
+            ArrayList<Orcamento> orcamentos = new ArrayList<>();
+
+            while (ler != null) {
+
+                orcamentos.add(new Orcamento());
+// +  ";" + valorTotalMaoObra + ";" + dataAtual + ";" + horaAtual + ";" + status;
+                orcamentos.get(cont).setId(Integer.parseInt(ler[0]));
+                orcamentos.get(cont).setIdCarro(Integer.parseInt(ler[1]));
+                orcamentos.get(cont).setDescricaoProblema(ler[2]);
+                orcamentos.get(cont).setValorTotalPecas(Double.parseDouble(ler[3]));
+                orcamentos.get(cont).setValorTotalMaoObra(Double.parseDouble(ler[4]));
+                orcamentos.get(cont).setDataAtual(ler[5]);
+                orcamentos.get(cont).setHoraAtual(ler[6]);
+                orcamentos.get(cont).setStatus(Boolean.valueOf(ler[7]));
+
+                cont++;
+                try {
+                    //le proxima linha do arquivo
+                    ler = read.readLine().split(";");
+                } catch (Exception e) {
+                    ler = null;
+                }
+
+            }
+
+            return orcamentos;
 
         } catch (FileNotFoundException ex) {
             return null;
