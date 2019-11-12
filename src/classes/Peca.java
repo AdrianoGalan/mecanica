@@ -46,6 +46,12 @@ public class Peca {
     public String salvar() {
         return idOrcamento + ";" + nome + ";" + preco;
     }
+
+    @Override
+    public String toString() {
+        return "PEÇA " + nome + "   R$" + preco;
+    }
+    
     
     
 

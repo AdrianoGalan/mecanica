@@ -72,6 +72,7 @@ public class TrabalhoController implements Initializable {
     @FXML
     private void acaoBtNovoOrcamento(ActionEvent event) {
         carregaTela("/telas/CadastroOrcamento.fxml");
+       
     }
 
     @FXML

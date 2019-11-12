@@ -8,9 +8,12 @@ package controleTelas;
 import LerGravar.ReadWrite;
 import classes.Carro;
 import classes.Orcamento;
+import classes.Peca;
 import classes.Pessoa;
+import classes.Servico;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,9 +43,9 @@ public class CadastroOrcamentoController implements Initializable {
     @FXML
     private TextArea taDescricaoProblema;
     @FXML
-    private ListView<?> lwServicos;
+    private ListView<Servico> lwServicos;
     @FXML
-    private ListView<?> lwPecas;
+    private ListView<Peca> lwPecas;
     @FXML
     private TextField tfServico;
     @FXML
@@ -61,16 +64,20 @@ public class CadastroOrcamentoController implements Initializable {
     private Button btRemovePeca;
 
     private ReadWrite rw = new ReadWrite();
-    
+
     private Orcamento orcamento = new Orcamento();
+
+    private ArrayList<Peca> pecas = new ArrayList();
+    private ArrayList<Servico> servicos = new ArrayList();
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        
+
+        ArrayList<Orcamento> orcamentos = rw.readOrcamento();
+        orcamento.setId(orcamentos.size() + 1);
 
     }
 
@@ -96,6 +103,32 @@ public class CadastroOrcamentoController implements Initializable {
 
     @FXML
     private void acaoBtAddPeca(ActionEvent event) {
+
+        if (!tfPeca.getText().isEmpty()) {
+            if (!tfPrecoPeca.getText().isEmpty()) {
+                
+                Peca peca = new Peca();
+                
+                peca.setIdOrcamento(orcamento.getId());
+                peca.setNome(tfPeca.getText());
+                try {
+                
+                    peca.setPreco(Double.parseDouble(tfPrecoPeca.getText()));
+                    pecas.add(peca);
+                    povoarListViewecas(pecas);
+                    
+                } catch (Exception e) {
+                    
+                    JOptionPane.showMessageDialog(null, "Preço invalido");
+                }
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Digite o Preço da Peça");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Digite o nome da Peça");
+        }
+
     }
 
     @FXML
@@ -135,6 +168,22 @@ public class CadastroOrcamentoController implements Initializable {
         }
 
         return null;
+
+    }
+    
+    private void povoarListViewecas(List<Peca> pecas) {
+
+        lwPecas.getItems().clear();
+
+        for (Peca p : pecas) {
+
+            if (p != null) {
+
+                lwPecas.getItems().add(p);
+
+            }
+
+        }
 
     }
 
