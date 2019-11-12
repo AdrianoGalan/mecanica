@@ -377,17 +377,22 @@ public class ReadWrite {
             while (ler != null) {
 
                 orcamentos.add(new Orcamento());
+                try {
 
-                orcamentos.get(cont).setId(Integer.parseInt(ler[0]));
-                orcamentos.get(cont).setIdCarro(Integer.parseInt(ler[1]));
-                orcamentos.get(cont).setDescricaoProblema(ler[2]);
-                orcamentos.get(cont).setValorTotalPecas(Double.parseDouble(ler[3]));
-                orcamentos.get(cont).setValorTotalMaoObra(Double.parseDouble(ler[4]));
-                orcamentos.get(cont).setDataAtual(ler[5]);
-                orcamentos.get(cont).setHoraAtual(ler[6]);
-                orcamentos.get(cont).setStatus(Boolean.valueOf(ler[7]));
+                    orcamentos.get(cont).setId(Integer.parseInt(ler[0]));
+                    orcamentos.get(cont).setIdCarro(Integer.parseInt(ler[1]));
+                    orcamentos.get(cont).setDescricaoProblema(ler[2]);
+                    orcamentos.get(cont).setValorTotalPecas(Double.parseDouble(ler[3]));
+                    orcamentos.get(cont).setValorTotalMaoObra(Double.parseDouble(ler[4]));
+                    orcamentos.get(cont).setDataAtual(ler[5]);
+                    orcamentos.get(cont).setHoraAtual(ler[6]);
+                    orcamentos.get(cont).setStatus(Boolean.valueOf(ler[7]));
 
-                cont++;
+                    cont++;
+                } catch (Exception e) {
+                    return null;
+                }
+
                 try {
                     //le proxima linha do arquivo
                     ler = read.readLine().split(";");
@@ -459,7 +464,7 @@ public class ReadWrite {
                 pecas.get(cont).setIdOrcamento(Integer.parseInt(ler[0]));
                 pecas.get(cont).setNome(ler[1]);
                 pecas.get(cont).setPreco(Double.parseDouble(ler[2]));
-               
+
                 cont++;
                 try {
                     //le proxima linha do arquivo
@@ -532,7 +537,7 @@ public class ReadWrite {
                 servicos.get(cont).setIdOrcamento(Integer.parseInt(ler[0]));
                 servicos.get(cont).setDescricao(ler[1]);
                 servicos.get(cont).setPreco(Double.parseDouble(ler[2]));
-               
+
                 cont++;
                 try {
                     //le proxima linha do arquivo

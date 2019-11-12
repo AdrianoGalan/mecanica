@@ -72,7 +72,7 @@ public class TrabalhoController implements Initializable {
     @FXML
     private void acaoBtNovoOrcamento(ActionEvent event) {
         carregaTela("/telas/CadastroOrcamento.fxml");
-       
+
     }
 
     @FXML
@@ -90,7 +90,7 @@ public class TrabalhoController implements Initializable {
 
     @FXML
     private void acaoBtConsultaCliente(ActionEvent event) {
-        
+
         carregaTela("/telas/ConsultaCliente.fxml");
     }
 
@@ -101,19 +101,22 @@ public class TrabalhoController implements Initializable {
     @FXML
     private void acaoBtConsultaOS(ActionEvent event) {
     }
-    
-       @FXML
+
+    @FXML
     private void acaoBtCadasCarro(ActionEvent event) {
-        
+
         carregaTela("/telas/CadastroCarro.fxml");
     }
 
     public void carregaTela(String nomeTela) {
 
         //carrega tela
-        try {
+       
 
-            AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource(nomeTela));
+            AnchorPane a;
+        try {
+            a = (AnchorPane) FXMLLoader.load(getClass().getResource(nomeTela));
+       
 
             AnchorPane.setTopAnchor(a, 0.0);
             AnchorPane.setLeftAnchor(a, 0.0);
@@ -121,10 +124,10 @@ public class TrabalhoController implements Initializable {
             AnchorPane.setBottomAnchor(a, 0.0);
 
             PanePrincipal.getChildren().setAll(a);
-
-        } catch (IOException ex) {
-            //  Logger.getLogger(FXMLTelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+ } catch (IOException ex) {
+            Logger.getLogger(TrabalhoController.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
 
     }
 
@@ -133,8 +136,8 @@ public class TrabalhoController implements Initializable {
         LocalDateTime dt = LocalDateTime.now();
         String mes = "" + dt.getMonth();
         String mes1 = "" + dt.getMonth();
-        mes1 = mes.substring(0,1);
-        mes = mes.substring(1,3);
+        mes1 = mes.substring(0, 1);
+        mes = mes.substring(1, 3);
         mes = mes1 + mes.toLowerCase();
         String dataAtual = dt.getDayOfMonth() + " " + mes + ". de " + dt.getYear();
         String horaAtual = (dt.getHour()) + ":" + dt.getMinute();
@@ -142,7 +145,5 @@ public class TrabalhoController implements Initializable {
         lbHora.setText(horaAtual);
 
     }
-
- 
 
 }

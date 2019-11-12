@@ -31,7 +31,7 @@ public class Peca {
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nome = nome.toUpperCase();
     }
 
     public double getPreco() {
@@ -49,7 +49,7 @@ public class Peca {
 
     @Override
     public String toString() {
-        return "PEÇA " + nome + "   R$" + preco;
+        return  nome + "   R$" + preco;
     }
     
     

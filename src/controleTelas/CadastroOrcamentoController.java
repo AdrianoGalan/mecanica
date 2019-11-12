@@ -76,8 +76,15 @@ public class CadastroOrcamentoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        orcamento.setIdCarro(-1);
+
         ArrayList<Orcamento> orcamentos = rw.readOrcamento();
-        orcamento.setId(orcamentos.size() + 1);
+        if (orcamentos == null) {
+            orcamento.setId(1);
+        } else {
+            orcamento.setId(orcamentos.size() + 1);
+
+        }
 
     }
 
@@ -90,6 +97,7 @@ public class CadastroOrcamentoController implements Initializable {
         if (!tfPlacaCarro.getText().isEmpty()) {
             carro = consultaPorPlaca(tfPlacaCarro.getText());
             pessoa = consultaPorId(carro.getIdPessoa());
+            orcamento.setIdCarro(carro.getId());
             lbNome.setText(pessoa.getNome());
             lbCarro.setText(carro.getModelo());
         } else {
@@ -103,40 +111,63 @@ public class CadastroOrcamentoController implements Initializable {
 
     @FXML
     private void acaoBtAddPeca(ActionEvent event) {
+        if (orcamento.getIdCarro() != -1) {
+            if (!tfPeca.getText().isEmpty()) {
+                if (!tfPrecoPeca.getText().isEmpty()) {
 
-        if (!tfPeca.getText().isEmpty()) {
-            if (!tfPrecoPeca.getText().isEmpty()) {
-                
-                Peca peca = new Peca();
-                
-                peca.setIdOrcamento(orcamento.getId());
-                peca.setNome(tfPeca.getText());
-                try {
-                
-                    peca.setPreco(Double.parseDouble(tfPrecoPeca.getText()));
-                    pecas.add(peca);
-                    povoarListViewecas(pecas);
-                    
-                } catch (Exception e) {
-                    
-                    JOptionPane.showMessageDialog(null, "Preço invalido");
+                    Peca peca = new Peca();
+
+                    peca.setIdOrcamento(orcamento.getId());
+                    peca.setNome(tfPeca.getText());
+                    try {
+
+                        peca.setPreco(Double.parseDouble(tfPrecoPeca.getText()));
+                        pecas.add(peca);
+                        povoarListViewecas(pecas);
+                        tfPeca.setText("");
+                        tfPrecoPeca.setText("");
+
+                    } catch (Exception e) {
+
+                        JOptionPane.showMessageDialog(null, "Preço invalido");
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Digite o Preço da Peça");
                 }
-                
             } else {
-                JOptionPane.showMessageDialog(null, "Digite o Preço da Peça");
+                JOptionPane.showMessageDialog(null, "Digite o nome da Peça");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Digite o nome da Peça");
+            JOptionPane.showMessageDialog(null, "Digite a Placa do carro");
         }
 
     }
 
     @FXML
     private void acaoBtRemoveServico(ActionEvent event) {
+
     }
 
     @FXML
     private void acaoBtRemovePeca(ActionEvent event) {
+
+        int id = -1;
+        Peca peca = lwPecas.getSelectionModel().getSelectedItem();
+        if (peca != null) {
+            for (int i = 0; i < pecas.size(); i++) {
+                if (peca.getNome().equals(pecas.get(i).getNome())) {
+                    id = i;
+                    break;
+                }
+            }
+            if (id != -1) {
+                pecas.remove(id);
+            }
+            povoarListViewecas(pecas);
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma peça");
+        }
     }
 
     private Carro consultaPorPlaca(String placa) {
@@ -170,7 +201,7 @@ public class CadastroOrcamentoController implements Initializable {
         return null;
 
     }
-    
+
     private void povoarListViewecas(List<Peca> pecas) {
 
         lwPecas.getItems().clear();
