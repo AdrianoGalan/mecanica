@@ -15,14 +15,22 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SortEvent;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javax.swing.JOptionPane;
 
 /**
@@ -44,7 +52,6 @@ public class CadastroOrcamentoController implements Initializable {
     private TextArea taDescricaoProblema;
     @FXML
     private ListView<Servico> lwServicos;
-    @FXML
     private ListView<Peca> lwPecas;
     @FXML
     private TextField tfServico;
@@ -66,9 +73,16 @@ public class CadastroOrcamentoController implements Initializable {
     private ReadWrite rw = new ReadWrite();
 
     private Orcamento orcamento = new Orcamento();
+    private Peca pecaSelecionada;
 
     private ArrayList<Peca> pecas = new ArrayList();
     private ArrayList<Servico> servicos = new ArrayList();
+    @FXML
+    private TableView<Peca> tbPecas;
+    @FXML
+    private TableColumn<Peca, String> tbPecaCoDescricao;
+    @FXML
+    private TableColumn<Peca, Double> tbPecaCoPreco;
 
     /**
      * Initializes the controller class.
@@ -83,8 +97,15 @@ public class CadastroOrcamentoController implements Initializable {
             orcamento.setId(1);
         } else {
             orcamento.setId(orcamentos.size() + 1);
-
         }
+        
+         tbPecas.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                
+                            
+            }
+        });
 
     }
 
@@ -111,6 +132,7 @@ public class CadastroOrcamentoController implements Initializable {
 
     @FXML
     private void acaoBtAddPeca(ActionEvent event) {
+
         if (orcamento.getIdCarro() != -1) {
             if (!tfPeca.getText().isEmpty()) {
                 if (!tfPrecoPeca.getText().isEmpty()) {
@@ -123,7 +145,8 @@ public class CadastroOrcamentoController implements Initializable {
 
                         peca.setPreco(Double.parseDouble(tfPrecoPeca.getText()));
                         pecas.add(peca);
-                        povoarListViewecas(pecas);
+                        iniTablela();
+
                         tfPeca.setText("");
                         tfPrecoPeca.setText("");
 
@@ -152,22 +175,26 @@ public class CadastroOrcamentoController implements Initializable {
     @FXML
     private void acaoBtRemovePeca(ActionEvent event) {
 
-        int id = -1;
-        Peca peca = lwPecas.getSelectionModel().getSelectedItem();
-        if (peca != null) {
-            for (int i = 0; i < pecas.size(); i++) {
-                if (peca.getNome().equals(pecas.get(i).getNome())) {
-                    id = i;
-                    break;
-                }
-            }
-            if (id != -1) {
-                pecas.remove(id);
-            }
-            povoarListViewecas(pecas);
-        } else {
-            JOptionPane.showMessageDialog(null, "Selecione uma peça");
-        }
+//       
+//                int id = -1;
+//             
+//
+//                if (pecaSelecionada != null) {
+//                    for (int i = 0; i < pecas.size(); i++) {
+//                        if (pecaSelecionada.getNome().equals(pecas.get(i).getNome())) {
+//                            id = i;
+//                            break;
+//                        }
+//                    }
+//                    if (id != -1) {
+//                        pecas.remove(id);
+//                    }
+//                    iniTablela();
+//                } else {
+//                    JOptionPane.showMessageDialog(null, "Selecione uma peça");
+//                }
+
+
     }
 
     private Carro consultaPorPlaca(String placa) {
@@ -202,20 +229,17 @@ public class CadastroOrcamentoController implements Initializable {
 
     }
 
-    private void povoarListViewecas(List<Peca> pecas) {
+    private void iniTablela() {
 
-        lwPecas.getItems().clear();
+        tbPecaCoDescricao.setCellValueFactory(new PropertyValueFactory("nome"));
+        tbPecaCoPreco.setCellValueFactory(new PropertyValueFactory("preco"));
+        tbPecas.setItems(atualizaTabela());
 
-        for (Peca p : pecas) {
+    }
 
-            if (p != null) {
+    public ObservableList<Peca> atualizaTabela() {
 
-                lwPecas.getItems().add(p);
-
-            }
-
-        }
-
+        return FXCollections.observableArrayList(pecas);
     }
 
 }

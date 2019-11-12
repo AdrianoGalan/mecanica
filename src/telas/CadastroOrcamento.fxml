@@ -16,7 +16,6 @@
       <TextArea fx:id="taDescricaoProblema" layoutX="259.0" layoutY="59.0" prefHeight="98.0" prefWidth="505.0" />
       <Label layoutX="449.0" layoutY="24.0" prefHeight="30.0" prefWidth="185.0" text="DESCRIÇÃO DO PROBLEMA" />
       <ListView fx:id="lwServicos" layoutX="26.0" layoutY="273.0" prefHeight="200.0" prefWidth="344.0" />
-      <ListView fx:id="lwPecas" layoutX="418.0" layoutY="276.0" prefHeight="200.0" prefWidth="344.0" />
       <TextField fx:id="tfServico" layoutX="34.0" layoutY="234.0" prefHeight="25.0" prefWidth="189.0" />
       <TextField fx:id="tfPrecoServico" layoutX="248.0" layoutY="232.0" prefHeight="25.0" prefWidth="111.0" />
       <Button fx:id="btAddServico" layoutX="253.0" layoutY="487.0" mnemonicParsing="false" onAction="#acaoBtAddServico" prefHeight="25.0" prefWidth="113.0" text="ADD SERVIÇO" />
@@ -29,5 +28,11 @@
       <TextField fx:id="tfPrecoPeca" layoutX="635.0" layoutY="238.0" prefHeight="25.0" prefWidth="111.0" />
       <Button fx:id="btAddPeca" layoutX="646.0" layoutY="491.0" mnemonicParsing="false" onAction="#acaoBtAddPeca" prefHeight="25.0" prefWidth="113.0" text="ADD PEÇA" />
       <Button fx:id="btRemovePeca" layoutX="418.0" layoutY="486.0" mnemonicParsing="false" onAction="#acaoBtRemovePeca" prefHeight="25.0" prefWidth="123.0" text="REMOVER PEÇA" />
+      <TableView fx:id="tbPecas" layoutX="424.0" layoutY="273.0" prefHeight="200.0" prefWidth="331.0">
+        <columns>
+          <TableColumn fx:id="tbPecaCoDescricao" prefWidth="216.0" text="Descriçao Peça" />
+          <TableColumn fx:id="tbPecaCoPreco" prefWidth="114.0" text="Preço" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
