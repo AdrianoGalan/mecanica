@@ -73,7 +73,7 @@ public class CadastroOrcamentoController implements Initializable {
     private ReadWrite rw = new ReadWrite();
 
     private Orcamento orcamento = new Orcamento();
-    private Peca pecaSelecionada;
+   
 
     private ArrayList<Peca> pecas = new ArrayList();
     private ArrayList<Servico> servicos = new ArrayList();
@@ -98,14 +98,14 @@ public class CadastroOrcamentoController implements Initializable {
         } else {
             orcamento.setId(orcamentos.size() + 1);
         }
-        
-         tbPecas.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                
-                            
-            }
-        });
+//        
+//         tbPecas.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener() {
+//            @Override
+//            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+//                
+//                            
+//            }
+//        });
 
     }
 
@@ -174,25 +174,29 @@ public class CadastroOrcamentoController implements Initializable {
 
     @FXML
     private void acaoBtRemovePeca(ActionEvent event) {
+        
+       Peca pecaSelecionada =  tbPecas.getSelectionModel().getSelectedItem();
+        
+       
 
-//       
-//                int id = -1;
-//             
-//
-//                if (pecaSelecionada != null) {
-//                    for (int i = 0; i < pecas.size(); i++) {
-//                        if (pecaSelecionada.getNome().equals(pecas.get(i).getNome())) {
-//                            id = i;
-//                            break;
-//                        }
-//                    }
-//                    if (id != -1) {
-//                        pecas.remove(id);
-//                    }
-//                    iniTablela();
-//                } else {
-//                    JOptionPane.showMessageDialog(null, "Selecione uma peça");
-//                }
+       
+                int id = -1;
+             
+
+                if (pecaSelecionada != null) {
+                    for (int i = 0; i < pecas.size(); i++) {
+                        if (pecaSelecionada.getNome().equals(pecas.get(i).getNome())) {
+                            id = i;
+                            break;
+                        }
+                    }
+                    if (id != -1) {
+                        pecas.remove(id);
+                    }
+                    iniTablela();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecione uma peça");
+                }
 
 
     }
