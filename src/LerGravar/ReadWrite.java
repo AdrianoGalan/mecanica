@@ -361,7 +361,7 @@ public class ReadWrite {
 
         try {
             //le arquivo
-            BufferedReader read = new BufferedReader(new FileReader(ARQUIVOCARRO));
+            BufferedReader read = new BufferedReader(new FileReader(ARQUIVOOCAMENTO));
             String[] ler;
 
             //le primeira linha arquivo
@@ -384,9 +384,10 @@ public class ReadWrite {
                     orcamentos.get(cont).setDescricaoProblema(ler[2]);
                     orcamentos.get(cont).setValorTotalPecas(Double.parseDouble(ler[3]));
                     orcamentos.get(cont).setValorTotalMaoObra(Double.parseDouble(ler[4]));
-                    orcamentos.get(cont).setDataAtual(ler[5]);
-                    orcamentos.get(cont).setHoraAtual(ler[6]);
-                    orcamentos.get(cont).setStatus(Boolean.valueOf(ler[7]));
+                    orcamentos.get(cont).setValorTotalOrcamento(Double.parseDouble(ler[5]));
+                    orcamentos.get(cont).setDataAtual(ler[6]);
+                    orcamentos.get(cont).setHoraAtual(ler[7]);
+                    orcamentos.get(cont).setStatus(Boolean.valueOf(ler[8]));
 
                     cont++;
                 } catch (Exception e) {

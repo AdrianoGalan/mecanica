@@ -8,6 +8,7 @@ package controleTelas;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +24,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import util.Util;
 
 /**
  * FXML Controller class
@@ -61,7 +63,10 @@ public class TrabalhoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        
+        carregaTela("/telas/Inicio.fxml");
+        
+     
         KeyFrame frame = new KeyFrame(Duration.millis(1000), e -> atualizaHoras());
         Timeline timeline = new Timeline(frame);
         timeline.setCycleCount(Timeline.INDEFINITE);
@@ -133,16 +138,11 @@ public class TrabalhoController implements Initializable {
 
     private void atualizaHoras() {
 
-        LocalDateTime dt = LocalDateTime.now();
-        String mes = "" + dt.getMonth();
-        String mes1 = "" + dt.getMonth();
-        mes1 = mes.substring(0, 1);
-        mes = mes.substring(1, 3);
-        mes = mes1 + mes.toLowerCase();
-        String dataAtual = dt.getDayOfMonth() + " " + mes + ". de " + dt.getYear();
-        String horaAtual = (dt.getHour()) + ":" + dt.getMinute();
-        lbData.setText(dataAtual);
-        lbHora.setText(horaAtual);
+        ArrayList<String> dataHora = Util.atualizaHoras();
+       
+        
+        lbData.setText(dataHora.get(0));
+        lbHora.setText(dataHora.get(1));
 
     }
 

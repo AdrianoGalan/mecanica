@@ -11,16 +11,20 @@ import classes.Orcamento;
 import classes.Peca;
 import classes.Pessoa;
 import classes.Servico;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -31,7 +35,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javax.swing.JOptionPane;
+import util.Util;
 
 /**
  * FXML Controller class
@@ -50,9 +56,7 @@ public class CadastroOrcamentoController implements Initializable {
     private Label lbCarro;
     @FXML
     private TextArea taDescricaoProblema;
-    @FXML
-    private ListView<Servico> lwServicos;
-    private ListView<Peca> lwPecas;
+    // private ListView<Peca> lwPecas;
     @FXML
     private TextField tfServico;
     @FXML
@@ -69,43 +73,66 @@ public class CadastroOrcamentoController implements Initializable {
     private Button btRemoveServico;
     @FXML
     private Button btRemovePeca;
-
-    private ReadWrite rw = new ReadWrite();
-
-    private Orcamento orcamento = new Orcamento();
-   
-
-    private ArrayList<Peca> pecas = new ArrayList();
-    private ArrayList<Servico> servicos = new ArrayList();
     @FXML
     private TableView<Peca> tbPecas;
     @FXML
     private TableColumn<Peca, String> tbPecaCoDescricao;
     @FXML
     private TableColumn<Peca, Double> tbPecaCoPreco;
+    @FXML
+    private TableView<Servico> tbServico;
+    @FXML
+    private Label lbTotalServico;
+    @FXML
+    private Label lbTotalPeca;
+    @FXML
+    private TableColumn<Servico, String> tbServicoCoDescricao;
+    @FXML
+    private TableColumn<Servico, Double> tbServicoCoPreco;
+
+    private ReadWrite rw = new ReadWrite();
+
+    private Orcamento orcamento = new Orcamento();
+
+    private ArrayList<Peca> pecas;
+
+    private ArrayList<Servico> servicos;
+
+    ArrayList<Orcamento> orcamentos = rw.readOrcamento();
+    @FXML
+    private Label lbTotalOrcamento;
+    @FXML
+    private Button btSalvar;
+    @FXML
+    private AnchorPane paneFilho;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        pecas = rw.readPecas();
+        servicos = rw.readServicos();
 
         orcamento.setIdCarro(-1);
+        orcamento.setStatus(true);
 
-        ArrayList<Orcamento> orcamentos = rw.readOrcamento();
         if (orcamentos == null) {
+
             orcamento.setId(1);
+            orcamentos = new ArrayList();
+
         } else {
             orcamento.setId(orcamentos.size() + 1);
         }
-//        
-//         tbPecas.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener() {
-//            @Override
-//            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-//                
-//                            
-//            }
-//        });
+
+    }
+
+    @FXML
+    private void acaoBtSalvar(ActionEvent event) {
+
+      salvar();
 
     }
 
@@ -128,6 +155,38 @@ public class CadastroOrcamentoController implements Initializable {
 
     @FXML
     private void acaoBtAddServico(ActionEvent event) {
+
+        if (orcamento.getIdCarro() != -1) {
+            if (!tfServico.getText().isEmpty()) {
+                if (!tfPrecoServico.getText().isEmpty()) {
+
+                    Servico servico = new Servico();
+
+                    servico.setIdOrcamento(orcamento.getId());
+                    servico.setDescricao(tfServico.getText());
+
+                    try {
+                        servico.setPreco(Double.parseDouble(tfPrecoServico.getText()));
+                        servicos.add(servico);
+                        iniciaTablelaServico();
+                        tfServico.setText("");
+                        tfPrecoServico.setText("");
+
+                    } catch (Exception e) {
+
+                        JOptionPane.showMessageDialog(null, "Preço invalido");
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Digite o Preço do Serviço");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Digite a descrição do Servico");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Digite a Placa do carro");
+        }
+
     }
 
     @FXML
@@ -145,7 +204,7 @@ public class CadastroOrcamentoController implements Initializable {
 
                         peca.setPreco(Double.parseDouble(tfPrecoPeca.getText()));
                         pecas.add(peca);
-                        iniTablela();
+                        iniciaTablelaPeca();
 
                         tfPeca.setText("");
                         tfPrecoPeca.setText("");
@@ -170,34 +229,49 @@ public class CadastroOrcamentoController implements Initializable {
     @FXML
     private void acaoBtRemoveServico(ActionEvent event) {
 
+        Servico servicoSelecionada = tbServico.getSelectionModel().getSelectedItem();
+
+        int id = -1;
+
+        if (servicoSelecionada != null) {
+            for (int i = 0; i < servicos.size(); i++) {
+                if (servicoSelecionada.getDescricao().equals(servicos.get(i).getDescricao())) {
+                    id = i;
+                    break;
+                }
+            }
+            if (id != -1) {
+                servicos.remove(id);
+            }
+            iniciaTablelaServico();
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um Serviço");
+        }
+
     }
 
     @FXML
     private void acaoBtRemovePeca(ActionEvent event) {
-        
-       Peca pecaSelecionada =  tbPecas.getSelectionModel().getSelectedItem();
-        
-       
 
-       
-                int id = -1;
-             
+        Peca pecaSelecionada = tbPecas.getSelectionModel().getSelectedItem();
 
-                if (pecaSelecionada != null) {
-                    for (int i = 0; i < pecas.size(); i++) {
-                        if (pecaSelecionada.getNome().equals(pecas.get(i).getNome())) {
-                            id = i;
-                            break;
-                        }
-                    }
-                    if (id != -1) {
-                        pecas.remove(id);
-                    }
-                    iniTablela();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Selecione uma peça");
+        int id = -1;
+
+        if (pecaSelecionada != null) {
+            for (int i = 0; i < pecas.size(); i++) {
+                if (pecaSelecionada.getNome().equals(pecas.get(i).getNome())) {
+                    id = i;
+                    break;
                 }
-
+            }
+            if (id != -1) {
+                pecas.remove(id);
+            }
+            iniciaTablelaPeca();
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma peça");
+        }
 
     }
 
@@ -233,17 +307,118 @@ public class CadastroOrcamentoController implements Initializable {
 
     }
 
-    private void iniTablela() {
+    private void iniciaTablelaPeca() {
 
         tbPecaCoDescricao.setCellValueFactory(new PropertyValueFactory("nome"));
         tbPecaCoPreco.setCellValueFactory(new PropertyValueFactory("preco"));
-        tbPecas.setItems(atualizaTabela());
+        tbPecas.setItems(atualizaTabelaPeca());
+
+        soma();
 
     }
 
-    public ObservableList<Peca> atualizaTabela() {
+    public ObservableList<Peca> atualizaTabelaPeca() {
 
         return FXCollections.observableArrayList(pecas);
+    }
+
+    private void iniciaTablelaServico() {
+
+        tbServicoCoDescricao.setCellValueFactory(new PropertyValueFactory("descricao"));
+        tbServicoCoPreco.setCellValueFactory(new PropertyValueFactory("preco"));
+        tbServico.setItems(atualizaTabelaServico());
+
+        soma();
+
+    }
+
+    public ObservableList<Servico> atualizaTabelaServico() {
+
+        return FXCollections.observableArrayList(servicos);
+    }
+
+    // calcula soma total do orçamento
+    private void soma() {
+
+        double somaServico = 0;
+        double somaPeca = 0;
+        double somaOrcamento = 0;
+
+        for (int i = 0; i < servicos.size(); i++) {
+
+            somaServico = somaServico + servicos.get(i).getPreco();
+        }
+
+        lbTotalServico.setText(String.valueOf(somaServico));
+
+        for (int i = 0; i < pecas.size(); i++) {
+
+            somaPeca = somaPeca + pecas.get(i).getPreco();
+        }
+
+        lbTotalPeca.setText(String.valueOf(somaPeca));
+
+        somaOrcamento = somaPeca + somaServico;
+
+        lbTotalOrcamento.setText(String.valueOf(somaOrcamento));
+
+    }
+
+    // salva o orçamento 
+    private void salvar() {
+
+//        try {
+        ArrayList<String> dataHora = Util.atualizaHoras();
+
+        if (orcamento.getIdCarro() != -1) {
+            if (!taDescricaoProblema.getText().isEmpty()) {
+
+                orcamento.setDescricaoProblema(taDescricaoProblema.getText());
+                orcamento.setValorTotalMaoObra(Double.parseDouble(lbTotalServico.getText()));
+                orcamento.setValorTotalPecas(Double.parseDouble(lbTotalPeca.getText()));
+                orcamento.setValorTotalOrcamento(Double.parseDouble(lbTotalOrcamento.getText()));
+                orcamento.setDataAtual(dataHora.get(0));
+                orcamento.setHoraAtual(dataHora.get(1));
+
+                orcamentos.add(orcamento);
+                if (rw.writeOrcamento(orcamentos) && rw.writePecas(pecas) && rw.writeServicos(servicos)) {
+                   
+                    JOptionPane.showMessageDialog(null, "Orçamento Salvo");
+
+                       carregaTela("/telas/Inicio.fxml");
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Digite a descrição do defeito");
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Digite a Placa do carro");
+        }
+
+//        } catch (Exception e) {
+//            
+//            JOptionPane.showMessageDialog(null, "Erro ao salvar");
+//        }
+    }
+
+    public void carregaTela(String nomeTela) {
+
+        //carrega tela
+        AnchorPane a;
+        try {
+            a = (AnchorPane) FXMLLoader.load(getClass().getResource(nomeTela));
+
+            AnchorPane.setTopAnchor(a, 0.0);
+            AnchorPane.setLeftAnchor(a, 0.0);
+            AnchorPane.setRightAnchor(a, 0.0);
+            AnchorPane.setBottomAnchor(a, 0.0);
+
+            paneFilho.getChildren().setAll(a);
+        } catch (IOException ex) {
+            Logger.getLogger(TrabalhoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
 }

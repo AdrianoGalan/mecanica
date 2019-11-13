@@ -18,6 +18,7 @@ public class Orcamento {
     private String descricaoProblema;
     private double valorTotalPecas;
     private double valorTotalMaoObra;
+    private double valorTotalOrcamento;
     private String dataAtual;
     private String horaAtual;
     private boolean status;
@@ -90,7 +91,15 @@ public class Orcamento {
     }
 
     public String salvar() {
-        return id + ";" + idCarro + ";" + descricaoProblema + ";" + valorTotalPecas + ";" + valorTotalMaoObra + ";" + dataAtual + ";" + horaAtual + ";" + status;
+        return id + ";" + idCarro + ";" + descricaoProblema + ";" + valorTotalPecas + ";" + valorTotalMaoObra + ";" + valorTotalOrcamento + ";" + dataAtual + ";" + horaAtual + ";" + status;
+    }
+
+    public double getValorTotalOrcamento() {
+        return valorTotalOrcamento;
+    }
+
+    public void setValorTotalOrcamento(double valorTotalOrcamento) {
+        this.valorTotalOrcamento = valorTotalOrcamento;
     }
 
 }

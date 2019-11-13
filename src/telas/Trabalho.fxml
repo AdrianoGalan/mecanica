@@ -78,25 +78,6 @@
             </ImageView>
          </children>
       </Pane>
-      <AnchorPane fx:id="PanePrincipal" layoutX="200.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <ImageView fitHeight="74.0" fitWidth="104.0" layoutX="679.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../imagens/Logo%20oficina%20PNG.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="236.0" layoutY="30.0" text="Bem vindo Adriano" textFill="#325768">
-               <font>
-                  <Font name="Tw Cen MT" size="38.0" />
-               </font>
-            </Label>
-            <TableView depthTest="DISABLE" editable="true" layoutX="87.0" layoutY="230.0" prefHeight="234.0" prefWidth="600.0">
-              <columns>
-                <TableColumn minWidth="50.0" prefWidth="100.0" text="Placa" />
-                <TableColumn prefWidth="400.0" text="Serviços" />
-                  <TableColumn prefWidth="100.0" style="-fx-background-color: blue;" text="Aberto há" />
-              </columns>
-            </TableView>
-         </children></AnchorPane>
+      <AnchorPane fx:id="PanePrincipal" layoutX="200.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

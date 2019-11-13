@@ -5,12 +5,14 @@
  */
 package util;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
 
 public class Util {
-    
+      
     
 
     public static void mascaraCEP(TextField textField) {
@@ -284,5 +286,27 @@ public class Util {
         });
 
     }
+    
+    public static ArrayList<String> atualizaHoras() {
+        
+        ArrayList<String> dataHora = new ArrayList();
+        
+
+        LocalDateTime dt = LocalDateTime.now();
+        String mes = "" + dt.getMonth();
+        String mes1 = "" + dt.getMonth();
+        mes1 = mes.substring(0, 1);
+        mes = mes.substring(1, 3);
+        mes = mes1 + mes.toLowerCase();
+        String dataAtual = dt.getDayOfMonth() + " " + mes + ". de " + dt.getYear();
+        String horaAtual = (dt.getHour()) + ":" + dt.getMinute();
+       dataHora.add(dataAtual);
+       dataHora.add(horaAtual);
+        
+       return dataHora;
+        
+
+    }
+    
 
 }
