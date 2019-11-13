@@ -273,5 +273,16 @@ public class Util {
             return false;
         }
     }
+    
+    public static void apenasNumeros(boolean ys,TextField textField,int limiteTamanho) {
+
+        textField.setOnKeyTyped((KeyEvent event) -> {
+
+            if ("0123456789".contains(event.getCharacter()) != ys || textField.getText().length() > limiteTamanho) {
+                event.consume();
+            }
+        });
+
+    }
 
 }

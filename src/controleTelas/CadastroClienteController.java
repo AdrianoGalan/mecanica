@@ -82,6 +82,8 @@ public class CadastroClienteController implements Initializable {
         Util.mascaraPlaca(tfPlaca);
         Util.mascaraTelCelular(tfTelefone1);
         Util.mascaraTelFixo(tfTelefone2);
+        Util.apenasNumeros(true,tfNumero, 4);
+        Util.apenasNumeros(false,tfEstado,1);
 
     }
 
