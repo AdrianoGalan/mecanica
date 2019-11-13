@@ -12,13 +12,18 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javax.swing.JOptionPane;
 
@@ -41,12 +46,28 @@ public class ConsultaClienteController implements Initializable {
     private Button btDesativarCarro;
     @FXML
     private Button btBucar;
-    @FXML
     private ListView<Carro> lvCarros;
     @FXML
     private TextField tfCpf;
 
     private ReadWrite rw;
+    @FXML
+    private TableView<Carro> tvCarrosCliente;
+    @FXML
+    private TableColumn<Carro, String> tcPlaca;
+    @FXML
+    private TableColumn<Carro, String> tcModelo;
+    @FXML
+    private TableColumn<Carro, String> tcFabricante;
+    @FXML
+    private TableColumn<Carro, String> tcMotor;
+    @FXML
+    private TableColumn<Carro, String> tcAno;
+    @FXML
+    private TableColumn<Carro, Double> tcKm;
+    @FXML
+    private TableColumn<Carro, String> tcStatus;
+    private ObservableList<Carro> listaCarros = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
@@ -63,6 +84,15 @@ public class ConsultaClienteController implements Initializable {
 
         povoarListViewPessoa(pessoas);
 
+        tcPlaca.setCellValueFactory(new PropertyValueFactory("placa"));
+        tcModelo.setCellValueFactory(new PropertyValueFactory("modelo"));
+        tcFabricante.setCellValueFactory(new PropertyValueFactory("fabricante"));
+        tcMotor.setCellValueFactory(new PropertyValueFactory("motor"));
+        tcAno.setCellValueFactory(new PropertyValueFactory("ano"));
+        tcKm.setCellValueFactory(new PropertyValueFactory("km"));
+        tcStatus.setCellValueFactory(new PropertyValueFactory("status"));
+        tvCarrosCliente.setItems(listaCarros);
+        tvCarrosCliente.getColumns().addAll(tcPlaca, tcModelo, tcFabricante, tcMotor, tcAno, tcKm, tcStatus);
     }
 
     @FXML
@@ -108,18 +138,17 @@ public class ConsultaClienteController implements Initializable {
 
     private void povoarListViewcarro(List<Carro> carros) {
 
-        lvCarros.getItems().clear();
-
+        tvCarrosCliente.getItems().clear();
+        
         for (Carro c : carros) {
 
             if (c != null) {
 
-                lvCarros.getItems().add(c);
+                listaCarros.add(c);
 
             }
 
         }
-
     }
 
     @FXML
@@ -177,7 +206,7 @@ public class ConsultaClienteController implements Initializable {
             tfCpf.setText(p.getCpf());
             tfBuscaCliente.setText(p.getNome());
             for (int i = 0; i < carros.size(); i++) {
-                if (carros.get(i).getIdPessoa()== p.getId()) {
+                if (carros.get(i).getIdPessoa() == p.getId()) {
                     filtro.add(carros.get(i));
                 }
             }
