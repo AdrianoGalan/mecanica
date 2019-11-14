@@ -29,10 +29,11 @@ public class InicioController implements Initializable {
      * Initializes the controller class.
      */
     @Override
+    
     public void initialize(URL url, ResourceBundle rb) {
         
-        lbNomrUsuario.setText(Util.getUsuarioAtual().getNome());
-       
+          lbNomrUsuario.setText(Util.log.UsuarioAtual.getText());
+
     }    
     
 }
