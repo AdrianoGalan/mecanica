@@ -318,6 +318,12 @@ public class Util {
         
 
     }
+    
+    public static class log{
+    
+        public static TextField UsuarioAtual;
+        
+    }
 
   
     

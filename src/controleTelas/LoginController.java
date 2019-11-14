@@ -136,7 +136,8 @@ public class LoginController implements Initializable {
             if (!texUsuario.getText().isEmpty()) {
                 if (!texSenha.getText().isEmpty()) {
                     if (validaUsuarioSenha(usuarios)) {
-                        
+                       
+                       Util.log.UsuarioAtual = texUsuario;
                        carregaTelaTrabalho();
                     }
 
