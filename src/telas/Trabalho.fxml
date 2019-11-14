@@ -59,8 +59,8 @@
                   <Font name="Tw Cen MT" size="19.0" />
                </font>
                <items>
-                  <MenuItem fx:id="btConsultaOrcamento1" mnemonicParsing="false" onAction="#acaoBtConsultaOrcamento" text="Fluxo de Caixa" />
-                  <MenuItem fx:id="btConsultaOS1" mnemonicParsing="false" onAction="#acaoBtConsultaOS" text="DRE" />
+                  <MenuItem fx:id="btFluxoDeCaixa" mnemonicParsing="false" onAction="#acaoBtFluxoDeCaixa" text="Fluxo de Caixa" />
+                  <MenuItem fx:id="btDre" mnemonicParsing="false" onAction="#acaoBtDre" text="DRE" />
                </items>
             </MenuButton>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#345768" height="31.0" layoutX="-4.0" layoutY="669.0" stroke="BLACK" strokeLineJoin="ROUND" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" width="204.0" />

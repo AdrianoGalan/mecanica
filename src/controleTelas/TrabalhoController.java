@@ -50,10 +50,6 @@ public class TrabalhoController implements Initializable {
     @FXML
     private MenuItem btConsultaOS;
     @FXML
-    private MenuItem btConsultaOrcamento1;
-    @FXML
-    private MenuItem btConsultaOS1;
-    @FXML
     private Label lbHora;
     @FXML
     private Label lbData;
@@ -61,6 +57,10 @@ public class TrabalhoController implements Initializable {
     private MenuItem btCadasCarro;
     @FXML
     private Button btInicio;
+    @FXML
+    private MenuItem btFluxoDeCaixa;
+    @FXML
+    private MenuItem btDre;
 
     /**
      * Initializes the controller class.
@@ -116,7 +116,7 @@ public class TrabalhoController implements Initializable {
 
     @FXML
     private void acaoBtConsultaOS(ActionEvent event) {
-        carregaTela("/telas/Dre.fxml");
+        carregaTela("/telas/ConsultaOS.fxml");
     }
 
     @FXML
@@ -162,6 +162,15 @@ public class TrabalhoController implements Initializable {
     private void acaoBtInicio(ActionEvent event) {
         
         carregaTela("/telas/Inicio.fxml");
+    }
+
+    @FXML
+    private void acaoBtFluxoDeCaixa(ActionEvent event) {
+    }
+
+    @FXML
+    private void acaoBtDre(ActionEvent event) {
+        carregaTela("/telas/Dre.fxml");
     }
 
 }
