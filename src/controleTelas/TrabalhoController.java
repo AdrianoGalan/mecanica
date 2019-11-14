@@ -59,6 +59,8 @@ public class TrabalhoController implements Initializable {
     private Label lbData;
     @FXML
     private MenuItem btCadasCarro;
+    @FXML
+    private Button btInicio;
 
     /**
      * Initializes the controller class.
@@ -153,6 +155,12 @@ public class TrabalhoController implements Initializable {
         lbData.setText(dataHora.get(0));
         lbHora.setText(dataHora.get(1));
 
+    }
+
+    @FXML
+    private void acaoBtInicio(ActionEvent event) {
+        
+        carregaTela("/telas/Inicio.fxml");
     }
 
 }
