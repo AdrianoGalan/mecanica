@@ -5,6 +5,7 @@
  */
 package util;
 
+import classes.Pessoa;
 import classes.Usuario;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -15,6 +16,15 @@ import javafx.scene.input.KeyEvent;
 public class Util {
     
     private static Usuario usuarioAtual;
+    private static Pessoa pessoaAtualizar;
+
+    public static Pessoa getPessoaAtualizar() {
+        return pessoaAtualizar;
+    }
+
+    public static void setPessoaAtualizar(Pessoa pessoaAtualizar) {
+        Util.pessoaAtualizar = pessoaAtualizar;
+    }
     
       public static Usuario getUsuarioAtual() {
         return usuarioAtual;

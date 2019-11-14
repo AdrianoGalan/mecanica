@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -10,7 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleTelas.ConsultaClienteController">
+<AnchorPane id="AnchorPane" fx:id="paneFilho" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleTelas.ConsultaClienteController">
    <children>
       <Pane prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: #E5E5E5;">
          <children>
@@ -43,12 +47,6 @@
             <Label layoutX="129.0" layoutY="327.0" text="Carros Cliente" textFill="#3a6379">
                <font>
                   <Font name="Tw Cen MT Bold" size="38.0" />
-               </font>
-            </Label>
-            <TextField fx:id="tfCpf" layoutX="129.0" layoutY="278.0" onKeyReleased="#acaoDigitar" prefHeight="31.0" prefWidth="252.0" style="-fx-background-color: white;" />
-            <Label layoutX="47.0" layoutY="282.0" text="Cpf" textFill="#919191">
-               <font>
-                  <Font name="Tw Cen MT" size="27.0" />
                </font>
             </Label>
             <TableView fx:id="tvCarrosCliente" layoutX="79.0" layoutY="385.0" prefHeight="169.0" prefWidth="629.0">

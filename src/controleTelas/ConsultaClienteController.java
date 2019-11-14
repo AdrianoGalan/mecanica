@@ -8,14 +8,18 @@ package controleTelas;
 import LerGravar.ReadWrite;
 import classes.Carro;
 import classes.Pessoa;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -25,7 +29,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javax.swing.JOptionPane;
+import util.Util;
 
 /**
  * FXML Controller class
@@ -44,8 +50,7 @@ public class ConsultaClienteController implements Initializable {
     private Button btDesativarCarro;
     @FXML
     private Button btBucar;
-    @FXML
-    private TextField tfCpf;
+   
     @FXML
     private TableView<Carro> tvCarrosCliente;
     @FXML
@@ -65,6 +70,8 @@ public class ConsultaClienteController implements Initializable {
 
     private ArrayList<Pessoa> pessoas;
     private ReadWrite rw;
+    @FXML
+    private AnchorPane paneFilho;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -102,7 +109,15 @@ public class ConsultaClienteController implements Initializable {
     private void acaoBtAtualizar(ActionEvent event) {
 
         Pessoa p = lvClientes.getSelectionModel().getSelectedItem();
-
+        
+        if(p != null){
+        Util.setPessoaAtualizar(p);
+        
+        
+        carregaTela("/telas/AtualizarCliente.fxml");
+        }else{
+            JOptionPane.showMessageDialog(null, "selecione cliente");
+        }
     }
 
     private void povoarListViewPessoa(List<Pessoa> pessoa) {
@@ -173,7 +188,7 @@ public class ConsultaClienteController implements Initializable {
         ArrayList<Carro> filtro = new ArrayList();
 
         if (p != null) {
-            tfCpf.setText(p.getCpf());
+           
             tfBuscaCliente.setText(p.getNome());
             for (int i = 0; i < carros.size(); i++) {
                 if (carros.get(i).getIdPessoa() == p.getId()) {
@@ -204,6 +219,25 @@ public class ConsultaClienteController implements Initializable {
     public ObservableList<Carro> atualizaTabela(ArrayList<Carro> carros) {
 
         return FXCollections.observableArrayList(carros);
+    }
+    
+    public void carregaTela(String nomeTela) {
+
+        //carrega tela
+        AnchorPane a;
+        try {
+            a = (AnchorPane) FXMLLoader.load(getClass().getResource(nomeTela));
+
+            AnchorPane.setTopAnchor(a, 0.0);
+            AnchorPane.setLeftAnchor(a, 0.0);
+            AnchorPane.setRightAnchor(a, 0.0);
+            AnchorPane.setBottomAnchor(a, 0.0);
+
+            paneFilho.getChildren().setAll(a);
+        } catch (IOException ex) {
+            Logger.getLogger(TrabalhoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
 }
