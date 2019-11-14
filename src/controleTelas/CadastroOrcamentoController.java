@@ -14,12 +14,9 @@ import classes.Servico;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,8 +25,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SortEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -56,7 +51,6 @@ public class CadastroOrcamentoController implements Initializable {
     private Label lbCarro;
     @FXML
     private TextArea taDescricaoProblema;
-    // private ListView<Peca> lwPecas;
     @FXML
     private TextField tfServico;
     @FXML
@@ -89,6 +83,12 @@ public class CadastroOrcamentoController implements Initializable {
     private TableColumn<Servico, String> tbServicoCoDescricao;
     @FXML
     private TableColumn<Servico, Double> tbServicoCoPreco;
+    @FXML
+    private Label lbTotalOrcamento;
+    @FXML
+    private Button btSalvar;
+    @FXML
+    private AnchorPane paneFilho;
 
     private ReadWrite rw = new ReadWrite();
 
@@ -99,12 +99,6 @@ public class CadastroOrcamentoController implements Initializable {
     private ArrayList<Servico> servicos;
 
     ArrayList<Orcamento> orcamentos = rw.readOrcamento();
-    @FXML
-    private Label lbTotalOrcamento;
-    @FXML
-    private Button btSalvar;
-    @FXML
-    private AnchorPane paneFilho;
 
     /**
      * Initializes the controller class.
@@ -112,6 +106,8 @@ public class CadastroOrcamentoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+         Util.mascaraPlaca(tfPlacaCarro);
+
         pecas = rw.readPecas();
         servicos = rw.readServicos();
 
@@ -132,22 +128,26 @@ public class CadastroOrcamentoController implements Initializable {
     @FXML
     private void acaoBtSalvar(ActionEvent event) {
 
-      salvar();
+        salvar();
 
     }
 
     @FXML
     private void acaoBtConsultaPlaca(ActionEvent event) {
 
-        Carro carro;
+        Carro carro = null ;
         Pessoa pessoa;
 
         if (!tfPlacaCarro.getText().isEmpty()) {
             carro = consultaPorPlaca(tfPlacaCarro.getText());
-            pessoa = consultaPorId(carro.getIdPessoa());
-            orcamento.setIdCarro(carro.getId());
-            lbNome.setText(pessoa.getNome());
-            lbCarro.setText(carro.getModelo());
+            if (carro != null) {
+                pessoa = consultaPorId(carro.getIdPessoa());
+                orcamento.setIdCarro(carro.getId());
+                lbNome.setText(pessoa.getNome());
+                lbCarro.setText(carro.getModelo());
+            } else {
+                JOptionPane.showMessageDialog(null, "Carro não cadastrado");
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Digite a placa do carro");
         }
@@ -319,7 +319,7 @@ public class CadastroOrcamentoController implements Initializable {
 
     public ObservableList<Peca> atualizaTabelaPeca() {
 
-        return FXCollections.observableArrayList(pecas);
+        return FXCollections.observableArrayList(filtroPecaIdOrcamento());
     }
 
     private void iniciaTablelaServico() {
@@ -334,7 +334,7 @@ public class CadastroOrcamentoController implements Initializable {
 
     public ObservableList<Servico> atualizaTabelaServico() {
 
-        return FXCollections.observableArrayList(servicos);
+        return FXCollections.observableArrayList(filtroServicoIdOrcamento());
     }
 
     // calcula soma total do orçamento
@@ -343,17 +343,20 @@ public class CadastroOrcamentoController implements Initializable {
         double somaServico = 0;
         double somaPeca = 0;
         double somaOrcamento = 0;
+        
+        ArrayList<Peca> pecasOrcamentoAtual = filtroPecaIdOrcamento();
+        ArrayList<Servico> servicosOrcamentoAtual = filtroServicoIdOrcamento();
 
-        for (int i = 0; i < servicos.size(); i++) {
+        for (int i = 0; i < servicosOrcamentoAtual.size(); i++) {
 
-            somaServico = somaServico + servicos.get(i).getPreco();
+            somaServico = somaServico + servicosOrcamentoAtual.get(i).getPreco();
         }
 
         lbTotalServico.setText(String.valueOf(somaServico));
 
-        for (int i = 0; i < pecas.size(); i++) {
+        for (int i = 0; i < pecasOrcamentoAtual.size(); i++) {
 
-            somaPeca = somaPeca + pecas.get(i).getPreco();
+            somaPeca = somaPeca + pecasOrcamentoAtual.get(i).getPreco();
         }
 
         lbTotalPeca.setText(String.valueOf(somaPeca));
@@ -382,10 +385,10 @@ public class CadastroOrcamentoController implements Initializable {
 
                 orcamentos.add(orcamento);
                 if (rw.writeOrcamento(orcamentos) && rw.writePecas(pecas) && rw.writeServicos(servicos)) {
-                   
+
                     JOptionPane.showMessageDialog(null, "Orçamento Salvo");
 
-                       carregaTela("/telas/Inicio.fxml");
+                    carregaTela("/telas/Inicio.fxml");
                 }
 
             } else {
@@ -419,6 +422,33 @@ public class CadastroOrcamentoController implements Initializable {
             Logger.getLogger(TrabalhoController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+    
+    private ArrayList<Peca> filtroPecaIdOrcamento(){
+        
+        ArrayList<Peca> filtroPecas = new ArrayList();
+        
+        for (int i = 0; i < pecas.size(); i++) {
+            
+            if(pecas.get(i).getIdOrcamento() == orcamento.getId()){
+                filtroPecas.add(pecas.get(i));
+            }
+           
+        }
+         return filtroPecas;
+    }
+    private ArrayList<Servico> filtroServicoIdOrcamento(){
+        
+        ArrayList<Servico> filtroServico = new ArrayList();
+        
+        for (int i = 0; i < servicos.size(); i++) {
+            
+            if(servicos.get(i).getIdOrcamento() == orcamento.getId()){
+                filtroServico.add(servicos.get(i));
+            }
+           
+        }
+         return filtroServico;
     }
 
 }
