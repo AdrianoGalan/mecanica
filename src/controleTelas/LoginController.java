@@ -110,6 +110,7 @@ public class LoginController implements Initializable {
                 if (texUsuario.getText().equals(usuario.getUsuario())) {
                     if (texSenha.getText().equals(usuario.getSenha())) {
                        
+                       
                         Util.setUsuarioAtual(usuario);
                         return true;
                     } else {
