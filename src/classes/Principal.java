@@ -20,7 +20,7 @@ public class Principal extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/telas/Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/telas/Tabalho.fxml"));
 
         Scene scene = new Scene(root);
 

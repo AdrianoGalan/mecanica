@@ -317,15 +317,6 @@ public class Util {
        return dataHora;
         
 
-    }
-    
-    public static class log{
-    
-        public static TextField UsuarioAtual;
-        
-    }
-
-  
-    
+    } 
 
 }

@@ -32,7 +32,7 @@ public class InicioController implements Initializable {
     
     public void initialize(URL url, ResourceBundle rb) {
         
-          lbNomrUsuario.setText(Util.log.UsuarioAtual.getText());
+          lbNomrUsuario.setText(Util.getUsuarioAtual().getNome());
 
     }    
     
