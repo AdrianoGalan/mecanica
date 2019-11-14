@@ -18,6 +18,7 @@ public class OrdemServico {
     private String servicoExecutado;
     private String dataFinalizada;
     private String kmAtual;
+    private boolean status;
 
     public OrdemServico() {
     }
@@ -76,6 +77,19 @@ public class OrdemServico {
 
     public void setKmAtual(String kmAtual) {
         this.kmAtual = kmAtual;
+    }
+
+ 
+    public String salvar() {
+        return id + ";" + idCarro + ";" + idOrcamento + ";" + idPessoa + ";" + servicoExecutado + ";" + dataFinalizada + ";" + kmAtual + ";" + status;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
     
     

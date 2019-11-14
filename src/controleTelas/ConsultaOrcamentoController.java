@@ -8,6 +8,7 @@ package controleTelas;
 import LerGravar.ReadWrite;
 import classes.Carro;
 import classes.Orcamento;
+import classes.OrdemServico;
 import classes.Peca;
 import classes.Pessoa;
 import classes.Telefone;
@@ -81,6 +82,21 @@ public class ConsultaOrcamentoController implements Initializable {
 
     @FXML
     private void acaoBtGeraOs(ActionEvent event) {
+        
+        TabelaOrcamento tabelaOrcamentoSelecionada = tbOrcamentos.getSelectionModel().getSelectedItem();
+
+        if (tabelaOrcamentoSelecionada != null) {
+            if(!tfKm.getText().isEmpty()){
+                
+                
+                geraOs(tabelaOrcamentoSelecionada);
+                
+            }else{
+               JOptionPane.showMessageDialog(null, "Digite o km atual"); 
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um Orcamento");
+        }
     }
 
     @FXML
@@ -126,6 +142,28 @@ public class ConsultaOrcamentoController implements Initializable {
     public ObservableList<TabelaOrcamento> atualizaTabelaPeca() {
 
         return FXCollections.observableArrayList(carregaTabela());
+    }
+    
+    private void geraOs(TabelaOrcamento tab){
+        
+        ArrayList<OrdemServico> oss = rw.readOs();
+        OrdemServico os = new OrdemServico();
+        
+        os.setId(oss.size()+1);
+        os.setIdCarro(tab.getIdCarro());
+        os.setIdOrcamento(tab.getIdOrcamento());
+        os.setIdPessoa(tab.getIdPessoa());
+        os.setKmAtual(tfKm.getText());
+        os.setServicoExecutado("a");
+        os.setDataFinalizada("a");
+        os.setStatus(true);
+        
+        oss.add(os);
+        
+        rw.writeOs(oss);
+        finalizaOrcamento(tab);
+        tfKm.setText("");
+        
     }
 
     //carrega dados da tabela

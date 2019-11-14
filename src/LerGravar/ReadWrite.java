@@ -8,6 +8,7 @@ package LerGravar;
 import classes.Carro;
 import classes.Endereco;
 import classes.Orcamento;
+import classes.OrdemServico;
 import classes.Pessoa;
 import classes.Telefone;
 import classes.Peca;
@@ -32,6 +33,7 @@ public class ReadWrite {
     final String ARQUIVOOCAMENTO = "txt/orcamentos.txt";
     final String ARQUIVOPECAS = "txt/pecas.txt";
     final String ARQUIVOSERVICOS = "txt/servicos.txt";
+    final String ARQUIVOOS = "txt/os.txt";
 
     //escreve Pessoa arquivo txt
     public void writePessoa(List<Pessoa> objetoGravar) {
@@ -550,6 +552,84 @@ public class ReadWrite {
             }
 
             return servicos;
+
+        } catch (FileNotFoundException ex) {
+            return null;
+
+        }
+
+    }
+
+    //escreve od arquivo txt
+    public boolean writeOs(List<OrdemServico> objetoGravar) {
+
+        BufferedWriter writer;
+
+        try {
+            writer = new BufferedWriter(new FileWriter(ARQUIVOOS));
+
+            //Collections.sort(objetoGravar);
+            for (int i = 0; i < objetoGravar.size(); i++) {
+
+                writer.write(objetoGravar.get(i).salvar());
+                writer.newLine();
+
+            }
+
+            writer.close();
+            return true;
+
+        } catch (IOException ex) {
+            Logger.getLogger(ReadWrite.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+
+    }
+
+    // ler os arquivo txt
+    public ArrayList<OrdemServico> readOs() {
+
+        int cont = 0;
+
+        try {
+            //le arquivo
+            BufferedReader read = new BufferedReader(new FileReader(ARQUIVOOS));
+            String[] ler;
+
+            //le primeira linha arquivo
+            try {
+
+                ler = read.readLine().split(";");
+
+            } catch (Exception e) {
+                ler = null;
+            }
+            ArrayList<OrdemServico> oss = new ArrayList<>();
+
+            while (ler != null) {
+
+                oss.add(new OrdemServico());
+
+                oss.get(cont).setId(Integer.parseInt(ler[0]));
+                oss.get(cont).setIdOrcamento(Integer.parseInt(ler[1]));
+                oss.get(cont).setIdCarro(Integer.parseInt(ler[2]));
+                oss.get(cont).setIdPessoa(Integer.parseInt(ler[3]));
+                oss.get(cont).setServicoExecutado(ler[4]);
+                oss.get(cont).setDataFinalizada(ler[5]);
+                oss.get(cont).setKmAtual(ler[6]);
+                oss.get(cont).setStatus(Boolean.valueOf(ler[7]));
+
+                cont++;
+                try {
+                    //le proxima linha do arquivo
+                    ler = read.readLine().split(";");
+                } catch (Exception e) {
+                    ler = null;
+                }
+
+            }
+
+            return oss;
 
         } catch (FileNotFoundException ex) {
             return null;
