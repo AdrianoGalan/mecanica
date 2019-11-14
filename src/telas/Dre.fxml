@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" fx:id="paneFilho" prefHeight="700.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controleTelas.DreController">
+   <children>
+      <Label fx:id="lbDre" layoutX="333.0" layoutY="55.0" text="DRE" textFill="#3a6379">
+         <font>
+            <Font name="Tw Cen MT Bold" size="38.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfCustos" layoutX="467.0" layoutY="305.0" prefHeight="25.0" prefWidth="170.0" />
+      <TextField fx:id="tfDespesasOperacionais" layoutX="467.0" layoutY="394.0" prefHeight="25.0" prefWidth="170.0" />
+      <Label fx:id="lbVendas" layoutX="164.0" layoutY="145.0" text="Vendas :" textFill="#3a6379">
+         <font>
+            <Font name="Tw Cen MT Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbImpostoSobreVendas" layoutX="164.0" layoutY="197.0" text="Impostos sobre vendas :" textFill="#3a6379">
+         <font>
+            <Font name="Tw Cen MT Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbVendasLiquidas" layoutX="164.0" layoutY="250.0" text="Vendas Líquidas :" textFill="#3a6379">
+         <font>
+            <Font name="Tw Cen MT Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbLucroBruto" layoutX="164.0" layoutY="345.0" text="Lucro Bruto :" textFill="#3a6379">
+         <font>
+            <Font name="Tw Cen MT Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbCustosOperacionais" layoutX="164.0" layoutY="303.0" text="Custos operacionais :" textFill="#3a6379">
+         <font>
+            <Font name="Tw Cen MT Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbDespesasOperacionais" layoutX="164.0" layoutY="392.0" text="Despesas operacionais :" textFill="#3a6379">
+         <font>
+            <Font name="Tw Cen MT Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbLucroLiquido" layoutX="164.0" layoutY="441.0" text="Lucro Líquido :" textFill="#3a6379">
+         <font>
+            <Font name="Tw Cen MT Bold" size="25.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfVendas" disable="true" layoutX="467.0" layoutY="147.0" prefHeight="25.0" prefWidth="170.0" />
+      <TextField fx:id="tfImpostoSobreVendas" disable="true" layoutX="467.0" layoutY="199.0" prefHeight="25.0" prefWidth="170.0" />
+      <TextField fx:id="tfVendasLiquidas" disable="true" layoutX="467.0" layoutY="252.0" prefHeight="25.0" prefWidth="170.0" />
+      <TextField fx:id="tfLucroBruto" disable="true" layoutX="467.0" layoutY="353.0" prefHeight="25.0" prefWidth="170.0" />
+      <TextField fx:id="tfLucroLiquido" disable="true" layoutX="467.0" layoutY="443.0" prefHeight="25.0" prefWidth="170.0" />
+   </children>
+</AnchorPane>

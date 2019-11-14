@@ -116,6 +116,7 @@ public class TrabalhoController implements Initializable {
 
     @FXML
     private void acaoBtConsultaOS(ActionEvent event) {
+        carregaTela("/telas/Dre.fxml");
     }
 
     @FXML
