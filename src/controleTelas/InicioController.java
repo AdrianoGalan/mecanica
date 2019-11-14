@@ -9,7 +9,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import util.Util;
 
 /**
  * FXML Controller class
@@ -20,13 +22,17 @@ public class InicioController implements Initializable {
 
     @FXML
     private AnchorPane paneFilho;
+    @FXML
+    private Label lbNomrUsuario;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+        lbNomrUsuario.setText(Util.getUsuarioAtual().getNome());
+       
     }    
     
 }

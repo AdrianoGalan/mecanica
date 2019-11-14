@@ -28,6 +28,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import util.Util;
 
 /**
  * FXML Controller class
@@ -108,6 +109,8 @@ public class LoginController implements Initializable {
             for (Usuario usuario : usuarios) {
                 if (texUsuario.getText().equals(usuario.getUsuario())) {
                     if (texSenha.getText().equals(usuario.getSenha())) {
+                       
+                        Util.setUsuarioAtual(usuario);
                         return true;
                     } else {
                         erroLogin.setText("Senha invalida");
@@ -133,7 +136,8 @@ public class LoginController implements Initializable {
             if (!texUsuario.getText().isEmpty()) {
                 if (!texSenha.getText().isEmpty()) {
                     if (validaUsuarioSenha(usuarios)) {
-                        carregaTelaTrabalho();
+                        
+                       carregaTelaTrabalho();
                     }
 
                 } else {

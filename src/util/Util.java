@@ -5,6 +5,7 @@
  */
 package util;
 
+import classes.Usuario;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javafx.scene.control.TextField;
@@ -12,6 +13,16 @@ import javafx.scene.input.KeyEvent;
 
 
 public class Util {
+    
+    private static Usuario usuarioAtual;
+    
+      public static Usuario getUsuarioAtual() {
+        return usuarioAtual;
+    }
+
+    public static void setUsuarioAtual(Usuario aUsuarioAtual) {
+        usuarioAtual = aUsuarioAtual;
+    }
       
     
 
@@ -307,6 +318,8 @@ public class Util {
         
 
     }
+
+  
     
 
 }
