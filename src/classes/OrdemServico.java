@@ -11,4 +11,73 @@ package classes;
  */
 public class OrdemServico {
     
+    private int id;
+    private int idCarro;
+    private int idOrcamento;
+    private int idPessoa;
+    private String servicoExecutado;
+    private String dataFinalizada;
+    private String kmAtual;
+
+    public OrdemServico() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIdCarro() {
+        return idCarro;
+    }
+
+    public void setIdCarro(int idCarro) {
+        this.idCarro = idCarro;
+    }
+
+    public int getIdOrcamento() {
+        return idOrcamento;
+    }
+
+    public void setIdOrcamento(int idOrcamento) {
+        this.idOrcamento = idOrcamento;
+    }
+
+    public int getIdPessoa() {
+        return idPessoa;
+    }
+
+    public void setIdPessoa(int idPessoa) {
+        this.idPessoa = idPessoa;
+    }
+
+    public String getServicoExecutado() {
+        return servicoExecutado;
+    }
+
+    public void setServicoExecutado(String servicoExecutado) {
+        this.servicoExecutado = servicoExecutado;
+    }
+
+    public String getDataFinalizada() {
+        return dataFinalizada;
+    }
+
+    public void setDataFinalizada(String dataFinalizada) {
+        this.dataFinalizada = dataFinalizada;
+    }
+
+    public String getKmAtual() {
+        return kmAtual;
+    }
+
+    public void setKmAtual(String kmAtual) {
+        this.kmAtual = kmAtual;
+    }
+    
+    
+    
 }

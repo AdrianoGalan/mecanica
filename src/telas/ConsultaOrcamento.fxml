@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="paneFilho" prefHeight="400.0" prefWidth="658.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleTelas.ConsultaOrcamentoController">
+   <children>
+      <Button fx:id="btGeraOs" layoutX="521.0" layoutY="337.0" mnemonicParsing="false" onAction="#acaoBtGeraOs" text="Gerar OS" />
+      <Button fx:id="btFinalizar" layoutX="78.0" layoutY="335.0" mnemonicParsing="false" onAction="#acaoBtFinalizar" text="Finalizar" />
+      <TableView fx:id="tbOrcamentos" layoutX="70.0" layoutY="59.0" prefHeight="241.0" prefWidth="579.0">
+        <columns>
+          <TableColumn fx:id="tbOrcamentoColunaPlaca" prefWidth="66.0" text="Placa" />
+            <TableColumn fx:id="tbOrcamentoColunaInicio" prefWidth="92.0" text="Inicio" />
+          <TableColumn fx:id="tbOrcamentoColunaDefeito" prefWidth="218.0" text="Defeito" />
+            <TableColumn fx:id="tbOrcamentoColunaTotal" prefWidth="78.33331298828125" text="Total" />
+            <TableColumn fx:id="tbOrcamentoColunaTelefone" prefWidth="123.66668701171875" text="Telefone" />
+        </columns>
+      </TableView>
+      <TextField fx:id="tfKm" layoutX="334.0" layoutY="337.0" />
+      <Label layoutX="346.0" layoutY="315.0" text="KM atual do carro" />
+   </children>
+</AnchorPane>
