@@ -175,7 +175,7 @@ public class CadastroClienteController implements Initializable {
 
         if (!tfNome.getText().equals("")) {
             lbErro.setText("");
-            if (!tfCpf.getText().equals("") && Util.verificaCPF(tfCpf.getText())) {
+            if (!tfCpf.getText().equals("")) {
                 lbErro.setText("");
                 lbCpfInvalido.setVisible(false);
                 if (!tfTelefone1.getText().equals("")) {

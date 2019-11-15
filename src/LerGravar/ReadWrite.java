@@ -611,8 +611,8 @@ public class ReadWrite {
                 oss.add(new OrdemServico());
 
                 oss.get(cont).setId(Integer.parseInt(ler[0]));
-                oss.get(cont).setIdOrcamento(Integer.parseInt(ler[1]));
-                oss.get(cont).setIdCarro(Integer.parseInt(ler[2]));
+                oss.get(cont).setIdCarro(Integer.parseInt(ler[1]));
+                oss.get(cont).setIdOrcamento(Integer.parseInt(ler[2]));
                 oss.get(cont).setIdPessoa(Integer.parseInt(ler[3]));
                 oss.get(cont).setServicoExecutado(ler[4]);
                 oss.get(cont).setDataFinalizada(ler[5]);

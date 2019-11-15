@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" fx:id="paneFilho" prefHeight="700.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controleTelas.ConsultaOSController">
+<AnchorPane id="AnchorPane" fx:id="paneFilho" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleTelas.ConsultaOSController">
    <children>
-      <TableView fx:id="tbOS" layoutX="179.0" layoutY="109.0" prefHeight="200.0" prefWidth="200.0">
+      <TableView fx:id="tbConsultaOs" layoutX="15.0" layoutY="123.0" prefHeight="298.0" prefWidth="726.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn fx:id="tbConsultaColPlaca" prefWidth="61.0" text="PLACA" />
+          <TableColumn fx:id="tbConsultaColNome" prefWidth="137.0" text="NOME" />
+            <TableColumn fx:id="tbConsultaColTelefone" prefWidth="111.0" text="TELEFONE" />
+            <TableColumn fx:id="tbConsultaColDefeito" prefWidth="239.0" text="DEFEITO" />
+            <TableColumn fx:id="tbConsultaColData" prefWidth="93.0" text="DATA" />
+            <TableColumn fx:id="tbConsultaColValor" prefWidth="84.0" text="VALOR" />
         </columns>
       </TableView>
    </children>
