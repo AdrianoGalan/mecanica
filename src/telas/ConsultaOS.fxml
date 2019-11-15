@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -9,15 +10,22 @@
 
 <AnchorPane id="AnchorPane" fx:id="paneFilho" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleTelas.ConsultaOSController">
    <children>
-      <TableView fx:id="tbConsultaOs" layoutX="15.0" layoutY="123.0" prefHeight="298.0" prefWidth="726.0">
+      <TableView fx:id="tbConsultaOs" layoutX="15.0" layoutY="123.0" prefHeight="298.0" prefWidth="742.0">
         <columns>
           <TableColumn fx:id="tbConsultaColPlaca" prefWidth="61.0" text="PLACA" />
           <TableColumn fx:id="tbConsultaColNome" prefWidth="137.0" text="NOME" />
             <TableColumn fx:id="tbConsultaColTelefone" prefWidth="111.0" text="TELEFONE" />
             <TableColumn fx:id="tbConsultaColDefeito" prefWidth="239.0" text="DEFEITO" />
-            <TableColumn fx:id="tbConsultaColData" prefWidth="93.0" text="DATA" />
-            <TableColumn fx:id="tbConsultaColValor" prefWidth="84.0" text="VALOR" />
+            <TableColumn fx:id="tbConsultaColData" prefWidth="105.0" text="DATA" />
+            <TableColumn fx:id="tbConsultaColValor" prefWidth="88.0" text="VALOR" />
         </columns>
       </TableView>
+      <Button fx:id="btFinalizar" layoutX="633.0" layoutY="476.0" mnemonicParsing="false" onAction="#acaoBtFinalizar" prefHeight="49.0" prefWidth="92.0" text="Finalizar">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <TextArea fx:id="lbServicoRealizado" layoutX="29.0" layoutY="515.0" prefHeight="112.0" prefWidth="336.0" />
+      <Label layoutX="43.0" layoutY="492.0" prefHeight="7.0" prefWidth="124.0" text="Serviço realizado" />
    </children>
 </AnchorPane>

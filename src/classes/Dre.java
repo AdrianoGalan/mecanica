@@ -5,23 +5,15 @@ package classes;
  * @author Laboratorio101
  */
 public class Dre {
-    
+
     private double vendas;
-    
     private double imposto;
-    
     private double custos;
-    
     private double despesas;
-    
     private double lucroBruto;
-    
     private double vendasLiquidas;
-    
     private double lucroOperacional;
-    
     private double lucroLiquido;
-    
     private String data;
 
     public Dre() {
@@ -98,7 +90,12 @@ public class Dre {
     public void setData(String data) {
         this.data = data;
     }
+
+   
+    public String salvar() {
+        return  vendas + ";" + imposto + ";" + custos + ";" + despesas + ";" + lucroBruto + ";" + vendasLiquidas + ";" + lucroOperacional + ";" + lucroLiquido + ";" + data;
+    }
     
     
-    
+
 }

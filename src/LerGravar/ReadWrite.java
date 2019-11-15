@@ -6,6 +6,7 @@
 package LerGravar;
 
 import classes.Carro;
+import classes.Dre;
 import classes.Endereco;
 import classes.Orcamento;
 import classes.OrdemServico;
@@ -34,6 +35,7 @@ public class ReadWrite {
     final String ARQUIVOPECAS = "txt/pecas.txt";
     final String ARQUIVOSERVICOS = "txt/servicos.txt";
     final String ARQUIVOOS = "txt/os.txt";
+    final String ARQUIVODRE = "txt/dre.txt";
 
     //escreve Pessoa arquivo txt
     public void writePessoa(List<Pessoa> objetoGravar) {
@@ -630,6 +632,63 @@ public class ReadWrite {
             }
 
             return oss;
+
+        } catch (FileNotFoundException ex) {
+            return null;
+
+        }
+
+    }
+
+    //escreve dre arquivo txt
+    public boolean writeDre(Dre objetoGravar) {
+
+        BufferedWriter writer;
+
+        try {
+            writer = new BufferedWriter(new FileWriter(ARQUIVODRE));
+
+            writer.write(objetoGravar.salvar());
+            writer.newLine();
+
+            writer.close();
+            return true;
+
+        } catch (IOException ex) {
+            Logger.getLogger(ReadWrite.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+
+    }
+
+    // ler os arquivo txt
+    public Dre readDre() {
+
+        try {
+            //le arquivo
+            BufferedReader read = new BufferedReader(new FileReader(ARQUIVODRE));
+            String[] ler = null;
+
+            //le primeira linha arquivo
+            try {
+                ler = read.readLine().split(";");
+            } catch (IOException ex) {
+                Logger.getLogger(ReadWrite.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            Dre dre = new Dre();
+
+            dre.setVendas(Double.parseDouble(ler[0]));
+            dre.setImposto(Double.parseDouble(ler[1]));
+            dre.setCustos(Double.parseDouble(ler[2]));
+            dre.setDespesas(Double.parseDouble(ler[3]));
+            dre.setLucroBruto(Double.parseDouble(ler[4]));
+            dre.setVendasLiquidas(Double.parseDouble(ler[5]));
+            dre.setLucroOperacional(Double.parseDouble(ler[6]));
+            dre.setLucroLiquido(Double.parseDouble(ler[7]));
+            dre.setData(ler[8]);
+
+            return dre;
 
         } catch (FileNotFoundException ex) {
             return null;

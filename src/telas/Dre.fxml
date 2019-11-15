@@ -7,8 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" fx:id="paneFilho" prefHeight="700.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controleTelas.DreController">
+<AnchorPane id="AnchorPane" fx:id="paneFilho" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleTelas.DreController">
    <children>
       <Label fx:id="lbDre" layoutX="333.0" layoutY="55.0" text="DRE" textFill="#3a6379">
          <font>
@@ -57,5 +56,6 @@
       <TextField fx:id="tfVendasLiquidas" disable="true" layoutX="467.0" layoutY="252.0" prefHeight="25.0" prefWidth="170.0" />
       <TextField fx:id="tfLucroBruto" disable="true" layoutX="467.0" layoutY="353.0" prefHeight="25.0" prefWidth="170.0" />
       <TextField fx:id="tfLucroLiquido" disable="true" layoutX="467.0" layoutY="443.0" prefHeight="25.0" prefWidth="170.0" />
+      <Button fx:id="btCalcular" layoutX="585.0" layoutY="515.0" mnemonicParsing="false" onAction="#acaoBtcalcular" text="calcular" />
    </children>
 </AnchorPane>

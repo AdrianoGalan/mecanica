@@ -14,6 +14,7 @@ public class TabelaOrdemServico {
     private int idOrcamento;
     private int idPessoa;
     private int idCarro;
+    private int idOS;
 
     private String placa;
     private String nome;
@@ -95,6 +96,14 @@ public class TabelaOrdemServico {
 
     public void setIdCarro(int idCarro) {
         this.idCarro = idCarro;
+    }
+
+    public int getIdOS() {
+        return idOS;
+    }
+
+    public void setIdOS(int idOS) {
+        this.idOS = idOS;
     }
 
 }
