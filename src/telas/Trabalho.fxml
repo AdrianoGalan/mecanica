@@ -26,12 +26,12 @@
                   <Font name="Tw Cen MT" size="17.0" />
                </font>
             </Label>
-            <Button fx:id="btNovoOrcamento" layoutX="12.0" layoutY="157.0" mnemonicParsing="false" onAction="#acaoBtNovoOrcamento" prefHeight="41.0" prefWidth="176.0" style="-fx-background-color: #ffffff;" text="+ NOVO ORÇAMENTO" textFill="#0cb7eb" textOverrun="CLIP">
+            <Button fx:id="btNovoOrcamento" layoutX="14.0" layoutY="166.0" mnemonicParsing="false" onAction="#acaoBtNovoOrcamento" prefHeight="41.0" prefWidth="176.0" style="-fx-background-color: #ffffff;" text="+ NOVO ORÇAMENTO" textFill="#0cb7eb" textOverrun="CLIP">
                <font>
                   <Font name="Tw Cen MT" size="15.0" />
                </font></Button>
             <Line endX="100.0" fill="WHITE" layoutX="100.0" layoutY="252.0" opacity="0.07" startX="-100.0" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="0.5" visible="false" />
-            <MenuButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="3.0" layoutY="253.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" popupSide="RIGHT" prefHeight="48.0" prefWidth="197.0" style="-fx-background-color: #3a6379; -fx-border-left-color: white; -fx-border-left-style: solid; -fx-border-left-width: 5px;" stylesheets="@../css/EstiloTelaTrabalho.css" text="Cadastrar" textFill="WHITE" textOverrun="CLIP">
+            <MenuButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="3.0" layoutY="228.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" popupSide="RIGHT" prefHeight="48.0" prefWidth="197.0" style="-fx-background-color: #3a6379; -fx-border-left-color: white; -fx-border-left-style: solid; -fx-border-left-width: 5px;" stylesheets="@../css/EstiloTelaTrabalho.css" text="Cadastrar" textFill="WHITE" textOverrun="CLIP">
               <items>
                 <MenuItem fx:id="bTCadasCliente" mnemonicParsing="false" onAction="#acaoBtCadasCliente" text="Cliente" />
                 <MenuItem fx:id="btCadasOrcamento" mnemonicParsing="false" onAction="#acaoBtCadasOrcamento" text="Orçamento" />
@@ -43,7 +43,7 @@
             </MenuButton>
             <Line endX="100.0" layoutX="100.0" layoutY="302.0" opacity="0.07" startX="-100.0" stroke="WHITE" visible="false" />
             <Line endX="100.0" layoutX="100.0" layoutY="331.0" opacity="0.07" startX="-100.0" stroke="WHITE" visible="false" />
-            <MenuButton alignment="CENTER" contentDisplay="BOTTOM" layoutX="3.0" layoutY="307.0" mnemonicParsing="false" popupSide="RIGHT" prefHeight="48.0" prefWidth="197.0" style="-fx-background-color: #3a6379;" stylesheets="@../css/EstiloTelaTrabalho.css" text="Consultas" textFill="WHITE">
+            <MenuButton alignment="CENTER" contentDisplay="BOTTOM" layoutX="3.0" layoutY="282.0" mnemonicParsing="false" popupSide="RIGHT" prefHeight="48.0" prefWidth="197.0" style="-fx-background-color: #3a6379;" stylesheets="@../css/EstiloTelaTrabalho.css" text="Consultas" textFill="WHITE">
                <items>
                   <MenuItem fx:id="bTConsultaCliente" mnemonicParsing="false" onAction="#acaoBtConsultaCliente" text="Cliente" />
                   <MenuItem fx:id="btConsultaOrcamento" mnemonicParsing="false" onAction="#acaoBtConsultaOrcamento" text="Orçamentos" />
@@ -54,7 +54,7 @@
                </font>
             </MenuButton>
             <Line endX="100.0" layoutX="100.0" layoutY="383.0" opacity="0.07" startX="-100.0" stroke="WHITE" visible="false" />
-            <MenuButton alignment="CENTER" contentDisplay="BOTTOM" layoutY="360.0" mnemonicParsing="false" popupSide="RIGHT" prefHeight="48.0" prefWidth="200.0" style="-fx-background-color: #3a6379;" stylesheets="@../css/EstiloTelaTrabalho.css" text="Financeiro" textFill="WHITE">
+            <MenuButton alignment="CENTER" contentDisplay="BOTTOM" layoutY="335.0" mnemonicParsing="false" popupSide="RIGHT" prefHeight="48.0" prefWidth="200.0" style="-fx-background-color: #3a6379;" stylesheets="@../css/EstiloTelaTrabalho.css" text="Financeiro" textFill="WHITE">
                <font>
                   <Font name="Tw Cen MT" size="19.0" />
                </font>
@@ -76,10 +76,17 @@
                   <Image url="@../imagens/exit.png" />
                </image>
             </ImageView>
-            <Button fx:id="btInicio" layoutX="11.0" layoutY="211.0" mnemonicParsing="false" onAction="#acaoBtInicio" prefHeight="41.0" prefWidth="176.0" style="-fx-background-color: #ffffff;" text="INICIO" textFill="#0cb7eb" textOverrun="CLIP">
+            <Button fx:id="btInicio" layoutX="58.0" layoutY="668.0" mnemonicParsing="false" onAction="#acaoBtInicio" prefHeight="13.0" prefWidth="82.0" style="-fx-background-color: #2f5024;" textFill="WHITE" textOverrun="CLIP">
                <font>
-                  <Font name="Tw Cen MT" size="15.0" />
+                  <Font name="Tw Cen MT" size="19.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" smooth="false">
+                     <image>
+                        <Image url="@../imagens/home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
          </children>
       </Pane>
