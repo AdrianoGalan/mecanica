@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
@@ -8,24 +10,44 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="paneFilho" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleTelas.ConsultaOSController">
+<AnchorPane id="AnchorPane" fx:id="paneFilho" prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: #E5E5E5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleTelas.ConsultaOSController">
    <children>
-      <TableView fx:id="tbConsultaOs" layoutX="15.0" layoutY="123.0" prefHeight="298.0" prefWidth="742.0">
+      <TableView fx:id="tbConsultaOs" layoutX="29.0" layoutY="164.0" prefHeight="268.0" prefWidth="742.0" style="-fx-background-color: white; -fx-font: 14px  'Tw Cen MT'; -fx-text-fill: ;">
         <columns>
-          <TableColumn fx:id="tbConsultaColPlaca" prefWidth="61.0" text="PLACA" />
-          <TableColumn fx:id="tbConsultaColNome" prefWidth="137.0" text="NOME" />
-            <TableColumn fx:id="tbConsultaColTelefone" prefWidth="111.0" text="TELEFONE" />
-            <TableColumn fx:id="tbConsultaColDefeito" prefWidth="239.0" text="DEFEITO" />
-            <TableColumn fx:id="tbConsultaColData" prefWidth="105.0" text="DATA" />
-            <TableColumn fx:id="tbConsultaColValor" prefWidth="88.0" text="VALOR" />
+          <TableColumn fx:id="tbConsultaColPlaca" prefWidth="61.0" text="Placa" />
+          <TableColumn fx:id="tbConsultaColNome" prefWidth="137.0" style="-fx-backgorund-color: #dadada;" text="Cliente" />
+            <TableColumn fx:id="tbConsultaColTelefone" prefWidth="111.0" style="-fx-backgorund-color: #dadada;" text="Telefone" />
+            <TableColumn fx:id="tbConsultaColDefeito" prefWidth="239.0" style="-fx-backgorund-color: #dadada;" text="Defeito do Veículo" />
+            <TableColumn fx:id="tbConsultaColData" prefWidth="105.0" style="-fx-backgorund-color: #dadada;" text="Data " />
+            <TableColumn fx:id="tbConsultaColValor" prefWidth="88.0" style="-fx-backgorund-color: #dadada;" text="Valor" />
         </columns>
       </TableView>
-      <Button fx:id="btFinalizar" layoutX="633.0" layoutY="476.0" mnemonicParsing="false" onAction="#acaoBtFinalizar" prefHeight="49.0" prefWidth="92.0" text="Finalizar">
+      <Button fx:id="btFinalizar" layoutX="572.0" layoutY="584.0" mnemonicParsing="false" onAction="#acaoBtFinalizar" prefHeight="49.0" prefWidth="141.0" style="-fx-background-color: #3a6379;" text="Finalizar" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="Tw Cen MT" size="22.0" />
          </font>
       </Button>
-      <TextArea fx:id="lbServicoRealizado" layoutX="29.0" layoutY="515.0" prefHeight="112.0" prefWidth="336.0" />
-      <Label layoutX="43.0" layoutY="492.0" prefHeight="7.0" prefWidth="124.0" text="Serviço realizado" />
+      <TextArea fx:id="lbServicoRealizado" layoutX="121.0" layoutY="521.0" prefHeight="112.0" prefWidth="336.0" promptText="Quais serviços foram realizados:" style="-fx-background-color: white; -fx-border-width: 0px;" />
+      <Label layoutX="210.0" layoutY="37.0" text="Consulta Ordem de Serviço" textFill="#3a6379">
+         <font>
+            <Font name="Tw Cen MT Bold" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="186.0" layoutY="88.0" text="Veja aqui suas ordens de serviço em aberto" textFill="#b2b2b2">
+         <font>
+            <Font name="Tw Cen MT" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="29.0" layoutY="482.0" text="Serviços realizados" textFill="#b2b2b2">
+         <font>
+            <Font name="Tw Cen MT Bold" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="29.0" layoutY="521.0" opacity="0.78" prefHeight="112.0" prefWidth="92.0" style="-fx-background-color: #396377;" textFill="#396377d6" />
+      <ImageView fitHeight="49.0" fitWidth="54.0" layoutX="51.0" layoutY="553.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagens/customer-support.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
