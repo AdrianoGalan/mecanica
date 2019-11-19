@@ -27,9 +27,9 @@ public class Principal extends Application {
         stage.setScene(scene);
 
          //inicia maiximizado
-//        stage.setMaximized(true);
+        stage.setMaximized(true);
         //retira botão de fechar
-        //stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
     }
 

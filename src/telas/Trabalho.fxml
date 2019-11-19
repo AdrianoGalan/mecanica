@@ -64,18 +64,22 @@
                </items>
             </MenuButton>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#345768" height="31.0" layoutX="-4.0" layoutY="669.0" stroke="BLACK" strokeLineJoin="ROUND" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" width="204.0" />
-            <Button layoutY="670.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="61.0" style="-fx-background-color: #2d4c5a;" textFill="#2d4c5a" />
-            <ImageView fitHeight="29.0" fitWidth="24.0" layoutX="18.0" layoutY="673.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../imagens/settings.png" />
-               </image>
-            </ImageView>
-            <Button layoutX="139.0" layoutY="669.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="61.0" style="-fx-background-color: #bf3d20;" textFill="#bf3d20" />
-            <ImageView fitHeight="20.0" fitWidth="25.0" layoutX="160.0" layoutY="675.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../imagens/exit.png" />
-               </image>
-            </ImageView>
+            <Button layoutY="670.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="61.0" style="-fx-background-color: #2d4c5a;" textFill="#2d4c5a">
+               <graphic>
+                  <ImageView fitHeight="29.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/settings.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="btSair" layoutX="139.0" layoutY="669.0" mnemonicParsing="false" onAction="#acaoBtSair" prefHeight="30.0" prefWidth="61.0" style="-fx-background-color: #bf3d20;" textFill="#bf3d20">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/exit.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
             <Button fx:id="btInicio" layoutX="58.0" layoutY="668.0" mnemonicParsing="false" onAction="#acaoBtInicio" prefHeight="13.0" prefWidth="82.0" style="-fx-background-color: #2f5024;" textFill="WHITE" textOverrun="CLIP">
                <font>
                   <Font name="Tw Cen MT" size="19.0" />

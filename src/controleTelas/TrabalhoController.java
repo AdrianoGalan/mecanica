@@ -20,7 +20,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
@@ -61,6 +64,8 @@ public class TrabalhoController implements Initializable {
     private MenuItem btFluxoDeCaixa;
     @FXML
     private MenuItem btDre;
+    @FXML
+    private Button btSair;
 
     /**
      * Initializes the controller class.
@@ -171,6 +176,26 @@ public class TrabalhoController implements Initializable {
     @FXML
     private void acaoBtDre(ActionEvent event) {
         carregaTela("/telas/Dre.fxml");
+    }
+
+    @FXML
+    private void acaoBtSair(ActionEvent event) {
+       
+
+        // validar para sair
+        Alert dialogo = new Alert(Alert.AlertType.CONFIRMATION);
+        ButtonType btSim = new ButtonType("Sim");
+        ButtonType btNao = new ButtonType("Não", ButtonBar.ButtonData.CANCEL_CLOSE);
+        dialogo.setHeaderText("Deseja Sair Programa?");
+        dialogo.setTitle("Fechar");
+        dialogo.getButtonTypes().setAll(btSim, btNao);
+        dialogo.showAndWait().ifPresent(b -> {
+
+            if (b == btSim) {
+                System.exit(0);
+            }
+
+        });
     }
 
 }
