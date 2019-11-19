@@ -140,6 +140,7 @@ public class CadastroClienteController implements Initializable {
             endereco.setNumero(tfNumero.getText());
             endereco.setCep(tfCep.getText());
             endereco.setBairro(tfBairro.getText());
+            endereco.setEstado(tfEstado.getText());
             endereco.setCidade(tfCidade.getText());
             endereco.setId(pessoa.getId());
 

@@ -3,3 +3,4 @@
 3;4;2;4;realizado o reparo nos freios;15 Nov. de 2019;30000;false
 4;1;4;1;feito a troca do oleo;15 Nov. de 2019;45000;false
 5;1;5;1;feito a troca do motor;15 Nov. de 2019;25000;false
+6;3;6;3;a;a;25000;true

@@ -156,12 +156,13 @@ public class ReadWrite {
                 enderecos.add(new Endereco());
 
                 enderecos.get(cont).setId(Integer.parseInt(ler[0]));
-                enderecos.get(cont).setCep(ler[1]);
-                enderecos.get(cont).setRua(ler[2]);
-                enderecos.get(cont).setBairro(ler[3]);
-                enderecos.get(cont).setCidade(ler[4]);
-                enderecos.get(cont).setEstado(ler[5]);
-                enderecos.get(cont).setNumero(ler[6]);
+                enderecos.get(cont).setIdPessoa(Integer.parseInt(ler[1]));
+                enderecos.get(cont).setCep(ler[2]);
+                enderecos.get(cont).setRua(ler[3]);
+                enderecos.get(cont).setBairro(ler[4]);
+                enderecos.get(cont).setCidade(ler[5]);
+                enderecos.get(cont).setEstado(ler[6]);
+                enderecos.get(cont).setNumero(ler[7]);
 
                 cont++;
                 try {
