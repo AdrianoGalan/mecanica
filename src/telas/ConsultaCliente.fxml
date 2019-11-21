@@ -23,43 +23,48 @@
                   <Font name="Tw Cen MT Bold" size="38.0" />
                </font>
             </Label>
-            <TextField fx:id="tfBuscaCliente" layoutX="212.0" layoutY="92.0" onKeyReleased="#acaoDigitar" prefHeight="31.0" prefWidth="438.0" promptText="Digite o nome do cliente" style="-fx-background-color: white;" />
-            <Label layoutX="123.0" layoutY="92.0" text="Cliente" textFill="#919191">
+            <TextField fx:id="tfBuscaCliente" layoutX="218.0" layoutY="100.0" onKeyReleased="#acaoDigitar" prefHeight="31.0" prefWidth="369.0" promptText="Digite o nome do cliente" style="-fx-background-color: white;" />
+            <Label layoutX="142.0" layoutY="102.0" text="Cliente" textFill="#919191">
                <font>
-                  <Font name="Tw Cen MT" size="27.0" />
+                  <Font name="Tw Cen MT" size="24.0" />
                </font>
             </Label>
-            <ListView fx:id="lvClientes" layoutX="123.0" layoutY="156.0" prefHeight="90.0" prefWidth="526.0" />
-             <Button fx:id="btAtualizar" layoutX="122.0" layoutY="602.0" mnemonicParsing="false" onAction="#acaoBtAtualizar" prefHeight="41.0" prefWidth="202.0" style="-fx-background-color: #3a6379;" text="Atualizar cadastro" textFill="WHITE">
+            <ListView fx:id="lvClientes" layoutX="148.0" layoutY="201.0" prefHeight="90.0" prefWidth="526.0" />
+             <Button fx:id="btAtualizar" layoutX="148.0" layoutY="582.0" mnemonicParsing="false" onAction="#acaoBtAtualizar" prefHeight="41.0" prefWidth="202.0" style="-fx-background-color: #3a6379;" text="Atualizar Cadastro" textFill="WHITE">
                <font>
                   <Font name="Tw Cen MT Bold" size="17.0" />
                </font></Button>
-            <Button fx:id="btDesativarCarro" layoutX="439.0" layoutY="602.0" mnemonicParsing="false" onAction="#acaoBtDesativarCarro" prefHeight="41.0" prefWidth="212.0" style="-fx-background-color: #3a6379;" text="Desativar carro" textFill="WHITE">
+            <Button fx:id="btDesativarCarro" layoutX="462.0" layoutY="582.0" mnemonicParsing="false" onAction="#acaoBtDesativarCarro" prefHeight="41.0" prefWidth="212.0" style="-fx-background-color: #9a2b2b;" text="Desativar Carro" textFill="WHITE">
                <font>
                   <Font name="Tw Cen MT Bold" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="btBucar" layoutX="547.0" layoutY="264.0" mnemonicParsing="false" onAction="#acaoBtBuscar" prefHeight="41.0" prefWidth="104.0" style="-fx-background-color: #3a6379;" text="busca" textFill="WHITE">
+            <Button fx:id="btBucar" layoutX="597.0" layoutY="100.0" mnemonicParsing="false" onAction="#acaoBtBuscar" prefHeight="22.0" prefWidth="84.0" style="-fx-background-color: #3a6379;" text="Buscar" textFill="WHITE">
                <font>
                   <Font name="Tw Cen MT Bold" size="17.0" />
                </font>
             </Button>
-            <Label layoutX="129.0" layoutY="327.0" text="Carros Cliente" textFill="#3a6379">
-               <font>
-                  <Font name="Tw Cen MT Bold" size="38.0" />
-               </font>
-            </Label>
-            <TableView fx:id="tvCarrosCliente" layoutX="79.0" layoutY="385.0" prefHeight="169.0" prefWidth="629.0">
+            <TableView fx:id="tvCarrosCliente" layoutX="105.0" layoutY="374.0" prefHeight="169.0" prefWidth="612.0">
               <columns>
-                <TableColumn fx:id="tcPlaca" prefWidth="89.0" text="Placa" />
-                <TableColumn fx:id="tcModelo" prefWidth="114.0" text="Modelo" />
-                  <TableColumn fx:id="tcFabricante" prefWidth="103.0" text="Frabricante" />
-                  <TableColumn fx:id="tcMotor" prefWidth="89.0" text="Motor" />
-                  <TableColumn fx:id="tcAno" prefWidth="75.0" text="Ano" />
-                  <TableColumn fx:id="tcKm" prefWidth="78.0" text="Km" />
-                  <TableColumn fx:id="tcStatus" text="Status" />
+                <TableColumn fx:id="tcPlaca" prefWidth="78.0" text="Placa" />
+                <TableColumn fx:id="tcModelo" prefWidth="113.0" text="Modelo" />
+                  <TableColumn fx:id="tcFabricante" prefWidth="99.0" text="Frabricante" />
+                  <TableColumn fx:id="tcMotor" prefWidth="92.0" text="Motor" />
+                  <TableColumn fx:id="tcAno" prefWidth="74.0" text="Ano" />
+                  <TableColumn fx:id="tcKm" prefWidth="57.0" text="Km" />
+                  <TableColumn fx:id="tcStatus" prefWidth="97.0" text="Status" />
               </columns>
             </TableView>
+            <Label layoutX="315.0" layoutY="158.0" text="Resultados da Busca" textFill="#919191">
+               <font>
+                  <Font name="Tw Cen MT Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="105.0" layoutY="329.0" text="Carros do cliente" textFill="#919191">
+               <font>
+                  <Font name="Tw Cen MT Bold" size="24.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>
