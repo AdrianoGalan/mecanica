@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,55 +8,77 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="paneFilho" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleTelas.DreController">
+<AnchorPane id="AnchorPane" fx:id="paneFilho" prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: #E5E5E5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleTelas.DreController">
    <children>
-      <Label fx:id="lbDre" layoutX="333.0" layoutY="55.0" text="DRE" textFill="#3a6379">
+      <Label fx:id="lbDre" layoutX="392.0" layoutY="35.0" text="DRE" textFill="#3a6379">
          <font>
             <Font name="Tw Cen MT Bold" size="38.0" />
          </font>
       </Label>
-      <TextField fx:id="tfCustos" layoutX="467.0" layoutY="305.0" prefHeight="25.0" prefWidth="170.0" />
-      <TextField fx:id="tfDespesasOperacionais" layoutX="467.0" layoutY="394.0" prefHeight="25.0" prefWidth="170.0" />
-      <Label fx:id="lbVendas" layoutX="164.0" layoutY="145.0" text="Vendas :" textFill="#3a6379">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dadada" height="49.0" layoutX="183.0" layoutY="190.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="469.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dadada" height="49.0" layoutX="183.0" layoutY="292.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="469.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dadada" height="49.0" layoutX="183.0" layoutY="394.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="469.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dadada" height="49.0" layoutX="183.0" layoutY="496.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="469.0" />
+      <TextField fx:id="tfCustos" layoutX="482.0" layoutY="355.0" prefHeight="25.0" prefWidth="152.0" promptText="Digite o valor " style="-fx-background-color: white;" />
+      <TextField fx:id="tfDespesasOperacionais" layoutX="482.0" layoutY="457.0" prefHeight="25.0" prefWidth="152.0" promptText="Digite o valor" style="-fx-background-color: white;" />
+      <Label fx:id="lbVendas" layoutX="208.0" layoutY="201.0" text="Vendas:" textFill="#3a6379">
          <font>
             <Font name="Tw Cen MT Bold" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="lbImpostoSobreVendas" layoutX="164.0" layoutY="197.0" text="Impostos sobre vendas :" textFill="#3a6379">
+      <Label fx:id="lbImpostoSobreVendas" layoutX="208.0" layoutY="251.0" text="Impostos sobre vendas:" textFill="#3a6379">
          <font>
             <Font name="Tw Cen MT Bold" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="lbVendasLiquidas" layoutX="164.0" layoutY="250.0" text="Vendas Líquidas :" textFill="#3a6379">
+      <Label fx:id="lbVendasLiquidas" layoutX="208.0" layoutY="303.0" text="Vendas líquidas:" textFill="#3a6379">
          <font>
             <Font name="Tw Cen MT Bold" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="lbLucroBruto" layoutX="164.0" layoutY="345.0" text="Lucro Bruto :" textFill="#3a6379">
+      <Label fx:id="lbLucroBruto" layoutX="208.0" layoutY="405.0" text="Lucro bruto:" textFill="#3a6379">
          <font>
             <Font name="Tw Cen MT Bold" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="lbCustosOperacionais" layoutX="164.0" layoutY="303.0" text="Custos operacionais :" textFill="#3a6379">
+      <Label fx:id="lbCustosOperacionais" layoutX="208.0" layoutY="354.0" text="Custos operacionais:" textFill="#3a6379">
          <font>
             <Font name="Tw Cen MT Bold" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="lbDespesasOperacionais" layoutX="164.0" layoutY="392.0" text="Despesas operacionais :" textFill="#3a6379">
+      <Label fx:id="lbDespesasOperacionais" layoutX="206.0" layoutY="456.0" text="Despesas operacionais:" textFill="#3a6379">
          <font>
             <Font name="Tw Cen MT Bold" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="lbLucroLiquido" layoutX="164.0" layoutY="441.0" text="Lucro Líquido :" textFill="#3a6379">
+      <Label fx:id="lbLucroLiquido" layoutX="208.0" layoutY="507.0" text="Lucro líquido:" textFill="#3a6379">
          <font>
             <Font name="Tw Cen MT Bold" size="25.0" />
          </font>
       </Label>
-      <TextField fx:id="tfVendas" disable="true" layoutX="467.0" layoutY="147.0" prefHeight="25.0" prefWidth="170.0" />
-      <TextField fx:id="tfImpostoSobreVendas" disable="true" layoutX="467.0" layoutY="199.0" prefHeight="25.0" prefWidth="170.0" />
-      <TextField fx:id="tfVendasLiquidas" disable="true" layoutX="467.0" layoutY="252.0" prefHeight="25.0" prefWidth="170.0" />
-      <TextField fx:id="tfLucroBruto" disable="true" layoutX="467.0" layoutY="353.0" prefHeight="25.0" prefWidth="170.0" />
-      <TextField fx:id="tfLucroLiquido" disable="true" layoutX="467.0" layoutY="443.0" prefHeight="25.0" prefWidth="170.0" />
-      <Button fx:id="btCalcular" layoutX="585.0" layoutY="515.0" mnemonicParsing="false" onAction="#acaoBtcalcular" text="calcular" />
+      <TextField fx:id="tfVendas" disable="true" layoutX="482.0" layoutY="201.0" prefHeight="25.0" prefWidth="152.0" style="-fx-background-color: white;" />
+      <TextField fx:id="tfImpostoSobreVendas" disable="true" layoutX="482.0" layoutY="252.0" prefHeight="25.0" prefWidth="152.0" style="-fx-background-color: white;" />
+      <TextField fx:id="tfVendasLiquidas" disable="true" layoutX="482.0" layoutY="304.0" prefHeight="25.0" prefWidth="152.0" style="-fx-background-color: white;" />
+      <TextField fx:id="tfLucroBruto" disable="true" layoutX="482.0" layoutY="406.0" prefHeight="25.0" prefWidth="152.0" style="-fx-background-color: white;" />
+      <TextField fx:id="tfLucroLiquido" disable="true" layoutX="482.0" layoutY="508.0" prefHeight="25.0" prefWidth="152.0" style="-fx-background-color: white;" />
+      <Button fx:id="btCalcular" layoutX="556.0" layoutY="572.0" mnemonicParsing="false" onAction="#acaoBtcalcular" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: #506840;" text="Calcular" textFill="WHITE">
+         <font>
+            <Font name="Tw Cen MT Bold" size="18.0" />
+         </font></Button>
+      <Label fx:id="lbDre1" layoutX="279.0" layoutY="78.0" text="Demonstração de Resultado" textFill="#3a6379">
+         <font>
+            <Font name="Tw Cen MT" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbVendas1" alignment="CENTER" contentDisplay="CENTER" layoutX="474.0" layoutY="150.0" prefHeight="36.0" prefWidth="175.0" style="-fx-background-color: #3a6379;" text="Valor em R$" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Tw Cen MT" size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbImpostoSobreVendas1" layoutX="192.0" layoutY="565.0" text="Impostos sobre vendas são 15% do valor das vendas" textFill="#979797">
+         <font>
+            <Font name="Tw Cen MT Italic" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
