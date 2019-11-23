@@ -83,12 +83,12 @@
             <TableColumn fx:id="tbServicoCoPreco" prefWidth="114.0" text="Preço" />
          </columns>
       </TableView>
-      <Label layoutX="201.0" layoutY="551.0" prefHeight="30.0" prefWidth="109.0" text="Subtotal R$" textAlignment="CENTER" textFill="#919191">
+      <Label layoutX="180.0" layoutY="551.0" prefHeight="30.0" prefWidth="152.0" text="Total Serviços R$" textAlignment="CENTER" textFill="#919191">
          <font>
             <Font name="Tw Cen MT" size="21.0" />
          </font>
       </Label>
-      <Label fx:id="lbTotalServico" layoutX="310.0" layoutY="551.0" prefHeight="27.0" prefWidth="89.0" text="0" textFill="#919191">
+      <Label fx:id="lbTotalServico" layoutX="335.0" layoutY="552.0" prefHeight="27.0" prefWidth="65.0" text="0" textFill="#919191">
          <font>
             <Font name="Tw Cen MT" size="21.0" />
          </font>
