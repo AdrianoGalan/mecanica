@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Classe tem por objetivo o controle das telas.
+contém os botões de navegação.
+
  */
 package controleTelas;
 
@@ -9,7 +9,6 @@ import LerGravar.RWUsuario;
 import classes.Usuario;
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -31,11 +30,7 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import util.Util;
 
-/**
- * FXML Controller class
- *
- * @author Adriano
- */
+
 public class TrabalhoController implements Initializable {
 
     @FXML
@@ -170,7 +165,8 @@ public class TrabalhoController implements Initializable {
     }
 
     @FXML
-    private void acaoBtFluxoDeCaixa(ActionEvent event) {
+    private void acaoBtFluxoDeCaixa(ActionEvent event) {            
+            carregaTela("/telas/Dfc.fxml");
     }
 
     @FXML
