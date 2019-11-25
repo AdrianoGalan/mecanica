@@ -20,13 +20,16 @@ public class Principal extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+
+        // atenção para colocar a tela de login como iniciau comentar as linhas 72 73 na classe
+        //trabalho no pacote controleTelas.
         Parent root = FXMLLoader.load(getClass().getResource("/telas/Trabalho.fxml"));
 
         Scene scene = new Scene(root);
 
         stage.setScene(scene);
 
-         //inicia maiximizado
+        //inicia maiximizado
         stage.setMaximized(true);
         //retira botão de fechar
         stage.initStyle(StageStyle.UNDECORATED);

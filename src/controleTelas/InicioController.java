@@ -49,8 +49,6 @@ public class InicioController implements Initializable {
     private TableColumn<TabelaOrdemServico, String> tbConsultaColDefeito;
     @FXML
     private TableColumn<TabelaOrdemServico, String> tbConsultaColData;
-    @FXML
-    private TableColumn<TabelaOrdemServico, Double> tbConsultaColValor;
 
     ArrayList<Orcamento> orcamentos;
     ArrayList<Pessoa> pessoas;

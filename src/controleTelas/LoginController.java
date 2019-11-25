@@ -28,6 +28,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import util.Util;
 
 /**
@@ -89,9 +90,9 @@ public class LoginController implements Initializable {
             stage.setScene(scene);
 
             //inicia maiximizado
-//            stage.setMaximized(true);
+            stage.setMaximized(true);
             //retira botão de fechar
-//            stage.initStyle(StageStyle.UNDECORATED);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.show();
 
             // fecha tela do login
