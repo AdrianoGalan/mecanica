@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javax.swing.JOptionPane;
 
 public class DfcController implements Initializable {
 
@@ -70,23 +71,66 @@ public class DfcController implements Initializable {
     private ReadWrite rw = new ReadWrite();
 
     private Dre dre;
-    private Dfc dfc = new Dfc();
+    private Dfc dfc;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        dre = rw.readDre();
-        dfc.setSaldoAnterior(Double.parseDouble(tfSaldoAnterios.getText()));
-        dfc.setVendasAVista(dre.getVendasLiquidas());
-        dfc.setDespesasCustos(dre.getCustos() + dre.getDespesas());
-        
+
+        dfc = rw.readDfc();
+        tfCompraAtivo.setText(String.valueOf(dfc.getCompraAtivos()));
+        tfAumentoCapital.setText(String.valueOf(dfc.getAumentoCapital()));
+
+        calcula();
 
     }
 
     @FXML
     private void acaoBtcalcular(ActionEvent event) {
+        calcula();
+    }
+
+    private void preencheCampos() {
+
+        tfCaixaGerado.setText(String.valueOf(dfc.getCaixaGerado()));
+        tfDespesaCusto.setText(String.valueOf(dfc.getDespesasCustos()));
+        tfVendas.setText(String.valueOf(dfc.getVendasAVista()));
+        tfSaldoFinal.setText(String.valueOf(dfc.getSaldoFinal()));
+        tfTotalEntrada.setText(String.valueOf(dfc.getTotalEntrada()));
+        tfTotalSaida.setText(String.valueOf(dfc.getTotalSaida()));
+        tfCompraAtivo.setText(String.valueOf(dfc.getCompraAtivos()));
+        tfAumentoCapital.setText(String.valueOf(dfc.getAumentoCapital()));
+
+        rw.writeDfc(dfc);
+
+    }
+
+    private void calcula() {
+        tfSaldoAnterios.setText("10000");
+
+        dre = rw.readDre();
+        dfc.setSaldoAnterior(Double.parseDouble(tfSaldoAnterios.getText()));
+        dfc.setVendasAVista(dre.getVendasLiquidas());
+        dfc.setDespesasCustos(dre.getCustos() + dre.getDespesas());
+        try {
+
+            dfc.setAumentoCapital(Double.parseDouble(tfAumentoCapital.getText()));
+            dfc.setCompraAtivos(Double.parseDouble(tfCompraAtivo.getText()));
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, "Valor invalido");
+        }
+
+        dfc.setTotalEntrada();
+        dfc.setTotalSaida();
+        dfc.setCaixaGerado();
+        dfc.setSaldoFinal();
+
+        preencheCampos();
+
     }
 
 }

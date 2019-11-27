@@ -72,17 +72,15 @@ public class DreController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         dre = rw.readDre();
 
         oss = rw.readOs();
         orcamentos = rw.readOrcamento();
         calculos(dre.getDespesas(), dre.getCustos());
         carregaValoresTela();
-        
+
         rw.writeDre(dre);
-        
-      
 
     }
 
@@ -133,17 +131,27 @@ public class DreController implements Initializable {
 
     @FXML
     private void acaoBtcalcular(ActionEvent event) {
-        
-        if(!tfCustos.getText().isEmpty() && !tfDespesasOperacionais.getText().isEmpty()){
-            
-            double custo = Double.parseDouble(tfCustos.getText());
-            double desp = Double.parseDouble(tfDespesasOperacionais.getText());
-            
-            calculos(desp, custo);
+
+        if (!tfCustos.getText().isEmpty() && !tfDespesasOperacionais.getText().isEmpty()) {
+
+            try {
+
+                double custo = Double.parseDouble(tfCustos.getText());
+                double desp = Double.parseDouble(tfDespesasOperacionais.getText());
+
+                calculos(desp, custo);
+                carregaValoresTela();
+                rw.writeDre(dre);
+
+            } catch (Exception e) {
+                
+                JOptionPane.showMessageDialog(null, "Valor invalido");
+                carregaValoresTela();
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Digite um valor");
             carregaValoresTela();
-            
-            rw.writeDre(dre);
-            
         }
     }
 

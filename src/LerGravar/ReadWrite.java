@@ -6,6 +6,7 @@
 package LerGravar;
 
 import classes.Carro;
+import classes.Dfc;
 import classes.Dre;
 import classes.Endereco;
 import classes.Orcamento;
@@ -36,6 +37,7 @@ public class ReadWrite {
     final String ARQUIVOSERVICOS = "txt/servicos.txt";
     final String ARQUIVOOS = "txt/os.txt";
     final String ARQUIVODRE = "txt/dre.txt";
+    final String ARQUIVODFC = "txt/dfc.txt";
 
     //escreve Pessoa arquivo txt
     public void writePessoa(List<Pessoa> objetoGravar) {
@@ -690,6 +692,55 @@ public class ReadWrite {
             dre.setData(ler[8]);
 
             return dre;
+
+        } catch (FileNotFoundException ex) {
+            return null;
+
+        }
+
+    }
+    //escreve dfc arquivo txt
+    public boolean writeDfc(Dfc objetoGravar) {
+
+        BufferedWriter writer;
+
+        try {
+            writer = new BufferedWriter(new FileWriter(ARQUIVODFC));
+
+            writer.write(objetoGravar.salvar());
+            writer.newLine();
+
+            writer.close();
+            return true;
+
+        } catch (IOException ex) {
+            Logger.getLogger(ReadWrite.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+
+    }
+
+    // ler os arquivo txt
+    public Dfc readDfc() {
+
+        try {
+            //le arquivo
+            BufferedReader read = new BufferedReader(new FileReader(ARQUIVODFC));
+            String[] ler = null;
+
+            //le primeira linha arquivo
+            try {
+                ler = read.readLine().split(";");
+            } catch (IOException ex) {
+                Logger.getLogger(ReadWrite.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            Dfc dfc = new Dfc();
+
+            dfc.setAumentoCapital(Double.parseDouble(ler[0]));
+            dfc.setCompraAtivos(Double.parseDouble(ler[1]));
+            
+            return dfc;
 
         } catch (FileNotFoundException ex) {
             return null;

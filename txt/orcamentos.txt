@@ -4,3 +4,4 @@
 4;1;troca oleo cambio;500.0;450.0;950.0;15 Nov. de 2019;1:22;false
 5;1;trocar motor;5000.0;2500.0;7500.0;15 Nov. de 2019;3:38;false
 6;3;regular caixa de direção trocar oleo do motor;130.0;320.0;450.0;19 Nov. de 2019;1:11;false
+7;2;trocar oleo;470.0;320.0;790.0;27 Nov. de 2019;2:12;false

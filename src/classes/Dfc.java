@@ -41,8 +41,8 @@ public class Dfc {
         return totalEntrada;
     }
 
-    public void setTotalEntrada(double totalEntrada) {
-        this.totalEntrada = totalEntrada;
+    public void setTotalEntrada() {
+        this.totalEntrada = this.aumentoCapital + this.vendasAVista;
     }
 
     public double getCompraAtivos() {
@@ -65,8 +65,8 @@ public class Dfc {
         return totalSaida;
     }
 
-    public void setTotalSaida(double totalSaida) {
-        this.totalSaida = totalSaida;
+    public void setTotalSaida() {
+        this.totalSaida = this.compraAtivos + this.despesasCustos;
     }
 
     public double getSaldoAnterior() {
@@ -102,6 +102,10 @@ public class Dfc {
 
     public void setData(String data) {
         this.data = data;
+    }
+    
+    public String salvar() {
+        return  aumentoCapital + ";" + compraAtivos;
     }
 
 }
