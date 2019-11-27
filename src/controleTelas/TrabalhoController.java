@@ -69,8 +69,8 @@ public class TrabalhoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         //codigo temporario para trabalhar sem a tela de login
-         ArrayList<Usuario> usuarios = RWUsuario.lerUsuario();
-         Util.setUsuarioAtual(usuarios.get(0));
+//         ArrayList<Usuario> usuarios = RWUsuario.lerUsuario();
+//         Util.setUsuarioAtual(usuarios.get(0));
          //fim codigo temporario
         
         carregaTela("/telas/Inicio.fxml");
